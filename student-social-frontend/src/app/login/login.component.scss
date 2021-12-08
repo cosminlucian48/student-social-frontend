@@ -1,4 +1,4 @@
-.login-form {
+#login-form {
   /* text-align: center; */
   margin-top: 4%;
   margin-left:auto;
@@ -6,6 +6,13 @@
   padding: 60px;
   width: 500px;
 }
+#login-mat-card{
+  width: 100%;
+}
+mat-form-field{
+  width: 100%;
+}
+
 .card {
   padding: 20px;
   border: 1px solid #125266;
