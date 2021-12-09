@@ -25,6 +25,7 @@ import {MatInputModule} from "@angular/material/input";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MaterialModule} from "./material.module";
 
 
 
@@ -54,7 +55,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MaterialModule
   ],
   providers: [
     fakeBackendProvider
