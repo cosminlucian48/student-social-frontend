@@ -1,0 +1,67 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "test@test.com",
+      "password": "password",
+      "firstName": "Test",
+      "lastName": "LTEST",
+      "university": "University of Bucharest",
+      "registrationDate": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "id": 2,
+      "email": "test2@test.com",
+      "password": "password",
+      "firstName": "Test2",
+      "lastName": "LTEST2",
+      "university": "University of Bucharest",
+      "registrationDate": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "id": 3,
+      "email": "test3@test.com",
+      "password": "password",
+      "firstName": "Test3",
+      "lastName": "LTEST3",
+      "university": "University of Cluj-Napoca",
+      "registrationDate": "2012-04-23T18:25:43.511Z"
+    },
+    {
+      "id": 4,
+      "email": "test4@test.com",
+      "password": "password",
+      "firstName": "Test4",
+      "lastName": "LTEST4",
+      "university": "University of Iasi",
+      "registrationDate": "2012-04-23T18:25:43.511Z"
+    }
+  ],
+  "subject": [
+    {
+      "id": 1,
+      "name": "Databases",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+    },
+    {
+      "id": 2,
+      "name": "Data Structures",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+    },
+    {
+      "id": 3,
+      "name": "Algebra",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+    },
+    {
+      "id": 4,
+      "name": "Geometry",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+    },
+    {
+      "id": 5,
+      "name": "Probability theory",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+    }
+  ]
+}

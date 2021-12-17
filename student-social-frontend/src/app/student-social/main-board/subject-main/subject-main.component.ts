@@ -1,4 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {CreatePostComponent} from "./create-post/create-post.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-subject-main',
@@ -10,13 +12,17 @@ export class SubjectMainComponent implements OnInit {
 
   @Output() navBarToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(public dialog:MatDialog) { }
 
   ngOnInit(): void {
   }
 
   emitDrawerToggle(){
     this.navBarToggle.emit();
+  }
+
+  createPost(){
+    const dialogref = this.dialog.open(CreatePostComponent);
   }
 
 

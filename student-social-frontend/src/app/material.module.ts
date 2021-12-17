@@ -5,7 +5,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
+// import {MatCardModule} from "@angular/material/card";
+// import {MatInputModule} from "@angular/material/input";
+import {FlexLayoutModule} from "@angular/flex-layout";
+// import {MatButtonModule} from "@angular/material/button";
+// import {MatIconModule} from "@angular/material/icon";
 import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
+import {MatListModule} from "@angular/material/list";
+import {MatDialog} from "@angular/material/dialog";
 
 @NgModule({
   imports: [
@@ -15,7 +22,8 @@ import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule
   ],
   exports:[
     MatCardModule,
@@ -24,7 +32,8 @@ import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
     MatButtonModule,
     MatIconModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

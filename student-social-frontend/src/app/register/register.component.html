@@ -49,49 +49,50 @@
   <mat-card id="register-mat-card">
 
     <mat-card-title>Register</mat-card-title>
-    <form>
+    <form #registerForm="ngForm" (ngSubmit)="registerSubmit(registerForm)">
       <mat-card-content>
         <mat-form-field>
           <mat-label>
             Email
           </mat-label>
-          <input type="email" matInput/>
+<!--          <input #email="ngModel" name="email"  type="email" [ngModel]="email.name" matInput/>-->
+          <input matInput #email="ngModel" name="email" ngModel required/>
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label>
             Password
           </mat-label>
-          <input type="password" matInput/>
+          <input matInput #password="ngModel" name="password" ngModel required/>
         </mat-form-field>
         <mat-form-field>
           <mat-label>
             University
           </mat-label>
-          <input matInput/>
+          <input matInput #university="ngModel" name="university" ngModel required/>
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>
-            Faculty
-          </mat-label>
-          <input matInput/>
-        </mat-form-field>
+<!--        <mat-form-field>-->
+<!--          <mat-label>-->
+<!--            Faculty-->
+<!--          </mat-label>-->
+<!--          <input matInput required/>-->
+<!--        </mat-form-field>-->
         <mat-form-field>
           <mat-label>
             First Name
           </mat-label>
-          <input matInput/>
+          <input matInput #firstName="ngModel" name="firstName" ngModel required/>
         </mat-form-field>
         <mat-form-field>
           <mat-label>
             Last Name
           </mat-label>
-          <input matInput/>
+          <input matInput #lastName="ngModel" name="lastName" ngModel required/>
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>
         <!--      butoane-->
-        <button mat-raised-button color="primary" routerLink="/login" type="submit"> Register</button>
+        <button mat-raised-button color="primary" type="submit" > Register</button>
         <button mat-raised-button color="primary" routerLink="/login"> Cancel</button>
       </mat-card-actions>
     </form>
