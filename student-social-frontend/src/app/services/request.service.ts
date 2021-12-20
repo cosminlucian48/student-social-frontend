@@ -14,4 +14,8 @@ export class RequestService {
     return this.httpClient.post<User>(this.urlService.getLoginUrl(), userModel, {observe: 'response'})
   }
 
+  register(user: User): Observable<User>{
+    return this.httpClient.post<User>(this.urlService.getRegisterUrl(), user, this.urlService.getRequestOptions());
+  }
+
 }

@@ -23,16 +23,19 @@ export class AuthenticationService {
 
   }
 
-  register(userModel: User) {
-    this.httpClient.post<User>(this.urlService.getRegisterUrl(), userModel, this.urlService.getRequestOptions())
-      .subscribe(responseData => {
+  // register(userModel: User) {
+  //   this.httpClient.post<User>(this.urlService.getRegisterUrl(), userModel, this.urlService.getRequestOptions())
+  //     .subscribe(responseData => {
+  //         alert("User registered succesfull]y!")
+  //       },
+  //       error => {
+  //         alert("Something went wrong!")
+  //       }
+  //     );
+  // }
 
-          alert("User registered succesfull]y!")
-        },
-        error => {
-          alert("Something went wrong!")
-        }
-      );
+  atUserRegister(){
+
   }
 
   atUserLogin(token: string | null) {
