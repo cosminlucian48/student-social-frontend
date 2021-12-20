@@ -7,6 +7,7 @@ export const environment = {
   baseUrl:"http://localhost:8080",
   registerUrl:"/user/register",
   loginUrl:"/user/login",
+  // mainApp:"/user/login",
 };
 
 /*

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SubjectService} from "../../../../services/subject.service";
+import {Post} from "../../../../model/post.model";
 
 @Component({
   selector: 'app-post-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostListComponent implements OnInit {
 
-  constructor() { }
+  postList: Post[] = [];
+
+  constructor(public subjectService: SubjectService, ) { }
 
   ngOnInit(): void {
+    this.subjectService.observeSubjectWasChanged().
+    subscribe((subjectId: string )=> {
+      //apelez din request service metoda care returneaza toate post urile cu subjectId respectiv
+    });
   }
+
+
 
 }

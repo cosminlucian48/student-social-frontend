@@ -28,6 +28,11 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MaterialModule} from "./material.module";
 import {AuthenticationService} from "./services/authentication.service";
 import {UrlService} from "./services/url.service";
+import {LocalStorageService} from "./services/local.storage.service";
+import {JWTTokenService} from "./services/jwt.token.service";
+import {AuthorizeGuard} from "./services/authorize.guard";
+import {RequestService} from "./services/request.service";
+import {SubjectService} from "./services/subject.service";
 
 
 @NgModule({
@@ -43,7 +48,7 @@ import {UrlService} from "./services/url.service";
     SubjectComponent,
     CreatePostComponent,
     PostListComponent,
-    PostComponent
+    PostComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,12 @@ import {UrlService} from "./services/url.service";
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: SecurityRequestInterceptor, multi: true},
     AuthenticationService,
-    UrlService
+    UrlService,
+    LocalStorageService,
+    JWTTokenService,
+    AuthorizeGuard,
+    RequestService,
+    SubjectService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {NgModel} from "@angular/forms";
-import {UserModel} from "../model/user.model";
+import {User} from "../model/user";
 import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     if(ngForm.invalid){
       return;
     }
-    const user = new UserModel(ngForm.value.email,ngForm.value.password,ngForm.value.university, ngForm.value.firstName, ngForm.value.lastName);
+    const user = new User(ngForm.value.email,ngForm.value.password,ngForm.value.university, ngForm.value.firstName, ngForm.value.lastName);
     this.authenticationService.register(user);
 
   }

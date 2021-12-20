@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {HttpClientModule} from '@angular/common/http';
+import {AuthenticationService} from "../services/authentication.service";
+import {User} from "../model/user";
+import {RequestService} from "../services/request.service";
+import {JWTTokenService} from "../services/jwt.token.service";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +15,8 @@ import {HttpClientModule} from '@angular/common/http';
 export class LoginComponent implements OnInit {
 
 
-  constructor(private router: Router) {
+  constructor(public authenticationService: AuthenticationService,public requestService: RequestService,
+              public jwtService: JWTTokenService, public router: Router) {
 
   }
 
@@ -21,10 +26,21 @@ export class LoginComponent implements OnInit {
 
 
 
-  login(ngForm: NgForm) {
+  loginSubmit(ngForm: NgForm) {
    if(ngForm.invalid){
-     alert("bad data");
+     return
    }
+    const user = new User(ngForm.value.email,ngForm.value.password,"", "", "");
+    this.requestService.login(user)
+      .subscribe(responseData => {
+          alert("user logged in")
+          const token:string | null  = responseData.headers.get("jwt-token");
+          this.authenticationService.atUserLogin(token);
+          this.router.navigate(['']);
+        },
+        error => {
+          alert("not ok");
+        })
 
   }
 
