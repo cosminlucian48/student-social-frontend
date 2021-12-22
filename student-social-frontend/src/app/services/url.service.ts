@@ -15,6 +15,13 @@ export class UrlService{
   getLoginUrl():string{
     return this.getBaseUrl()+ environment.loginUrl;
   }
+  getSubjectUrl():string{
+    return this.getBaseUrl()+ environment.subjectUrl;
+  }
+  getPostUrl():string{
+    return this.getBaseUrl()+ environment.postUrl;
+  }
+
 
   getRequestOptions() {
     return {headers: this.getScoreboardHeaders()};

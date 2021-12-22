@@ -3,6 +3,8 @@ import {User} from "../model/user";
 import {UrlService} from "./url.service";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
+import {Subject} from "../model/subject.model";
+import {Post} from "../model/post.model";
 
 @Injectable()
 export class RequestService {
@@ -16,6 +18,17 @@ export class RequestService {
 
   register(user: User): Observable<User>{
     return this.httpClient.post<User>(this.urlService.getRegisterUrl(), user, this.urlService.getRequestOptions());
+  }
+
+  getSubjects():Observable<Subject[]>{
+    console.log(this.urlService.getSubjectUrl());
+    return this.httpClient.get<Subject[]>(this.urlService.getSubjectUrl(),this.urlService.getRequestOptions());
+  }
+
+  getPosts(subjectId: number):Observable<Post[]>{
+
+    console.log(this.urlService.getPostUrl());
+    return this.httpClient.get<Post[]>(this.urlService.getPostUrl() + "/" + subjectId,this.urlService.getRequestOptions());
   }
 
 }

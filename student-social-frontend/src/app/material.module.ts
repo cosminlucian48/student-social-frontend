@@ -13,6 +13,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
 import {MatDialog} from "@angular/material/dialog";
+import {MatDividerModule} from '@angular/material/divider';
+import {MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import {MatDialog} from "@angular/material/dialog";
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule,
+    MatRippleModule
   ],
   exports:[
     MatCardModule,
@@ -33,7 +37,9 @@ import {MatDialog} from "@angular/material/dialog";
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule,
+    MatRippleModule
   ]
 })
 export class MaterialModule { }

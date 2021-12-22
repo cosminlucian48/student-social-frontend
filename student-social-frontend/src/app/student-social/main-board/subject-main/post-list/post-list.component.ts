@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SubjectService} from "../../../../services/subject.service";
 import {Post} from "../../../../model/post.model";
+import {RequestService} from "../../../../services/request.service";
 
 @Component({
   selector: 'app-post-list',
@@ -11,13 +12,20 @@ export class PostListComponent implements OnInit {
 
   postList: Post[] = [];
 
-  constructor(public subjectService: SubjectService, ) { }
+  constructor(public subjectService: SubjectService,public requestService: RequestService ) { }
 
   ngOnInit(): void {
-    this.subjectService.observeSubjectWasChanged().
-    subscribe((subjectId: string )=> {
-      //apelez din request service metoda care returneaza toate post urile cu subjectId respectiv
-    });
+    // this.subjectService.observeSubjectWasChanged().
+    // subscribe((subjectId: number )=> {
+    //   // alert("id este "+ subjectId)
+    //   //apelez din request service metoda care returneaza toate post urile cu subjectId respectiv
+    //   this.requestService.getPosts(2).subscribe(resposeData =>{
+    //     this.postList = resposeData;
+    //   },
+    //     error => {
+    //     alert("error nasol")
+    //     })
+    // });
   }
 
 

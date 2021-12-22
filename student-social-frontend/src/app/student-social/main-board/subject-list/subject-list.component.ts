@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Post} from "../../../model/post.model";
+import {Subject} from "../../../model/subject.model";
+import {RequestService} from "../../../services/request.service";
 
 @Component({
   selector: 'app-subject-list',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubjectListComponent implements OnInit {
 
-  constructor() { }
+  subjectList: Subject[] = [];
+  constructor(public requestService: RequestService) { }
 
   ngOnInit(): void {
+    this.requestService.getSubjects().subscribe(responseData =>{
+      this.subjectList =responseData;
+    },
+      error => {
+      //de facut ceva
+        alert("eroare")
+      });
+
   }
+
 
 }

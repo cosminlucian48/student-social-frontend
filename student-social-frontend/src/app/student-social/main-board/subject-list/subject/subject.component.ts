@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SubjectService} from "../../../../services/subject.service";
+import {Post} from "../../../../model/post.model";
+import {Subject} from "../../../../model/subject.model";
 
 @Component({
   selector: 'app-subject',
@@ -8,14 +10,14 @@ import {SubjectService} from "../../../../services/subject.service";
 })
 export class SubjectComponent implements OnInit {
 
-
+  @Input()subject:Subject = new Subject();
   constructor(public subjectService: SubjectService) { }
 
   ngOnInit(): void {
   }
 
   onSubjectClick(){
-    this.subjectService.emitSubjectWasChanged();
+    this.subjectService.emitSubjectWasChanged(this.subject.id);
   }
 
 }

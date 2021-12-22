@@ -4,16 +4,16 @@ import {Observable, Subject} from "rxjs";
 @Injectable()
 export class SubjectService {
 
-  subjectWasChanged = new Subject<string>();
+  subjectWasChanged = new Subject<number>();
 
   constructor() {
   }
 
-  observeSubjectWasChanged(): Observable<string> {
+  observeSubjectWasChanged(): Observable<number> {
     return this.subjectWasChanged.asObservable();
   }
 
-  emitSubjectWasChanged(){
-    this.subjectWasChanged.next();
+  emitSubjectWasChanged(subjectId: number){
+    this.subjectWasChanged.next(subjectId);
   }
 }

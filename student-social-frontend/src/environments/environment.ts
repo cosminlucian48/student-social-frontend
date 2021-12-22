@@ -4,9 +4,11 @@
 
 export const environment = {
   production: false,
-  baseUrl:"http://localhost:8000",
+  baseUrl:"http://localhost:8080",
   registerUrl:"/user/register",
   loginUrl:"/user/login",
+  subjectUrl:"/subject",
+  postUrl:"/post"
   // mainApp:"/user/login",
 };
 

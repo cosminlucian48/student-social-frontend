@@ -4,12 +4,14 @@ import {Observable} from 'rxjs';
 import {UrlService} from "./services/url.service";
 import {JWTTokenService} from "./services/jwt.token.service";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "./services/authentication.service";
 
 @Injectable()
 export class SecurityRequestInterceptor implements HttpInterceptor {
 
 
-  constructor(public urlService: UrlService, public jwtService: JWTTokenService, public router: Router) {
+  constructor(public urlService: UrlService, public jwtService: JWTTokenService, public router: Router,
+              public authenticationService:AuthenticationService ) {
   }
 
   intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -21,7 +23,7 @@ export class SecurityRequestInterceptor implements HttpInterceptor {
     // console.log("jwt: ", this.jwtService.getToken())
     httpRequest = httpRequest.clone({
       setHeaders: {
-        Authorization: `Bearer ${this.jwtService.getToken()}`
+        Authorization: `Bearer ${this.authenticationService.getToken()}`
       }
     });
 
