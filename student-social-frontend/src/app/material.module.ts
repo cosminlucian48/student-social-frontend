@@ -13,6 +13,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
 import {MatDialog} from "@angular/material/dialog";
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import {MatDialog} from "@angular/material/dialog";
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule
   ],
   exports:[
     MatCardModule,
@@ -33,7 +36,8 @@ import {MatDialog} from "@angular/material/dialog";
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule
   ]
 })
 export class MaterialModule { }
