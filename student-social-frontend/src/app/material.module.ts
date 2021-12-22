@@ -15,6 +15,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatDialog} from "@angular/material/dialog";
 import {MatDividerModule} from '@angular/material/divider';
 import {MatRippleModule} from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {MatRippleModule} from '@angular/material/core';
     MatToolbarModule,
     MatListModule,
     MatDividerModule,
-    MatRippleModule
+    MatRippleModule,
+    MatSlideToggleModule
   ],
   exports:[
     MatCardModule,
@@ -39,7 +41,8 @@ import {MatRippleModule} from '@angular/material/core';
     MatToolbarModule,
     MatListModule,
     MatDividerModule,
-    MatRippleModule
+    MatRippleModule,
+    MatSlideToggleModule
   ]
 })
 export class MaterialModule { }
