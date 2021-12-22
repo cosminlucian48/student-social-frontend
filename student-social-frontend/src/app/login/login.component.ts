@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(public authenticationService: AuthenticationService,public requestService: RequestService,
-              public jwtService: JWTTokenService, public router: Router) {
+              public router: Router) {
 
   }
 

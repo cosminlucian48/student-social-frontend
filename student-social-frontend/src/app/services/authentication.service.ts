@@ -37,6 +37,11 @@ export class AuthenticationService {
   atUserRegister(){
 
   }
+  atUserLogout(){
+    if(localStorage.getItem("jwt-token")!=null){
+      localStorage.removeItem("jwt-token");
+    }
+  }
 
   atUserLogin(token: string | null) {
     this.jwtService.setToken(token);

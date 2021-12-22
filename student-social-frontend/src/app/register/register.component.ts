@@ -4,6 +4,7 @@ import {NgModel} from "@angular/forms";
 import {User} from "../model/user";
 import {AuthenticationService} from "../services/authentication.service";
 import {RequestService} from "../services/request.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ import {RequestService} from "../services/request.service";
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public authenticationService: AuthenticationService, public requestService: RequestService) { }
+  constructor(public authenticationService: AuthenticationService, public requestService: RequestService,
+              public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,7 @@ export class RegisterComponent implements OnInit {
     console.log(user);
     this.requestService.register(user).subscribe(responseData => {
         alert("User registered succesfull]y!")
+        this.router.navigate(['/login']);
       },
       error => {
         alert("Something went wrong!")
