@@ -3,12 +3,9 @@
 <!--</app-post>-->
 <!--<p>app post list works</p>-->
 
-<div fxLayout="column" fxLayoutAlign="space-between center" style="margin-bottom: 200px">
-  <app-post></app-post>
-  <div style="height: 30px"></div>
-  <app-post></app-post>
-  <div style="height: 30px"></div>
-  <app-post></app-post>
+<div fxLayout="column" fxLayoutAlign="space-between center" style="margin-bottom: 200px; min-height:400px">
+  <app-post *ngFor="let postItem of postList; let i = index" [post]="postItem"></app-post>
+
 </div>
 
 

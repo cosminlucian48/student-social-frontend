@@ -34,11 +34,13 @@ export class AuthenticationService {
   //     );
   // }
 
-  atUserRegister(){
+  atUserRegister() {
 
   }
-  atUserLogout(){
-    if(localStorage.getItem("jwt-token")!=null){
+
+  atUserLogout() {
+    if (localStorage.getItem("jwt-token") != null) {
+      this.cleanLocalToken();
       localStorage.removeItem("jwt-token");
     }
   }
@@ -58,6 +60,11 @@ export class AuthenticationService {
     }
     return this.checkTokenValidity();
 
+  }
+
+  cleanLocalToken() {
+    this.jwtToken = '';
+    this.decodedToken = undefined;
   }
 
   loadLocalTokenFromStorage() {

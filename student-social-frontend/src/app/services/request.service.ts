@@ -28,7 +28,7 @@ export class RequestService {
   getPosts(subjectId: number):Observable<Post[]>{
 
     console.log(this.urlService.getPostUrl());
-    return this.httpClient.get<Post[]>(this.urlService.getPostUrl() + "/" + subjectId,this.urlService.getRequestOptions());
+    return this.httpClient.get<Post[]>(this.urlService.getPostUrl() + "/subject/" + subjectId,this.urlService.getRequestOptions());
   }
 
 }

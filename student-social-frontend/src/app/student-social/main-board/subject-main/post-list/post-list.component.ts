@@ -15,17 +15,17 @@ export class PostListComponent implements OnInit {
   constructor(public subjectService: SubjectService,public requestService: RequestService ) { }
 
   ngOnInit(): void {
-    // this.subjectService.observeSubjectWasChanged().
-    // subscribe((subjectId: number )=> {
-    //   // alert("id este "+ subjectId)
-    //   //apelez din request service metoda care returneaza toate post urile cu subjectId respectiv
-    //   this.requestService.getPosts(2).subscribe(resposeData =>{
-    //     this.postList = resposeData;
-    //   },
-    //     error => {
-    //     alert("error nasol")
-    //     })
-    // });
+    this.subjectService.observeSubjectWasChanged().
+    subscribe((subjectId: number )=> {
+      // alert("id este "+ subjectId)
+      //apelez din request service metoda care returneaza toate post urile cu subjectId respectiv
+      this.requestService.getPosts(subjectId).subscribe(resposeData =>{
+        this.postList = resposeData;
+      },
+        error => {
+        alert("error nasol")
+        })
+    });
   }
 
 
