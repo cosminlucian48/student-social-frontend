@@ -31,4 +31,9 @@ export class RequestService {
     return this.httpClient.get<Post[]>(this.urlService.getPostUrl() + "/subject/" + subjectId,this.urlService.getRequestOptions());
   }
 
+  postPost(post: Post):Observable<Post>{
+    // return this.httpClient.post<User>(this.urlService.getRegisterUrl(), user, this.urlService.getRequestOptions());
+    return this.httpClient.post<Post>(this.urlService.getPostUrl(),post,this.urlService.getRequestOptions());
+  }
+
 }

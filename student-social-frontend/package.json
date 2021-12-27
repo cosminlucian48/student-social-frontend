@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "angular-notifier": "^9.1.0",
     "bootstrap": "^4.5.0",
     "json-server": "^0.17.0",
     "jwt-decode": "^3.1.2",

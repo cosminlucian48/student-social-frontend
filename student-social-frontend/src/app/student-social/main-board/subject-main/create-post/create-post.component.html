@@ -1,4 +1,24 @@
-<div>
-<p>Test</p>
 
-</div>
+  <mat-card id="create-post-mat-card">
+    <mat-card-title>Create Post</mat-card-title>
+    <form #createPostForm="ngForm" (ngSubmit)="createPost(createPostForm)">
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>
+            Title
+          </mat-label>
+          <input matInput #postTitle="ngModel" name="postTitle" ngModel required/>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>
+            Text
+          </mat-label>
+          <input matInput #postText="ngModel" name="postText" ngModel required/>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit"> Add Post</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
