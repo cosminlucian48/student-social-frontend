@@ -1,10 +1,12 @@
-<mat-toolbar color = "primary">
+<mat-toolbar color="primary">
   <span class="title">Student social</span>
 
-  <div class = "buttons">
-    <button mat-button>Home</button>
-    <button mat-button>Account</button>
-    <button mat-button>Settings</button>
-    <button mat-button (click)="logout()">Logout</button>
+  <div class="buttons">
+    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button>Home</button>
+    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button>Account</button>
+    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button>Settings</button>
+    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button (click)="logout()">Logout</button>
+    <button *ngIf="!authenticationService.isUserLoggedIn()" mat-button (click)="login()">Login</button>
+    <button *ngIf="!authenticationService.isUserLoggedIn()" mat-button (click)="register()">Register</button>
   </div>
 </mat-toolbar>

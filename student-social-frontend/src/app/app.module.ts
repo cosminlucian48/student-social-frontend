@@ -33,6 +33,7 @@ import {JWTTokenService} from "./services/jwt.token.service";
 import {AuthorizeGuard} from "./services/authorize.guard";
 import {RequestService} from "./services/request.service";
 import {SubjectService} from "./services/subject.service";
+import {DatePipe} from "@angular/common";
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import {SubjectService} from "./services/subject.service";
     SubjectComponent,
     CreatePostComponent,
     PostListComponent,
-    PostComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +69,8 @@ import {SubjectService} from "./services/subject.service";
     JWTTokenService,
     AuthorizeGuard,
     RequestService,
-    SubjectService
+    SubjectService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

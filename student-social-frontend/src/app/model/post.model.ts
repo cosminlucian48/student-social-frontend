@@ -1,11 +1,11 @@
 export class Post {
   userId: number = 0;
   subjectId: number = 0;
+  email:string | undefined | null = "";
   postDate: Date = new Date();
   title: string = "";
   text: string = "";
   isSticky: boolean = false;
-
 
   constructor() {
   }

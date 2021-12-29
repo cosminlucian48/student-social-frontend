@@ -9,7 +9,6 @@ const routes: Routes = [
   // {path:'', redirectTo:'login', pathMatch:'full'},
   {path:'', component:StudentSocialComponent,canActivate: [AuthorizeGuard]},
   {path:'login', component:LoginComponent},
-  {path:'register', component:RegisterComponent},
   {path:'student-social', component:StudentSocialComponent,canActivate: [AuthorizeGuard]}
 ];
 

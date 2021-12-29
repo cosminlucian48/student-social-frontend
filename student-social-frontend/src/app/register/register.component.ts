@@ -5,6 +5,7 @@ import {User} from "../model/user";
 import {AuthenticationService} from "../services/authentication.service";
 import {RequestService} from "../services/request.service";
 import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ import {Router} from "@angular/router";
 export class RegisterComponent implements OnInit {
 
   constructor(public authenticationService: AuthenticationService, public requestService: RequestService,
-              public router: Router) { }
+              public router: Router, public dialogRef: MatDialogRef<RegisterComponent>) { }
 
   ngOnInit(): void {
   }
@@ -28,14 +29,18 @@ export class RegisterComponent implements OnInit {
     // this.authenticationService.register(user);
     console.log(user);
     this.requestService.register(user).subscribe(responseData => {
-        alert("User registered succesfull]y!")
-        this.router.navigate(['/login']);
+        alert("User registered succesfull]y!");
+        this.close();
       },
       error => {
         alert("Something went wrong!")
       }
     );
 
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 
 }

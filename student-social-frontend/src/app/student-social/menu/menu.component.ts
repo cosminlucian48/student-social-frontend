@@ -20,5 +20,11 @@ export class MenuComponent implements OnInit {
     alert("User logged out");
     this.router.navigate(['/login']);
   }
+  register(){
+
+  }
+  login(){
+
+  }
 
 }

@@ -102,6 +102,13 @@ export class AuthenticationService {
     return this.jwtToken;
   }
 
+  getUserFromToken(){
+    if(this.decodedToken!=null){
+      return this.decodedToken.sub;
+    }
+    return null;
+  }
+
   setToken(token: string | null) {
     if (token) {
       this.jwtToken = token;

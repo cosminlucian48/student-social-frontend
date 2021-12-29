@@ -15,6 +15,9 @@ export class UrlService{
   getLoginUrl():string{
     return this.getBaseUrl()+ environment.loginUrl;
   }
+  getUserUrl(): string{
+    return this.getBaseUrl() + environment.userUrl;
+  }
   getSubjectUrl():string{
     return this.getBaseUrl()+ environment.subjectUrl;
   }

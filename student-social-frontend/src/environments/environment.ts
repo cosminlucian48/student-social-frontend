@@ -8,7 +8,8 @@ export const environment = {
   registerUrl:"/user/register",
   loginUrl:"/user/login",
   subjectUrl:"/subject",
-  postUrl:"/post"
+  postUrl:"/post",
+  userUrl:"/user"
   // mainApp:"/user/login",
 };
 

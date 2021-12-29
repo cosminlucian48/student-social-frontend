@@ -19,6 +19,9 @@ export class RequestService {
   register(user: User): Observable<User>{
     return this.httpClient.post<User>(this.urlService.getRegisterUrl(), user, this.urlService.getRequestOptions());
   }
+  getUserByEmail(email: string):Observable<User>{
+    return this.httpClient.get<User>(this.urlService.getUserUrl(),this.urlService.getRequestOptions());
+  }
 
   getSubjects():Observable<Subject[]>{
     console.log(this.urlService.getSubjectUrl());

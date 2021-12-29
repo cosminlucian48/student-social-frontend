@@ -6,6 +6,8 @@ import {AuthenticationService} from "../services/authentication.service";
 import {User} from "../model/user";
 import {RequestService} from "../services/request.service";
 import {JWTTokenService} from "../services/jwt.token.service";
+import {MatDialog} from "@angular/material/dialog";
+import {RegisterComponent} from "../register/register.component";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(public authenticationService: AuthenticationService,public requestService: RequestService,
-              public router: Router) {
+              public router: Router,public dialog:MatDialog) {
 
   }
 
@@ -43,6 +45,18 @@ export class LoginComponent implements OnInit {
         })
 
   }
+
+  registerClick() {
+    const dialogRef = this.dialog.open(RegisterComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      alert('User registered!');
+    },
+      error => {
+      alert("Error at user register!")
+      });
+  }
+
 
 
 }
