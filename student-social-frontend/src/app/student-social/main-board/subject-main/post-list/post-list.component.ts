@@ -26,6 +26,7 @@ export class PostListComponent implements OnInit {
           this.subjectIdForCreatePostComponent = subjectId;
           this.inPostSubject = true;
           this.postList = resposeData;
+          console.log("toate postarile",this.postList);
         },
         error => {
           alert("nu intra postarile")

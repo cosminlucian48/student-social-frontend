@@ -16,7 +16,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatDividerModule} from '@angular/material/divider';
 import {MatRippleModule} from '@angular/material/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   imports: [
     MatCardModule,
@@ -29,7 +30,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatListModule,
     MatDividerModule,
     MatRippleModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatTableModule
   ],
   exports:[
     MatCardModule,
@@ -42,7 +45,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatListModule,
     MatDividerModule,
     MatRippleModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatTableModule
   ]
 })
 export class MaterialModule { }

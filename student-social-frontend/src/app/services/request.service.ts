@@ -39,4 +39,8 @@ export class RequestService {
     return this.httpClient.post<Post>(this.urlService.getPostUrl(),post,this.urlService.getRequestOptions());
   }
 
+  deleteSubject(subject: Subject): Observable<Subject>{
+    return this.httpClient.delete<Subject>(this.urlService.getSubjectUrl()+'/'+subject.id);
+  }
+
 }

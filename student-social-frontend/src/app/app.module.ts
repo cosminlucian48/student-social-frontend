@@ -34,6 +34,10 @@ import {AuthorizeGuard} from "./services/authorize.guard";
 import {RequestService} from "./services/request.service";
 import {SubjectService} from "./services/subject.service";
 import {DatePipe} from "@angular/common";
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminTabComponent } from './admin-page/admin-tab/admin-tab.component';
+import { AdminSubjectListComponent } from './admin-page/admin-subject-list/admin-subject-list.component';
+import { AddSubjectComponent } from './admin-page/add-subject/add-subject.component';
 
 
 @NgModule({
@@ -49,7 +53,11 @@ import {DatePipe} from "@angular/common";
     SubjectComponent,
     CreatePostComponent,
     PostListComponent,
-    PostComponent
+    PostComponent,
+    AdminPageComponent,
+    AdminTabComponent,
+    AdminSubjectListComponent,
+    AddSubjectComponent
   ],
   imports: [
     BrowserModule,

@@ -27,4 +27,11 @@ export class MenuComponent implements OnInit {
 
   }
 
+  admin(){
+    this.router.navigate(["/admin"]);
+  }
+  home(){
+    this.router.navigate([""]);
+  }
+
 }
