@@ -5,6 +5,7 @@ import {Post} from "../../../../model/post.model";
 import {RequestService} from "../../../../services/request.service";
 import {AuthenticationService} from "../../../../services/authentication.service";
 import {User} from "../../../../model/user";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-create-post',
@@ -16,8 +17,18 @@ export class CreatePostComponent implements OnInit {
   @Input()subjectId:number = 0;
   @Output() refreshPosts:EventEmitter<any> = new EventEmitter();
 
-  constructor(public requestService: RequestService, public authenticationService: AuthenticationService) {
+  private notifier: NotifierService;
+
+  constructor(public requestService: RequestService, public authenticationService: AuthenticationService, notifier: NotifierService) {
+    this.notifier = notifier;
   }
+
+
+
+  public showNotification( type: string, message: string ): void {
+    this.notifier.notify( type, message );
+  }
+
 
   ngOnInit(): void {
   }
@@ -40,6 +51,7 @@ export class CreatePostComponent implements OnInit {
     console.log(post)
     this.requestService.postPost(post).subscribe(responseData => {
         alert("Post created!")
+        this.showNotification( 'success', 'Post created!' );
         this.refreshPosts.emit();
       },
       error => {

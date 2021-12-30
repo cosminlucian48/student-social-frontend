@@ -6,6 +6,7 @@ import {AuthenticationService} from "../services/authentication.service";
 import {RequestService} from "../services/request.service";
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-register',
@@ -14,8 +15,20 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class RegisterComponent implements OnInit {
 
+  private notifier: NotifierService;
+
   constructor(public authenticationService: AuthenticationService, public requestService: RequestService,
-              public router: Router, public dialogRef: MatDialogRef<RegisterComponent>) { }
+              public router: Router, public dialogRef: MatDialogRef<RegisterComponent>, notifier: NotifierService) {
+
+    this.notifier = notifier;
+  }
+
+
+
+  public showNotification( type: string, message: string ): void {
+    this.notifier.notify( type, message );
+  }
+
 
   ngOnInit(): void {
   }
@@ -29,6 +42,7 @@ export class RegisterComponent implements OnInit {
     // this.authenticationService.register(user);
     console.log(user);
     this.requestService.register(user).subscribe(responseData => {
+        this.showNotification( 'success', 'User registered succesfull]y!' );
         alert("User registered succesfull]y!");
         this.close();
       },

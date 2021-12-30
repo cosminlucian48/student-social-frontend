@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
 import {fakeBackendProvider} from './_helpers';
 
@@ -40,6 +41,52 @@ import { AdminSubjectListComponent } from './admin-page/admin-subject-list/admin
 import { AddSubjectComponent } from './admin-page/add-subject/add-subject.component';
 
 
+
+/**
+ * Custom angular notifier options
+ */
+const customNotifierOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'left',
+      distance: 12
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 12,
+      gap: 10
+    }
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +114,8 @@ import { AddSubjectComponent } from './admin-page/add-subject/add-subject.compon
     FormsModule,
     NgbModule,
     MaterialModule,
-    MatDialogModule
+    MatDialogModule,
+    NotifierModule.withConfig(customNotifierOptions)
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: SecurityRequestInterceptor, multi: true},

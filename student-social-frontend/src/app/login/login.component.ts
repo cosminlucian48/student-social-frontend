@@ -8,6 +8,7 @@ import {RequestService} from "../services/request.service";
 import {JWTTokenService} from "../services/jwt.token.service";
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterComponent} from "../register/register.component";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-login',
@@ -16,11 +17,19 @@ import {RegisterComponent} from "../register/register.component";
 })
 export class LoginComponent implements OnInit {
 
+  private notifier: NotifierService;
 
   constructor(public authenticationService: AuthenticationService,public requestService: RequestService,
-              public router: Router,public dialog:MatDialog) {
+              public router: Router,public dialog:MatDialog, notifier: NotifierService) {
 
+    this.notifier = notifier;
   }
+
+
+  public showNotification( type: string, message: string ): void {
+    this.notifier.notify( type, message );
+  }
+
 
   ngOnInit(): void {
 
@@ -39,6 +48,7 @@ export class LoginComponent implements OnInit {
           const token:string | null  = responseData.headers.get("jwt-token");
           this.authenticationService.atUserLogin(token);
           this.router.navigate(['']);
+          this.showNotification( 'success', 'User logged in' );
         },
         error => {
           alert("not ok");
