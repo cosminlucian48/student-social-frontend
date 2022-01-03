@@ -10,39 +10,14 @@ import {RequestService} from "../../../../services/request.service";
 })
 export class PostListComponent implements OnInit {
 
-  currentSubjectId: number = 0;
-  postList: Post[] = [];
-  inPostSubject: boolean = false;
-  subjectIdForCreatePostComponent: number = 0;
+
+  @Input() postList: Post[] = [];
 
   constructor(public subjectService: SubjectService, public requestService: RequestService) {
   }
 
   ngOnInit(): void {
-    this.subjectService.observeSubjectWasChanged().subscribe((subjectId: number) => {
-      this.currentSubjectId = subjectId;
-      //apelez din request service metoda care returneaza toate post urile cu subjectId respectiv
-      this.requestService.getPosts(subjectId).subscribe(resposeData => {
-          this.subjectIdForCreatePostComponent = subjectId;
-          this.inPostSubject = true;
-          this.postList = resposeData;
-          console.log("toate postarile",this.postList);
-        },
-        error => {
-          alert("nu intra postarile")
-        })
-    });
-  }
 
-  refreshPosts() {
-    this.requestService.getPosts(this.currentSubjectId).subscribe(responseData => {
-        this.subjectIdForCreatePostComponent = this.currentSubjectId;
-        this.inPostSubject = true;
-        this.postList = responseData;
-      },
-      error => {
-        alert("N a mers refres ul dupa create post")
-      })
   }
 
 

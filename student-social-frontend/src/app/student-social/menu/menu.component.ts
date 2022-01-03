@@ -40,6 +40,7 @@ export class MenuComponent implements OnInit {
 
   }
 
+
   admin(){
     this.router.navigate(["/admin"]);
   }

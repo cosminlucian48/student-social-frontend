@@ -1,18 +1,27 @@
-table {
+mat-list {
   width: 80%;
   margin:30px;
-}
+  background: white;
+  border-radius: 10px;
 
-.table-header {
-  padding: 0px 10px !important;
-  text-align: center !important;
-}
-
-.table-cell {
-  padding: 0px 10px !important;
-  text-align: center !important;
 }
 
 .add-subject-container {
-  margin: 20px 20px 50px 10px;
+  margin: 20px 20px 50px 30px;
+}
+
+.subject-name {
+  margin-left:60px;
+  width: 150px;
+}
+.subject-description{
+  width: 600px;
+}
+mat-list-item{
+  background: lightseagreen;
+  //color:white !important;
+}
+
+.admin-subjects-container{
+  margin:0px 50px ;
 }

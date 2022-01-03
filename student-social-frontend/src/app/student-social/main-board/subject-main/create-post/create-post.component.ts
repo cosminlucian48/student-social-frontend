@@ -50,12 +50,11 @@ export class CreatePostComponent implements OnInit {
     post.postDate = new Date();
     console.log(post)
     this.requestService.postPost(post).subscribe(responseData => {
-        alert("Post created!")
         this.showNotification( 'success', 'Post created!' );
         this.refreshPosts.emit();
       },
       error => {
-        alert("Not ok")
+        this.showNotification( 'error', 'Error.' );
       })
 
   }

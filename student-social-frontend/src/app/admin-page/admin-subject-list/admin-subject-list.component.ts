@@ -13,8 +13,7 @@ import {AddSubjectComponent} from "../add-subject/add-subject.component";
 })
 export class AdminSubjectListComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<Subject>();
-  displayedColumns: string[] = ['actions', 'title', 'text', 'user'];
+  subjects: Subject[] = [];
 
   constructor(public requestService: RequestService, public dialog: MatDialog) {
   }
@@ -23,12 +22,13 @@ export class AdminSubjectListComponent implements OnInit {
     this.getSubjects();
   }
 
+
   getSubjects() {
     this.requestService.getSubjects().subscribe(
       response => {
         console.log("Subjects");
         console.log(response);
-        this.dataSource.data = response;
+        this.subjects = response;
       },
       () => {
         console.log("Error when retrieving the list of subjects.");
@@ -36,12 +36,17 @@ export class AdminSubjectListComponent implements OnInit {
     )
   }
 
+  onSubjectListChanged() {
+    this.getSubjects();
+  }
+
   addSubject() {
     const dialogRef = this.dialog.open(AddSubjectComponent);
+    dialogRef.afterClosed().subscribe(result=>{
+      alert("Dialog closed");
+      this.getSubjects();
+    })
   }
 
 
-  deleteSubject(){
-    // this.requestService.deleteSubject();
-  }
 }

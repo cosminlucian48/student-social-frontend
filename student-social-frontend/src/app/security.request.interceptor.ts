@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpInterceptor, HttpEvent, HttpResponse, HttpRequest, HttpHandler} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {UrlService} from "./services/url.service";
-import {JWTTokenService} from "./services/jwt.token.service";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "./services/authentication.service";
 
@@ -10,7 +9,7 @@ import {AuthenticationService} from "./services/authentication.service";
 export class SecurityRequestInterceptor implements HttpInterceptor {
 
 
-  constructor(public urlService: UrlService, public jwtService: JWTTokenService, public router: Router,
+  constructor(public urlService: UrlService, public router: Router,
               public authenticationService:AuthenticationService ) {
   }
 

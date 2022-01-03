@@ -5,7 +5,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthenticationService} from "../services/authentication.service";
 import {User} from "../model/user";
 import {RequestService} from "../services/request.service";
-import {JWTTokenService} from "../services/jwt.token.service";
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterComponent} from "../register/register.component";
 import {NotifierService} from "angular-notifier";

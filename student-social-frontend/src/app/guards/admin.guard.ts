@@ -1,26 +1,28 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
-import {AuthenticationService} from "./authentication.service";
-import {LocalStorageService} from "./local.storage.service";
 import {Observable} from "rxjs";
+import {AuthenticationService} from "../services/authentication.service";
+import {LocalStorageService} from "../services/local.storage.service";
+import {RoleType} from "../enums/role.type";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorizeGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   constructor(private authenticationService: AuthenticationService,
               private authStorageService: LocalStorageService,
-              private router:Router ) {
+              private router: Router) {
   }
 
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot): Observable<any> | Promise<any> | boolean {
-    if(this.authenticationService.isUserLoggedIn()){
+    if (this.authenticationService.isUserLoggedIn() && this.authenticationService.userHasAuthority(RoleType[RoleType.ADMIN])) {
+
       // this.router.navigate(['']);
       return true;
     }
-    this.router.navigate(['/login'])
+    this.router.navigate([''])
     return false;
   }
 }

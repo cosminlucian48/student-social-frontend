@@ -1,15 +1,18 @@
-<div style="margin-left:130px; margin-top:50px" >
-<!--  <button type="button" mat-raised-button color="primary" (click)="createPost()" class="button-post">-->
-<!--    New Post-->
-<!--  </button>-->
-  <button type="button" mat-raised-button color="primary" (click)="emitDrawerToggle()" class="subjects-button" style="position: sticky">
-    Subjects
-  </button>
-
-
-  <div class="div-post">
-    <app-post-list></app-post-list>
+<div fxLayout="row" fxLayoutAlign="start start">
+  <div fxFlex="20">
+    <button type="button" mat-raised-button color="primary" (click)="emitDrawerToggle()" class="subjects-button"
+            style="position: sticky">
+      Subjects
+    </button>
   </div>
+  <div fxflex="40">
 
-
+    <div class="div-post">
+      <app-create-post *ngIf="inPostSubject" [subjectId]="subjectIdForCreatePostComponent"
+                       (refreshPosts)="refreshPosts()"></app-create-post>
+      <app-post-list [postList]="postList"></app-post-list>
+    </div>
+  </div>
 </div>
+
+<!--style="margin-left:130px; margin-top:50px"-->

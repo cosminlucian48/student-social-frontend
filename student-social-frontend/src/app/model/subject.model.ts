@@ -2,7 +2,8 @@ export class Subject {
   id: number = 0;
   description: string = "";
   name: string = "";
-  user: number = 0;
+  userId: number = 0;
+  userEmail: string | undefined | null = "";
 
 
   constructor() {

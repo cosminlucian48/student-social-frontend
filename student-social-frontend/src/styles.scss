@@ -3,6 +3,11 @@
 /* Add application styles & imports to this file! */
 @import "~angular-notifier/styles";
 
+:root {
+  --verdeciudat: #48a85a;
+  --white: #ffffff;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -87,7 +92,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   //background-color: grey !important;
-  background-image: linear-gradient(to bottom right, grey, blue);
+  //background-image: linear-gradient(to bottom right, grey, blue);
   font-size:18px !important;
 }
 

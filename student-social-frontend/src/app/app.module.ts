@@ -30,7 +30,6 @@ import {MaterialModule} from "./material.module";
 import {AuthenticationService} from "./services/authentication.service";
 import {UrlService} from "./services/url.service";
 import {LocalStorageService} from "./services/local.storage.service";
-import {JWTTokenService} from "./services/jwt.token.service";
 import {AuthorizeGuard} from "./services/authorize.guard";
 import {RequestService} from "./services/request.service";
 import {SubjectService} from "./services/subject.service";
@@ -39,6 +38,9 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminTabComponent } from './admin-page/admin-tab/admin-tab.component';
 import { AdminSubjectListComponent } from './admin-page/admin-subject-list/admin-subject-list.component';
 import { AddSubjectComponent } from './admin-page/add-subject/add-subject.component';
+import { AdminSubjectComponent } from './admin-page/admin-subject-list/admin-subject/admin-subject.component';
+import {UtilsService} from "./services/utils.service";
+import {AdminGuard} from "./guards/admin.guard";
 
 
 
@@ -48,8 +50,8 @@ import { AddSubjectComponent } from './admin-page/add-subject/add-subject.compon
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
-      position: 'left',
-      distance: 12
+      position: 'middle',
+      distance: 50
     },
     vertical: {
       position: 'bottom',
@@ -104,7 +106,8 @@ const customNotifierOptions: NotifierOptions = {
     AdminPageComponent,
     AdminTabComponent,
     AdminSubjectListComponent,
-    AddSubjectComponent
+    AddSubjectComponent,
+    AdminSubjectComponent
   ],
   imports: [
     BrowserModule,
@@ -122,11 +125,12 @@ const customNotifierOptions: NotifierOptions = {
     AuthenticationService,
     UrlService,
     LocalStorageService,
-    JWTTokenService,
     AuthorizeGuard,
     RequestService,
     SubjectService,
-    DatePipe
+    DatePipe,
+    UtilsService,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

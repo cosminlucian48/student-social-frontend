@@ -12,6 +12,7 @@ export class MainBoardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   onNavBarToggle(){

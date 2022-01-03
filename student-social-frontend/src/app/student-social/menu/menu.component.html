@@ -2,7 +2,7 @@
   <span class="title">Student social</span>
 
   <div class="buttons">
-    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button (click)="admin()">Admin</button>
+    <button *ngIf="authenticationService.isUserLoggedIn() && authenticationService.userIsAdmin()" mat-button (click)="admin()">Admin</button>
     <button *ngIf="authenticationService.isUserLoggedIn()" mat-button (click)="home()">Home</button>
     <button *ngIf="authenticationService.isUserLoggedIn()" mat-button>Account</button>
     <button *ngIf="authenticationService.isUserLoggedIn()" mat-button>Settings</button>

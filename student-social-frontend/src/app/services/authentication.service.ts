@@ -4,22 +4,23 @@ import {User} from "../model/user";
 import {UrlService} from "./url.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {JWTTokenService} from "./jwt.token.service";
 import {LocalStorageService} from "./local.storage.service";
 import {RequestService} from "./request.service";
 import jwt_decode from "jwt-decode";
 import {JwtToken} from "../model/jwtToken";
+import {UtilsService} from "./utils.service";
+import {RoleType} from "../enums/role.type";
 
 
 @Injectable()
 export class AuthenticationService {
 
-  jwtToken: string | undefined;
+  jwtToken: string | null ="";
   decodedToken: JwtToken | undefined;
+  authorities: string = "";
   ZERO_MILLISECONDS = '000';
 
-  constructor(private httpClient: HttpClient, private urlService: UrlService,
-              private jwtService: JWTTokenService, public requestService: RequestService) {
+  constructor(private httpClient: HttpClient, private urlService: UrlService, public requestService: RequestService) {
 
   }
 
@@ -34,9 +35,6 @@ export class AuthenticationService {
   //     );
   // }
 
-  atUserRegister() {
-
-  }
 
   atUserLogout() {
     if (localStorage.getItem("jwt-token") != null) {
@@ -46,11 +44,22 @@ export class AuthenticationService {
   }
 
   atUserLogin(token: string | null) {
-    this.jwtService.setToken(token);
-    this.jwtService.decodeToken();
+
+    if (token != null) {
+      this.jwtToken = token;
+      this.decodedToken = jwt_decode(token);
+      // @ts-ignore
+      this.authorities = this.decodedToken?.roles[0]['authority'];
+      localStorage.setItem("jwt-token", this.jwtToken);
+      console.log(this.authorities)
+
+      // console.log("autoritati",this.decodedToken?.roles);
+    }
+    // this.jwtService.setToken(token);
+    // this.jwtService.decodeToken();
     // console.log(this.jwtService.getUserEmail());
     // console.log(this.jwtService.getExpiryTime());
-    localStorage.setItem("jwt-token", <string>this.jwtService.getToken());
+
   }
 
   isUserLoggedIn() {
@@ -59,12 +68,12 @@ export class AuthenticationService {
       return false;
     }
     return this.checkTokenValidity();
-
   }
 
   cleanLocalToken() {
     this.jwtToken = '';
     this.decodedToken = undefined;
+    this.authorities ="";
   }
 
   loadLocalTokenFromStorage() {
@@ -74,6 +83,8 @@ export class AuthenticationService {
     }
     this.jwtToken = token;
     this.decodedToken = this.decodeToken(token);
+    // @ts-ignore
+    this.authorities = this.decodedToken?.roles[0]['authority'];
   }
 
   checkTokenValidity() {
@@ -97,7 +108,6 @@ export class AuthenticationService {
 
   }
 
-
   getToken() {
     return this.jwtToken;
   }
@@ -107,6 +117,14 @@ export class AuthenticationService {
       return this.decodedToken.sub;
     }
     return null;
+  }
+
+  userHasAuthority(authority: string):boolean{
+    return this.authorities == authority;
+  }
+
+  userIsAdmin(){
+    return this.userHasAuthority(RoleType[RoleType.ADMIN]);
   }
 
   setToken(token: string | null) {
@@ -123,6 +141,8 @@ export class AuthenticationService {
     }
     return undefined;
   }
+
+
 
 
 }

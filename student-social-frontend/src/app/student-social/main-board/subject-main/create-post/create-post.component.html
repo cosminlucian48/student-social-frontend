@@ -10,11 +10,12 @@
           <input matInput #postTitle="ngModel" name="postTitle" ngModel required/>
         </mat-form-field>
         <br>
-        <mat-form-field>
+        <mat-form-field style="width: 500px">
           <mat-label>
             Text
           </mat-label>
-          <input matInput #postText="ngModel" name="postText" ngModel required/>
+<!--          <input matInput #postText="ngModel" name="postText" ngModel required/>-->
+          <textarea matInput #postText="ngModel" name="postText" rows ="15" cols="10" ngModel required style="width: 500px!important; border:1px solid black"></textarea>
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>

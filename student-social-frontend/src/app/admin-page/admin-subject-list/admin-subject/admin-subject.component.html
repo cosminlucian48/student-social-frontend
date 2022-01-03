@@ -1,0 +1,13 @@
+<mat-list-item>
+  <mat-icon matTooltip="Delete teacher" (click)="deleteSubject()" class="subject-delete">delete_forever</mat-icon>
+  <span class="subject-name">
+    {{subject.name}}
+  </span>
+  <span class="subject-description">
+    {{subject.description}}
+  </span>
+  <span clas="subject-user">
+   {{subject.userId}}
+  </span>
+</mat-list-item>
+<mat-divider></mat-divider>
