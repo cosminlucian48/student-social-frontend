@@ -46,6 +46,9 @@ import { UserBoardComponent } from './user-settings/user-board/user-board.compon
 import { SubjectCheckBoxComponent } from './user-settings/user-board/subject-check-box/subject-check-box.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { UserInfoComponent } from './user-settings/user-board/user-info/user-info.component';
+import { CommentListComponent } from './student-social/main-board/subject-main/post-list/post/comment-list/comment-list.component';
+import { CommentComponent } from './student-social/main-board/subject-main/post-list/post/comment-list/comment/comment.component';
+import { CreateCommentComponent } from './student-social/main-board/subject-main/post-list/post/create-comment/create-comment.component';
 
 
 
@@ -117,6 +120,9 @@ const customNotifierOptions: NotifierOptions = {
     UserBoardComponent,
     SubjectCheckBoxComponent,
     UserInfoComponent,
+    CommentListComponent,
+    CommentComponent,
+    CreateCommentComponent,
 
   ],
   imports: [

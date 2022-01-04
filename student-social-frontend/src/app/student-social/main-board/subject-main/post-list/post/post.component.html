@@ -1,40 +1,59 @@
-<!--<div class="name-post-text">
-  <p>Marian Popescu</p>
-</div>
-<div class="subject-post-text">
-  <p style="background: brown">Robotica</p>
-</div>
-
-<div class="post-content">
-  <p>Acesta este continutul primei postari</p>
-</div>-->
-<div class="post-div">
-  <div class="panel-heading post-heading">
-    <span class="font-roboto post-title">{{post.title}}</span>
-  </div>
-
-  <div class="panel-body">
-    <br />
-    <div class="post-content">
-      {{post.text}}
-      test
-    </div>
-  </div>
-
-  <div class="post-meta">
-      <span class="">
-          <i class="glyphicon glyphicon-time"></i>
-          {{datePost}}
-      </span>
+<mat-card class="post-card">
+  <mat-card-title>{{post.title}}</mat-card-title>
+  <mat-card-subtitle style="display:inline" >
     <div>
-      <i class="glyphicon glyphicon-bookmark"></i>
-      Sticky:
-      <mat-slide-toggle></mat-slide-toggle>
+      <span style="float: left">{{post.email}}</span>
+      <span style="float: right">{{datePost}}</span>
     </div>
-    <div>
-      <i class="glyphicon glyphicon-user"></i>
-      <strong> {{post.email}} </strong>
-    </div>
-  </div>
-</div>
-<div style="height: 30px"></div>
+    <br>
+  </mat-card-subtitle>
+  <mat-card-content style="margin-left: 80px; margin-right: 80px; justify-content: center">
+    <br>
+    {{post.text}}
+  </mat-card-content>
+  <br>
+  <mat-card-footer >
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Comments
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-create-comment></app-create-comment>
+        <app-comment-list></app-comment-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-footer>
+</mat-card>
+
+<!--<div class="post-div">-->
+<!--  <div class="panel-heading post-heading">-->
+<!--    <span class="font-roboto post-title">{{post.title}}</span>-->
+<!--  </div>-->
+
+<!--  <div class="panel-body">-->
+<!--    <br />-->
+<!--    <div class="post-content">-->
+<!--      {{post.text}}-->
+<!--      test-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="post-meta">-->
+<!--      <span class="">-->
+<!--          <i class="glyphicon glyphicon-time"></i>-->
+<!--          {{datePost}}-->
+<!--      </span>-->
+<!--    <div>-->
+<!--      <i class="glyphicon glyphicon-bookmark"></i>-->
+<!--      Sticky:-->
+<!--      <mat-slide-toggle></mat-slide-toggle>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <i class="glyphicon glyphicon-user"></i>-->
+<!--      <strong> {{post.email}} </strong>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div style="height: 30px"></div>-->
