@@ -13,11 +13,9 @@ import {NotifierService} from "angular-notifier";
   styleUrls: ['./add-subject.component.scss']
 })
 export class AddSubjectComponent implements OnInit {
-  private notifier: NotifierService;
 
   constructor(public dialogRef: MatDialogRef<AddSubjectComponent>, public authenticationService: AuthenticationService,
-              public requestService: RequestService, notifier: NotifierService) {
-    this.notifier = notifier;
+              public requestService: RequestService, public notifier: NotifierService) {
   }
 
   ngOnInit(): void {

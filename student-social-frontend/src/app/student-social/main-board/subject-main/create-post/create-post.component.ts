@@ -23,12 +23,9 @@ export class CreatePostComponent implements OnInit {
     this.notifier = notifier;
   }
 
-
-
   public showNotification( type: string, message: string ): void {
     this.notifier.notify( type, message );
   }
-
 
   ngOnInit(): void {
   }
@@ -37,14 +34,11 @@ export class CreatePostComponent implements OnInit {
     if (ngForm.invalid) {
       return;
     }
-    this.authenticationService.getUserFromToken();
-
-
     const post = new Post();
     post.text = ngForm.value.postText;
     post.title = ngForm.value.postTitle;
     post.subjectId = this.subjectId;
-    post.userId = 102;
+    post.userId = 0;
     post.email = this.authenticationService.getUserFromToken();
     post.isSticky = false;
     post.postDate = new Date();

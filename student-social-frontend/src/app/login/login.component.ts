@@ -40,10 +40,9 @@ export class LoginComponent implements OnInit {
    if(ngForm.invalid){
      return
    }
-    const user = new User(ngForm.value.email,ngForm.value.password,"", "", "");
+    const user = new User(ngForm.value.email,ngForm.value.password,"","", "", "","");
     this.requestService.login(user)
       .subscribe(responseData => {
-          alert("user logged in")
           const token:string | null  = responseData.headers.get("jwt-token");
           this.authenticationService.atUserLogin(token);
           this.router.navigate(['']);
@@ -58,8 +57,7 @@ export class LoginComponent implements OnInit {
   registerClick() {
     const dialogRef = this.dialog.open(RegisterComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      alert('User registered!');
+    dialogRef.afterClosed().subscribe(() => {
     },
       error => {
       alert("Error at user register!")

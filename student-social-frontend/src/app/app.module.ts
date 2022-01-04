@@ -2,8 +2,6 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
-import {fakeBackendProvider} from './_helpers';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -29,7 +27,6 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MaterialModule} from "./material.module";
 import {AuthenticationService} from "./services/authentication.service";
 import {UrlService} from "./services/url.service";
-import {LocalStorageService} from "./services/local.storage.service";
 import {AuthorizeGuard} from "./services/authorize.guard";
 import {RequestService} from "./services/request.service";
 import {SubjectService} from "./services/subject.service";
@@ -41,12 +38,17 @@ import { AddSubjectComponent } from './admin-page/add-subject/add-subject.compon
 import { AdminSubjectComponent } from './admin-page/admin-subject-list/admin-subject/admin-subject.component';
 import {UtilsService} from "./services/utils.service";
 import {AdminGuard} from "./guards/admin.guard";
+import { AdminUserListComponent } from './admin-page/admin-user-list/admin-user-list.component';
+import { AdminUserComponent } from './admin-page/admin-user-list/admin-user/admin-user.component';
+import { EditUserRoleComponent } from './admin-page/admin-user-list/edit-user-role/edit-user-role.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { UserBoardComponent } from './user-settings/user-board/user-board.component';
+import { SubjectCheckBoxComponent } from './user-settings/user-board/subject-check-box/subject-check-box.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { UserInfoComponent } from './user-settings/user-board/user-info/user-info.component';
 
 
 
-/**
- * Custom angular notifier options
- */
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -107,7 +109,15 @@ const customNotifierOptions: NotifierOptions = {
     AdminTabComponent,
     AdminSubjectListComponent,
     AddSubjectComponent,
-    AdminSubjectComponent
+    AdminSubjectComponent,
+    AdminUserListComponent,
+    AdminUserComponent,
+    EditUserRoleComponent,
+    UserSettingsComponent,
+    UserBoardComponent,
+    SubjectCheckBoxComponent,
+    UserInfoComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -118,13 +128,13 @@ const customNotifierOptions: NotifierOptions = {
     NgbModule,
     MaterialModule,
     MatDialogModule,
-    NotifierModule.withConfig(customNotifierOptions)
+    NotifierModule.withConfig(customNotifierOptions),
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: SecurityRequestInterceptor, multi: true},
     AuthenticationService,
     UrlService,
-    LocalStorageService,
     AuthorizeGuard,
     RequestService,
     SubjectService,

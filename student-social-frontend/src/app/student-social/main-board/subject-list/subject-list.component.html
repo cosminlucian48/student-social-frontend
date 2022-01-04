@@ -1,7 +1,11 @@
-<mat-action-list>
-  <app-subject *ngFor="let subjectItem of subjectList; let i = index" [subject]="subjectItem">
+<mat-action-list >
+  <app-subject *ngFor="let subjectItem of subjectList; let i = index" [subject]="subjectItem" >
 
   </app-subject>
+
+  <span *ngIf="subjectList.length==0">
+    Go to User Settings and enlist in some courses.
+  </span>
 
 </mat-action-list>
 

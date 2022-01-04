@@ -6,13 +6,15 @@ import {StudentSocialComponent} from "./student-social/student-social.component"
 import {AuthorizeGuard} from "./services/authorize.guard";
 import {AdminPageComponent} from "./admin-page/admin-page.component";
 import {AdminGuard} from "./guards/admin.guard";
+import {UserSettingsComponent} from "./user-settings/user-settings.component";
 
 const routes: Routes = [
   // {path:'', redirectTo:'login', pathMatch:'full'},
   {path:'', component:StudentSocialComponent,canActivate: [AuthorizeGuard]},
   {path:'login', component:LoginComponent},
   {path:'student-social', component:StudentSocialComponent,canActivate: [AuthorizeGuard]},
-  {path:'admin',component:AdminPageComponent, canActivate:[AdminGuard]}
+  {path:'admin',component:AdminPageComponent, canActivate:[AdminGuard]},
+  {path:'user-settings',component:UserSettingsComponent, canActivate:[AdminGuard]},
 ];
 
 @NgModule({

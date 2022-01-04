@@ -4,7 +4,6 @@ import {User} from "../model/user";
 import {UrlService} from "./url.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {LocalStorageService} from "./local.storage.service";
 import {RequestService} from "./request.service";
 import jwt_decode from "jwt-decode";
 import {JwtToken} from "../model/jwtToken";

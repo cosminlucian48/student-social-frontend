@@ -29,7 +29,6 @@ export class MenuComponent implements OnInit {
 
   logout(){
     this.authenticationService.atUserLogout();
-    alert("User logged out");
     this.showNotification( 'default', 'User logged out' );
     this.router.navigate(['/login']);
   }
@@ -46,6 +45,9 @@ export class MenuComponent implements OnInit {
   }
   home(){
     this.router.navigate([""]);
+  }
+  userSettings(){
+    this.router.navigate(["/user-settings"]);
   }
 
 }

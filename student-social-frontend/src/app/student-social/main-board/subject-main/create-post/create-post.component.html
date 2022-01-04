@@ -7,7 +7,8 @@
           <mat-label>
             Title
           </mat-label>
-          <input matInput #postTitle="ngModel" name="postTitle" ngModel required/>
+          <input matInput #postTitle="ngModel" name="postTitle" ngModel required minlength="4" style="margin-bottom: 10px"/>
+          <mat-error *ngIf="postTitle.errors?.['minlength']"> Name must be atleat 4 characters long.</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field style="width: 500px">

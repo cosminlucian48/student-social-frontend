@@ -38,12 +38,11 @@ export class RegisterComponent implements OnInit {
     if(ngForm.invalid){
       return;
     }
-    const user = new User(ngForm.value.email,ngForm.value.password,ngForm.value.university, ngForm.value.firstName, ngForm.value.lastName);
+    const user = new User(ngForm.value.email,ngForm.value.password,ngForm.value.university, ngForm.value.firstName, ngForm.value.lastName,"",ngForm.value.faculty);
     // this.authenticationService.register(user);
     console.log(user);
     this.requestService.register(user).subscribe(responseData => {
-        this.showNotification( 'success', 'User registered succesfull]y!' );
-        alert("User registered succesfull]y!");
+        this.showNotification( 'success', 'User registered succesfully!' );
         this.close();
       },
       error => {

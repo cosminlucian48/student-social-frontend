@@ -9,7 +9,8 @@ export const environment = {
   loginUrl:"/user/login",
   subjectUrl:"/subject",
   postUrl:"/post",
-  userUrl:"/user"
+  userUrl:"/user",
+  userSettingsUrl:"/user-settings"
   // mainApp:"/user/login",
 };
 

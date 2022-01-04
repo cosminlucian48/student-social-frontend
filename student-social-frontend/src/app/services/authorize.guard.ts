@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {AuthenticationService} from "./authentication.service";
-import {LocalStorageService} from "./local.storage.service";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -10,7 +9,6 @@ import {Observable} from "rxjs";
 export class AuthorizeGuard implements CanActivate {
 
   constructor(private authenticationService: AuthenticationService,
-              private authStorageService: LocalStorageService,
               private router:Router ) {
   }
 

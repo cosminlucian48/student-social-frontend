@@ -1,0 +1,17 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div  fxLayout="column" fxLayoutAlign="start start" class="admin-users-container">
+    <mat-list style="margin-top: 0px !important;">
+      <mat-list-item>
+        <span class="user-email">Email</span>
+        <span class="user-fname">FirstName</span>
+        <span class="user-lname">LastName</span>
+        <span class="user-university">University</span>
+        <span class="user-faculty">Faculty</span>
+        <span class="user-authorities">Roles</span>
+        <span class="user-edit">Edit </span>
+      </mat-list-item>
+      <app-admin-user (userListChanged)="onUserListChanged()" [user]="user"
+                         *ngFor="let user of users"></app-admin-user>
+    </mat-list>
+  </div>
+</div>

@@ -24,6 +24,9 @@ export class UrlService{
   getPostUrl():string{
     return this.getBaseUrl()+ environment.postUrl;
   }
+  getUserSettingsUrl():string{
+    return this.getBaseUrl() + environment.userSettingsUrl;
+  }
 
 
   getRequestOptions() {

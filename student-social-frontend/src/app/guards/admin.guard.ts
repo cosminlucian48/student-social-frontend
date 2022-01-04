@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {Observable} from "rxjs";
 import {AuthenticationService} from "../services/authentication.service";
-import {LocalStorageService} from "../services/local.storage.service";
 import {RoleType} from "../enums/role.type";
 
 @Injectable({
@@ -11,7 +10,6 @@ import {RoleType} from "../enums/role.type";
 export class AdminGuard implements CanActivate {
 
   constructor(private authenticationService: AuthenticationService,
-              private authStorageService: LocalStorageService,
               private router: Router) {
   }
 

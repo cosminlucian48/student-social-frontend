@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
-  <span class="title">Student social</span>
+  <span class="title" (click)="home()">Student social</span>
 
   <div class="buttons">
     <button *ngIf="authenticationService.isUserLoggedIn() && authenticationService.userIsAdmin()" mat-button (click)="admin()">Admin</button>
     <button *ngIf="authenticationService.isUserLoggedIn()" mat-button (click)="home()">Home</button>
-    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button>Account</button>
-    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button>Settings</button>
+    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button (click)="userSettings()">Account</button>
+<!--    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button>Settings</button>-->
     <button *ngIf="authenticationService.isUserLoggedIn()" mat-button (click)="logout()">Logout</button>
     <button *ngIf="!authenticationService.isUserLoggedIn()" mat-button (click)="login()">Login</button>
     <button *ngIf="!authenticationService.isUserLoggedIn()" mat-button (click)="register()">Register</button>

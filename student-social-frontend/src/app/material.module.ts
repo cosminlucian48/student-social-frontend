@@ -5,6 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
 // import {MatCardModule} from "@angular/material/card";
 // import {MatInputModule} from "@angular/material/input";
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -18,6 +19,8 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+
 @NgModule({
   imports: [
     MatCardModule,
@@ -32,9 +35,11 @@ import {MatTableModule} from '@angular/material/table';
     MatRippleModule,
     MatSlideToggleModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
+    MatCheckboxModule
   ],
-  exports:[
+  exports: [
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
@@ -47,7 +52,10 @@ import {MatTableModule} from '@angular/material/table';
     MatRippleModule,
     MatSlideToggleModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
+    MatCheckboxModule
   ]
 })
-export class MaterialModule { }
+export class MaterialModule {
+}

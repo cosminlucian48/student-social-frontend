@@ -4,6 +4,7 @@ import {Subject} from "../../model/subject.model";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {AddSubjectComponent} from "../add-subject/add-subject.component";
+import {NotifierService} from "angular-notifier";
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AdminSubjectListComponent implements OnInit {
 
   subjects: Subject[] = [];
 
-  constructor(public requestService: RequestService, public dialog: MatDialog) {
+  constructor(public requestService: RequestService, public dialog: MatDialog, public notifierService: NotifierService) {
   }
 
   ngOnInit(): void {
@@ -43,7 +44,6 @@ export class AdminSubjectListComponent implements OnInit {
   addSubject() {
     const dialogRef = this.dialog.open(AddSubjectComponent);
     dialogRef.afterClosed().subscribe(result=>{
-      alert("Dialog closed");
       this.getSubjects();
     })
   }
