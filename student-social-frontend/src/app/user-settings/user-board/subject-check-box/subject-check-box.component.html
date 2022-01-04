@@ -1,0 +1,6 @@
+<!--<p><mat-checkbox [checked]="isUserEnrolled" (change)="toggle($event)" >{{subject.key.name}}</mat-checkbox></p>-->
+<div *ngFor="let subject of subjectsMap | keyvalue">
+    <p><mat-checkbox [checked]="subject.value" [(ngModel)]="subject.value" (change)="toggle(subject.key)">{{subject.key.name}}</mat-checkbox></p>
+</div>
+<!--<p><mat-checkbox [checked]="isUserEnrolled" (change)="toggle($event)" >{{subject.name}}</mat-checkbox></p>-->
+<!--<p>{{subject}}</p>-->

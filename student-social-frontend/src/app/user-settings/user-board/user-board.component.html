@@ -1,0 +1,17 @@
+
+  <div fxLayout="column" fxLayoutAlign="center center" >
+    <app-user-info [userSettings]="userSettings"></app-user-info>
+    <mat-card fxLayout="column" fxLayoutAlign="center center">
+      <mat-card-title>User Courses</mat-card-title>
+      <mat-card-content>
+        <app-subject-check-box [subjectsMap]="subjectsMap"></app-subject-check-box>
+        <!--      <app-subject-check-box *ngFor="let subject of subjects" [subject]="subject" *ngFor="let obj of subjectsMap"-->
+        <!--                             [userSubjects]="userSettings.subjects" (changeOnSubject)="addOrDeleteInSubjectArray($any(subject))" [subjectsMap]="subjectsMap" ></app-subject-check-box>-->
+      </mat-card-content>
+      <mat-card-footer>
+        <button mat-raised-button color="primary" (click)="save()" style="margin:10px">Save</button>
+      </mat-card-footer>
+    </mat-card>
+
+  </div>
+
