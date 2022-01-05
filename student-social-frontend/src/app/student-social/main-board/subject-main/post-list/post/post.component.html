@@ -16,12 +16,12 @@
     <mat-accordion>
       <mat-expansion-panel hideToggle>
         <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title (click)="getComments()">
             Comments
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <app-create-comment></app-create-comment>
-        <app-comment-list></app-comment-list>
+        <app-create-comment (refreshComments)="refreshComments()"[postId]="post.id"></app-create-comment>
+        <app-comment-list  [commentsTest]="comments" ></app-comment-list>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-card-footer>

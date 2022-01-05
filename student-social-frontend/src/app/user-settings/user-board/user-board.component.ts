@@ -29,7 +29,7 @@ export class UserBoardComponent implements OnInit {
   }
 
   getSubjects() {
-    this.requestService.getUserSettingsByEmail(this.authenticationService.getUserFromToken()).subscribe(
+    this.requestService.getUserSettingsByEmail(this.authenticationService.getUserEmailFromToken()).subscribe(
       response=>{
         this.loggedInUser = response.user;
         this.userSettings = response;

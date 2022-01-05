@@ -17,7 +17,7 @@ export class SubjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.requestService.getUserSettingsByEmail(this.authenticationService.getUserFromToken()).subscribe(response =>{
+    this.requestService.getUserSettingsByEmail(this.authenticationService.getUserEmailFromToken()).subscribe(response =>{
       this.subjectList = response.subjects;
     },
       error => {

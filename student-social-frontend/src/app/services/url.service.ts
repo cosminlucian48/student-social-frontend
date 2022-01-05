@@ -27,6 +27,9 @@ export class UrlService{
   getUserSettingsUrl():string{
     return this.getBaseUrl() + environment.userSettingsUrl;
   }
+  getCommentsUrl():string{
+    return this.getBaseUrl() + environment.commentUrl;
+  }
 
 
   getRequestOptions() {

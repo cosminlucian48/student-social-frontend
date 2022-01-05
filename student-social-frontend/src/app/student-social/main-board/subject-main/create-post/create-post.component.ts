@@ -39,7 +39,7 @@ export class CreatePostComponent implements OnInit {
     post.title = ngForm.value.postTitle;
     post.subjectId = this.subjectId;
     post.userId = 0;
-    post.email = this.authenticationService.getUserFromToken();
+    post.email = this.authenticationService.getUserEmailFromToken();
     post.isSticky = false;
     post.postDate = new Date();
     console.log(post)
