@@ -111,7 +111,7 @@ export class AuthenticationService {
     return this.jwtToken;
   }
 
-  getUserFromToken(){
+  getUserEmailFromToken(){
     if(this.decodedToken!=null){
       return this.decodedToken.sub;
     }

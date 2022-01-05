@@ -1,16 +1,16 @@
 <mat-card id="create-comment-mat-card">
   <mat-card-title style="margin-bottom: 20px">New comment</mat-card-title>
-  <form>
+  <form #createCommentForm="ngForm" (ngSubmit)="createComment(createCommentForm)">
     <mat-card-content>
       <mat-form-field class="new-comment-text" appearance="fill">
         <mat-label>
           Comment text
         </mat-label>
-        <textarea matInput style="height: 40px"></textarea>
+        <textarea matInput #commentText="ngModel" name="commentText" rows ="5"  ngModel required ></textarea>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit" style="margin-left: 580px">Add comment</button>
+      <button mat-raised-button color="primary" type="submit" style="float:right;margin-left:10px;margin-bottom: 10px;">Add comment</button>
     </mat-card-actions>
   </form>
 </mat-card>

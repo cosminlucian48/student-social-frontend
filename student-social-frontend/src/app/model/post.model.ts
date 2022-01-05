@@ -1,4 +1,5 @@
 export class Post {
+  id: number = 0;
   userId: number = 0;
   subjectId: number = 0;
   email:string | undefined | null = "";

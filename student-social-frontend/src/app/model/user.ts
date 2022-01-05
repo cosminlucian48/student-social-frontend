@@ -1,16 +1,16 @@
 export class User {
   id: number = 0;
-  email: String;
-  password: String;
-  university: String;
-  faculty: String;
-  firstName: String;
-  lastName: String;
-  authorities: String;
+  email: string;
+  password: string;
+  university: string;
+  faculty: string;
+  firstName: string;
+  lastName: string;
+  authorities: string;
 
 
 
-  constructor(email: String, password: String, university: String, firstName: String, lastName: String, authorities: String, faculty: String) {
+  constructor(email: string, password: string, university: string, firstName: string, lastName: string, authorities: string, faculty: string) {
     this.email = email;
     this.password = password;
     this.university = university;

@@ -21,7 +21,7 @@ export class AdminUserComponent implements OnInit {
   constructor(public requestService: RequestService, public dialog:MatDialog,public authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-    if(this.user.email == this.authenticationService.getUserFromToken()){
+    if(this.user.email == this.authenticationService.getUserEmailFromToken()){
       this.isTheLoggedInUser = true;
     }
   }

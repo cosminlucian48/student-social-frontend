@@ -27,7 +27,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MaterialModule} from "./material.module";
 import {AuthenticationService} from "./services/authentication.service";
 import {UrlService} from "./services/url.service";
-import {AuthorizeGuard} from "./services/authorize.guard";
+import {AuthorizeGuard} from "./guards/authorize.guard";
 import {RequestService} from "./services/request.service";
 import {SubjectService} from "./services/subject.service";
 import {DatePipe} from "@angular/common";
@@ -49,6 +49,8 @@ import { UserInfoComponent } from './user-settings/user-board/user-info/user-inf
 import { CommentListComponent } from './student-social/main-board/subject-main/post-list/post/comment-list/comment-list.component';
 import { CommentComponent } from './student-social/main-board/subject-main/post-list/post/comment-list/comment/comment.component';
 import { CreateCommentComponent } from './student-social/main-board/subject-main/post-list/post/create-comment/create-comment.component';
+import { EditUserInfoComponent } from './user-settings/user-board/user-info/edit-user-info/edit-user-info.component';
+import { ResetUserPasswordComponent } from './user-settings/user-board/user-info/reset-user-password/reset-user-password.component';
 
 
 
@@ -123,6 +125,8 @@ const customNotifierOptions: NotifierOptions = {
     CommentListComponent,
     CommentComponent,
     CreateCommentComponent,
+    EditUserInfoComponent,
+    ResetUserPasswordComponent,
 
   ],
   imports: [

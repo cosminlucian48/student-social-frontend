@@ -5,7 +5,9 @@ import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {Subject} from "../model/subject.model";
 import {Post} from "../model/post.model";
+import {Comment} from "../model/comment.model";
 import {UserSettings} from "../model/user.settings";
+import {RoleType} from "../enums/role.type";
 
 @Injectable()
 export class RequestService {
@@ -37,6 +39,10 @@ export class RequestService {
     console.log(this.urlService.getUserUrl());
     return this.httpClient.get<User[]>(this.urlService.getUserUrl(),this.urlService.getRequestOptions());
   }
+  getUsersByUserType(roleType: RoleType):Observable<User[]>{
+    console.log(this.urlService.getUserUrl());
+    return this.httpClient.get<User[]>(this.urlService.getUserUrl()+"/user-type?userType="+RoleType[roleType],this.urlService.getRequestOptions());
+  }
   updateUser(user: User):Observable<User>{
     return this.httpClient.put<User>(this.urlService.getUserUrl() + "/"+user.id,user, this.urlService.getRequestOptions());
   }
@@ -65,5 +71,12 @@ export class RequestService {
   }
   postUserSettings(userSettings: UserSettings): Observable<UserSettings>{
     return this.httpClient.post<UserSettings>(this.urlService.getUserSettingsUrl(), userSettings, this.urlService.getRequestOptions());
+  }
+
+  getComments(postId:number):Observable<Comment[]>{
+    return this.httpClient.get<Comment[]>(this.urlService.getCommentsUrl()+"/post/"+postId,this.urlService.getRequestOptions());
+  }
+  postComment(comment: Comment):Observable<Comment>{
+    return this.httpClient.post<Comment>(this.urlService.getCommentsUrl(),comment, this.urlService.getRequestOptions());
   }
 }

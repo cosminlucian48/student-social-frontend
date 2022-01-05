@@ -32,7 +32,7 @@ export class AddSubjectComponent implements OnInit {
     const subject = new Subject();
     subject.name = ngForm.value.subjectName;
     subject.description = ngForm.value.subjectDescription;
-    subject.userEmail = this.authenticationService.getUserFromToken();
+    subject.userEmail = this.authenticationService.getUserEmailFromToken();
 
     console.log(subject);
 

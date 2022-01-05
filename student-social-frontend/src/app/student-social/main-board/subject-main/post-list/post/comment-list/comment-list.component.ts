@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
+import {Comment} from "../../../../../../model/comment.model";
+import {Post} from "../../../../../../model/post.model";
+import {RequestService} from "../../../../../../services/request.service";
 @Component({
   selector: 'app-comment-list',
   templateUrl: './comment-list.component.html',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentListComponent implements OnInit {
 
-  constructor() { }
+  @Input()commentsTest: Comment[]=[] ;
+  constructor(public requestService: RequestService) { }
 
   ngOnInit(): void {
+    console.log(this.commentsTest)
   }
 
 }
