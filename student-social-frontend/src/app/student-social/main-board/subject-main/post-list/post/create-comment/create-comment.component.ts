@@ -18,6 +18,9 @@ export class CreateCommentComponent implements OnInit {
   constructor(public requestService: RequestService, public authenticationService: AuthenticationService,
               public notifier: NotifierService) { }
 
+
+  openCreateComment:boolean = false;
+
   ngOnInit(): void {
   }
 

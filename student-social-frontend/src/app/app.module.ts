@@ -51,6 +51,10 @@ import { CommentComponent } from './student-social/main-board/subject-main/post-
 import { CreateCommentComponent } from './student-social/main-board/subject-main/post-list/post/create-comment/create-comment.component';
 import { EditUserInfoComponent } from './user-settings/user-board/user-info/edit-user-info/edit-user-info.component';
 import { ResetUserPasswordComponent } from './user-settings/user-board/user-info/reset-user-password/reset-user-password.component';
+import {RefreshService} from "./services/refresh.service";
+import {BlockRefreshService} from "./services/block.refresh.service";
+import { AdminModeratorListComponent } from './admin-page/admin-moderator-list/admin-moderator-list.component';
+import { AdminListComponent } from './admin-page/admin-list/admin-list.component';
 
 
 
@@ -127,6 +131,8 @@ const customNotifierOptions: NotifierOptions = {
     CreateCommentComponent,
     EditUserInfoComponent,
     ResetUserPasswordComponent,
+    AdminModeratorListComponent,
+    AdminListComponent,
 
   ],
   imports: [
@@ -150,7 +156,9 @@ const customNotifierOptions: NotifierOptions = {
     SubjectService,
     DatePipe,
     UtilsService,
-    AdminGuard
+    AdminGuard,
+    RefreshService,
+    BlockRefreshService
   ],
   bootstrap: [AppComponent]
 })

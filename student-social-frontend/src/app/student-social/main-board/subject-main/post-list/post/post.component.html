@@ -13,16 +13,23 @@
   </mat-card-content>
   <br>
   <mat-card-footer >
-    <mat-accordion>
-      <mat-expansion-panel hideToggle>
+
+    <mat-accordion >
+      <mat-expansion-panel hideToggle [expanded]="this.blockRefreshService.getBlockRefresh()" (click)="blockRefreshChangeValue()">
         <mat-expansion-panel-header>
           <mat-panel-title (click)="getComments()">
             Comments
           </mat-panel-title>
+<!--          <button (click)="openCreateCommentComponent()">-->
+<!--            Create Comment-->
+<!--          </button>-->
+
         </mat-expansion-panel-header>
-        <app-create-comment (refreshComments)="refreshComments()"[postId]="post.id"></app-create-comment>
+<!--        *ngIf="openCreateComment"-->
+        <app-create-comment  (refreshComments)="refreshComments()"[postId]="post.id"></app-create-comment>
         <app-comment-list  [commentsTest]="comments" ></app-comment-list>
       </mat-expansion-panel>
+
     </mat-accordion>
   </mat-card-footer>
 </mat-card>

@@ -19,17 +19,7 @@ export class AdminUserListComponent implements OnInit {
     this.getUsers();
   }
   getUsers(){
-    this.requestService.getUsers().subscribe(
-      response =>{
-        console.log("users")
-        console.log(response)
-        this.users = response;
-      },
-      ()=>{
-        alert("Error when retrieving the list of users!.")
-      }
-    )
-    // this.requestService.getUsersByUserType(RoleType.ADMIN).subscribe(
+    // this.requestService.getUsers().subscribe(
     //   response =>{
     //     console.log("users")
     //     console.log(response)
@@ -39,6 +29,16 @@ export class AdminUserListComponent implements OnInit {
     //     alert("Error when retrieving the list of users!.")
     //   }
     // )
+    this.requestService.getUsersByUserType(RoleType.ADMIN).subscribe(
+      response =>{
+        console.log("users")
+        console.log(response)
+        this.users = response;
+      },
+      ()=>{
+        alert("Error when retrieving the list of users!.")
+      }
+    )
   }
 
   onUserListChanged() {

@@ -6,7 +6,7 @@ import {Post} from "../model/post.model";
 export class SubjectService {
 
   subjectWasChanged = new Subject<number>();
-  postWasChanged = new Subject<number>();
+  refreshSubjectObservable = new Subject<void>();
 
   constructor() {
   }
@@ -18,5 +18,13 @@ export class SubjectService {
 
   emitSubjectWasChanged(subjectId: number){
     this.subjectWasChanged.next(subjectId);
+  }
+
+  observeRefreshSubjectObservable(): Observable<void> {
+    return this.refreshSubjectObservable.asObservable();
+  }
+
+  emitRefreshSubjectObservable(){
+    this.refreshSubjectObservable.next();
   }
 }

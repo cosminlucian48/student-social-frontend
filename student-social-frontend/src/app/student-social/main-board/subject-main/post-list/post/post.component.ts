@@ -6,6 +6,7 @@ import {RequestService} from "../../../../../services/request.service";
 import {readSpanComment} from "@angular/compiler-cli/src/ngtsc/typecheck/src/comments";
 import {SubjectService} from "../../../../../services/subject.service";
 import {NotifierService} from "angular-notifier";
+import {BlockRefreshService} from "../../../../../services/block.refresh.service";
 
 @Component({
   selector: 'app-post',
@@ -18,8 +19,11 @@ export class PostComponent implements OnInit {
   public datePost: string | null = "";
   public comments: Comment[] = [];
 
+  canRefresh:boolean = true;
+  openCreateComment: boolean = false;
+
   constructor(public datepipe: DatePipe, public requestService: RequestService,
-              public notifier: NotifierService) {
+              public notifier: NotifierService, public blockRefreshService:BlockRefreshService) {
   }
 
   ngOnInit(): void {
@@ -41,6 +45,14 @@ export class PostComponent implements OnInit {
       }
     );
 
+  }
+
+  openCreateCommentComponent(){
+    this.openCreateComment = !this.openCreateComment;
+  }
+
+  blockRefreshChangeValue(){
+    this.blockRefreshService.setBlockRefresh(!this.blockRefreshService.getBlockRefresh());
   }
 
 }

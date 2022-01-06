@@ -26,16 +26,27 @@ export class SubjectMainComponent implements OnInit {
     this.subjectService.observeSubjectWasChanged().subscribe((subjectId: number) => {
       this.currentSubjectId = subjectId;
       //apelez din request service metoda care returneaza toate post urile cu subjectId respectiv
-      this.requestService.getPosts(subjectId).subscribe(resposeData => {
-          this.subjectIdForCreatePostComponent = subjectId;
-          this.inPostSubject = true;
-          this.postList = resposeData;
-          console.log("toate postarile", this.postList);
-        },
-        error => {
-          alert("nu intra postarile")
-        })
+      this.getPosts(subjectId);
     });
+
+    this.subjectService.observeRefreshSubjectObservable().subscribe(response =>{
+      this.getPosts(this.currentSubjectId);
+    },
+      error => {
+      alert("Error")
+      });
+  }
+
+  private getPosts(subjectId: number) {
+    this.requestService.getPosts(subjectId).subscribe(resposeData => {
+        this.subjectIdForCreatePostComponent = subjectId;
+        this.inPostSubject = true;
+        this.postList = resposeData;
+        console.log("toate postarile", this.postList);
+      },
+      error => {
+        alert("nu intra postarile")
+      })
   }
 
   emitDrawerToggle() {
