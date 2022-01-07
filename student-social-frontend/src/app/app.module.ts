@@ -55,6 +55,8 @@ import {RefreshService} from "./services/refresh.service";
 import {BlockRefreshService} from "./services/block.refresh.service";
 import { AdminModeratorListComponent } from './admin-page/admin-moderator-list/admin-moderator-list.component';
 import { AdminListComponent } from './admin-page/admin-list/admin-list.component';
+import { AdminComponent } from './admin-page/admin-list/admin/admin.component';
+import { AdminModeratorComponent } from './admin-page/admin-moderator-list/admin-moderator/admin-moderator.component';
 
 
 
@@ -133,6 +135,8 @@ const customNotifierOptions: NotifierOptions = {
     ResetUserPasswordComponent,
     AdminModeratorListComponent,
     AdminListComponent,
+    AdminComponent,
+    AdminModeratorComponent,
 
   ],
   imports: [

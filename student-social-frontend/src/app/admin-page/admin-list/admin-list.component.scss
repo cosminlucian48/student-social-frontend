@@ -1,0 +1,42 @@
+mat-list {
+  width: 95%;
+  margin:30px;
+  background: white;
+  border-radius: 10px;
+
+}
+
+.add-admin-container {
+  margin: 20px 20px 50px 30px;
+}
+.admin-email{
+  font-weight: 500;
+  color: darkslategray;
+  width: 350px;
+}
+.admin-fname{
+  width: 200px;
+}
+.admin-lname{
+  width: 200px;
+}
+.admin-university{
+  width: 300px;
+}
+.admin-faculty{
+  width: 300px;
+}
+.admin-authorities{
+  width: 150px;
+}
+.admin-edit{
+  width: 100px;
+}
+mat-list-item{
+  background: lightseagreen;
+  //color:white !important;
+}
+
+.admin-container{
+  margin:0px 50px ;
+}

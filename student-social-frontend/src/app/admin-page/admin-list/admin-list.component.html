@@ -1,1 +1,16 @@
-<p>admin-list works!</p>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div  fxLayout="column" fxLayoutAlign="start start" class="admin-container">
+    <mat-list style="margin-top: 0px !important;">
+      <mat-list-item>
+        <span class="admin-email">Email</span>
+        <span class="admin-fname">FirstName</span>
+        <span class="admin-lname">LastName</span>
+        <span class="admin-university">University</span>
+        <span class="admin-faculty">Faculty</span>
+        <span class="admin-edit">Edit </span>
+      </mat-list-item>
+      <app-admin (userListChanged)="onUserListChanged()" [admin]="admin"
+        *ngFor="let admin of admins"></app-admin>
+    </mat-list>
+  </div>
+</div>

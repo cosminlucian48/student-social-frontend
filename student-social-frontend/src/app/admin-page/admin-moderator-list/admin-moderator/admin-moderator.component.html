@@ -1,0 +1,22 @@
+<mat-list-item>
+
+  <span class="moderator-email">
+   {{moderator.email}}
+  </span>
+  <span class="moderator-fname">
+   {{moderator.firstName}}
+  </span>
+  <span class="moderator-lname">
+   {{moderator.lastName}}
+  </span>
+  <span class="moderator-university">
+   {{moderator.university}}
+  </span>
+  <span class="moderator-faculty">
+   {{moderator.faculty}}
+  </span>
+  <span class="moderator-button">
+  <button mat-raised-button (click)="editUserAuthorities()" *ngIf="!isTheLoggedInUser" >Edit</button>
+  </span>
+</mat-list-item>
+<mat-divider></mat-divider>
