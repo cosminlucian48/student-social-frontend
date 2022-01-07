@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../model/user";
 import {RequestService} from "../../services/request.service";
 import {RoleType} from "../../enums/role.type";
+import {CreateAdminDialogComponent} from "./create-admin-dialog/create-admin-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-admin-list',
@@ -12,7 +15,7 @@ export class AdminListComponent implements OnInit {
 
   admins: User[] = [];
 
-  constructor(public requestService: RequestService) { }
+  constructor(public requestService: RequestService, public dialog: MatDialog, public notifierService: NotifierService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -32,8 +35,12 @@ export class AdminListComponent implements OnInit {
   onUserListChanged() {
     this.getUsers();
   }
-  addUser(){
 
+  addAdmin() {
+    const dialogRef = this.dialog.open(CreateAdminDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+
+    })
   }
 
 }
