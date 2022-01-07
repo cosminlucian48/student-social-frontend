@@ -57,6 +57,8 @@ import { AdminModeratorListComponent } from './admin-page/admin-moderator-list/a
 import { AdminListComponent } from './admin-page/admin-list/admin-list.component';
 import { AdminComponent } from './admin-page/admin-list/admin/admin.component';
 import { AdminModeratorComponent } from './admin-page/admin-moderator-list/admin-moderator/admin-moderator.component';
+import { CreateModeratorDialogComponent } from './admin-page/admin-moderator-list/create-moderator-dialog/create-moderator-dialog.component';
+import { CreateAdminDialogComponent } from './admin-page/admin-list/create-admin-dialog/create-admin-dialog.component';
 
 
 
@@ -137,6 +139,8 @@ const customNotifierOptions: NotifierOptions = {
     AdminListComponent,
     AdminComponent,
     AdminModeratorComponent,
+    CreateModeratorDialogComponent,
+    CreateAdminDialogComponent,
 
   ],
   imports: [

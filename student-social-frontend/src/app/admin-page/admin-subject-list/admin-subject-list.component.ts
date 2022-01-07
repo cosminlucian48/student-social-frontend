@@ -5,6 +5,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {AddSubjectComponent} from "../add-subject/add-subject.component";
 import {NotifierService} from "angular-notifier";
+import {User} from "../../model/user";
+import {CreateAdminDialogComponent} from "../admin-list/create-admin-dialog/create-admin-dialog.component";
 
 
 @Component({
@@ -47,6 +49,5 @@ export class AdminSubjectListComponent implements OnInit {
       this.getSubjects();
     })
   }
-
 
 }

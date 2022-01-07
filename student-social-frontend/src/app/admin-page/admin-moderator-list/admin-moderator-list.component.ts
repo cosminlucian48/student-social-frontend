@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../model/user";
 import {RequestService} from "../../services/request.service";
 import {RoleType} from "../../enums/role.type";
+import {CreateAdminDialogComponent} from "../admin-list/create-admin-dialog/create-admin-dialog.component";
+import {CreateModeratorDialogComponent} from "./create-moderator-dialog/create-moderator-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-admin-moderator-list',
@@ -12,7 +15,7 @@ export class AdminModeratorListComponent implements OnInit {
 
   moderators: User[] = [];
 
-  constructor(public requestService: RequestService) { }
+  constructor(public requestService: RequestService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -34,8 +37,11 @@ export class AdminModeratorListComponent implements OnInit {
   onUserListChanged() {
     this.getUsers();
   }
-  addUser(){
+  addModerator() {
+    const dialogRef = this.dialog.open(CreateModeratorDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
 
+    })
   }
 
 }
