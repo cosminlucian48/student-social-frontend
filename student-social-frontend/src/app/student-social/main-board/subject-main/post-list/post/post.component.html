@@ -1,33 +1,39 @@
-<mat-card class="post-card">
-  <mat-card-title>{{post.title}}</mat-card-title>
-  <mat-card-subtitle style="display:inline" >
+<mat-card class="post-card" [ngClass]="{'userClass': (post.postType==userType),
+            'moderatorClass': (post.postType==moderatorType),
+            'adminClass':(post.postType==adminType)}">
+  <mat-card-title >{{post.title}}</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-subtitle style="display:inline">
     <div>
-      <span style="float: left">{{post.email}}</span>
-      <span style="float: right">{{datePost}}</span>
+      <span style="float: left;">Author: {{post.email}}</span>
+      <span style="float: right;margin-top:-60px;">Date: {{datePost}}</span>
     </div>
     <br>
   </mat-card-subtitle>
-  <mat-card-content style="margin-left: 80px; margin-right: 80px; justify-content: center">
+  <mat-card-content style="margin-left: 20px; margin-right: 80px; ">
     <br>
     {{post.text}}
   </mat-card-content>
   <br>
-  <mat-card-footer >
+  <mat-card-footer>
 
-    <mat-accordion >
-      <mat-expansion-panel hideToggle [expanded]="this.blockRefreshService.getBlockRefresh()" (click)="blockRefreshChangeValue()">
+    <mat-accordion>
+      <!--      [expanded]="this.blockRefreshService.getBlockRefresh()"   si era cu click in loc de expandedChange-->
+      <mat-expansion-panel (expandedChange)="blockRefreshChangeValue()">
         <mat-expansion-panel-header>
           <mat-panel-title (click)="getComments()">
             Comments
           </mat-panel-title>
-<!--          <button (click)="openCreateCommentComponent()">-->
-<!--            Create Comment-->
-<!--          </button>-->
-
+          <!--          <button (click)="openCreateCommentComponent()">-->
+          <!--            Create Comment-->
+          <!--          </button>-->
+          <mat-panel-description>
+            {{comments.length}} - comments
+          </mat-panel-description>
         </mat-expansion-panel-header>
-<!--        *ngIf="openCreateComment"-->
-        <app-create-comment  (refreshComments)="refreshComments()"[postId]="post.id"></app-create-comment>
-        <app-comment-list  [commentsTest]="comments" ></app-comment-list>
+        <!--        *ngIf="openCreateComment"-->
+        <app-create-comment (refreshComments)="refreshComments()" [postId]="post.id"></app-create-comment>
+        <app-comment-list [commentsTest]="comments"></app-comment-list>
       </mat-expansion-panel>
 
     </mat-accordion>

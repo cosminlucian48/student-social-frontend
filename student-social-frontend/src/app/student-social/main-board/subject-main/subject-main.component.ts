@@ -47,11 +47,11 @@ export class SubjectMainComponent implements OnInit {
     this.localTimerSubscription = this.refreshService.observeTimer().subscribe(response => {
         if (!this.blockRefreshService.getBlockRefresh()) {
 
-          // this.notifier.notify("success", "Refresh pe postari");
+          this.notifier.notify("success", "Refresh pe postari");
           // this.subjectService.emitSubjectWasChanged(this.subject.id);
           this.getPosts(this.currentSubjectId);
         } else {
-          // this.notifier.notify("error", "cant't refresh");
+          this.notifier.notify("error", "cant't refresh");
         }
       },
       error => {
@@ -65,10 +65,10 @@ export class SubjectMainComponent implements OnInit {
         this.subjectIdForCreatePostComponent = subjectId;
         this.inPostSubject = true;
         this.postList = resposeData;
-        console.log("toate postarile", this.postList);
+        // console.log("toate postarile", this.postList);
       },
       error => {
-        alert("nu intra postarile")
+        this.notifier.notify("error","Nu au intrat postarile!")
       })
   }
 

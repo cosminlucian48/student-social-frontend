@@ -7,6 +7,7 @@ import {RequestService} from "../services/request.service";
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
 import {NotifierService} from "angular-notifier";
+import {RoleType} from "../enums/role.type";
 
 @Component({
   selector: 'app-register',
@@ -38,8 +39,9 @@ export class RegisterComponent implements OnInit {
     if(ngForm.invalid){
       return;
     }
-    const user = new User(ngForm.value.email,ngForm.value.password,ngForm.value.university, ngForm.value.firstName, ngForm.value.lastName,"",ngForm.value.faculty);
+    const user = new User(ngForm.value.email,ngForm.value.password,ngForm.value.university, ngForm.value.firstName, ngForm.value.lastName,RoleType[RoleType.USER],ngForm.value.faculty);
     // this.authenticationService.register(user);
+    user.registrationDate = new Date();
     console.log(user);
     this.requestService.register(user).subscribe(responseData => {
         this.showNotification( 'success', 'User registered succesfully!' );

@@ -6,6 +6,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {UserSettings} from "../../model/user.settings";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {NotifierService} from "angular-notifier";
+import {RoleType} from "../../enums/role.type";
 
 @Component({
   selector: 'app-user-board',
@@ -18,6 +19,7 @@ export class UserBoardComponent implements OnInit {
   userSettings: UserSettings = new UserSettings();
   checkedSubjects: Subject[] = [];
   subjectsMap: Map<Subject, boolean> = new Map<Subject, boolean>();
+  checkUserRole: boolean = true;
 
   constructor(public requestService: RequestService, public authenticationService: AuthenticationService,
               public notifier: NotifierService) {
@@ -25,10 +27,25 @@ export class UserBoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSubjects();
+    if(this.authenticationService.userHasAuthority(RoleType[RoleType.ADMIN])){
+      this.checkUserRole = false;
+      this.getAdminData();
+    }else {
+      this.getUserData();
+    }
   }
 
-  getSubjects() {
+  getAdminData(){
+    this.requestService.getUserByEmail(this.authenticationService.getUserEmailFromToken()).subscribe(
+      response=>{
+        this.loggedInUser = response;
+        const auxUserSettings = new UserSettings();
+        auxUserSettings.user = response;
+        this.userSettings = auxUserSettings;
+      }
+    )
+  }
+  getUserData() {
     this.requestService.getUserSettingsByEmail(this.authenticationService.getUserEmailFromToken()).subscribe(
       response=>{
         this.loggedInUser = response.user;

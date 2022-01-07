@@ -8,7 +8,6 @@
         <span class="admin-lname">LastName</span>
         <span class="admin-university">University</span>
         <span class="admin-faculty">Faculty</span>
-        <span class="admin-edit">Edit </span>
       </mat-list-item>
       <app-admin (userListChanged)="onUserListChanged()" [admin]="admin"
         *ngFor="let admin of admins"></app-admin>

@@ -3,6 +3,7 @@ import {Post} from "../../../model/post.model";
 import {Subject} from "../../../model/subject.model";
 import {RequestService} from "../../../services/request.service";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {RoleType} from "../../../enums/role.type";
 
 @Component({
   selector: 'app-subject-list',
@@ -17,12 +18,21 @@ export class SubjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.requestService.getUserSettingsByEmail(this.authenticationService.getUserEmailFromToken()).subscribe(response =>{
-      this.subjectList = response.subjects;
-    },
-      error => {
-      alert("Error when retrieving user settings by email!")
-      })
+    if (this.authenticationService.userHasAuthority(RoleType[RoleType.ADMIN])) {
+      this.requestService.getSubjects().subscribe(response => {
+          this.subjectList = response;
+        },
+        error => {
+          alert("Error when retriving subjects for admin!");
+        });
+    } else {
+      this.requestService.getUserSettingsByEmail(this.authenticationService.getUserEmailFromToken()).subscribe(response => {
+          this.subjectList = response.subjects;
+        },
+        error => {
+          alert("Error when retrieving user settings by email!");
+        })
+    }
     // this.requestService.getUserByEmail(this.authenticationService.getUserFromToken()).subscribe(response => {
     //     this.requestService.getUserSettings(response.id).subscribe(response => {
     //       this.subjectList = response.subjects;

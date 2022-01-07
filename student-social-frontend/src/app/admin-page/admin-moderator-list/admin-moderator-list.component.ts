@@ -34,13 +34,10 @@ export class AdminModeratorListComponent implements OnInit {
     )
   }
 
-  onUserListChanged() {
-    this.getUsers();
-  }
   addModerator() {
     const dialogRef = this.dialog.open(CreateModeratorDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
-
+      this.getUsers();
     })
   }
 

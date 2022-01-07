@@ -1,7 +1,7 @@
 
   <div fxLayout="column" fxLayoutAlign="center center" >
     <app-user-info [userSettings]="userSettings"></app-user-info>
-    <mat-card fxLayout="column" fxLayoutAlign="center center">
+    <mat-card *ngIf="checkUserRole" fxLayout="column" fxLayoutAlign="center center">
       <mat-card-title>User Courses</mat-card-title>
       <mat-card-content>
         <app-subject-check-box [subjectsMap]="subjectsMap"></app-subject-check-box>

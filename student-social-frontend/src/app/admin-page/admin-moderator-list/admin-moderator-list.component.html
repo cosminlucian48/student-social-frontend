@@ -10,7 +10,7 @@
         <span class="moderator-faculty">Faculty</span>
         <span class="moderator-edit">Edit </span>
       </mat-list-item>
-      <app-admin-moderator (userListChanged)="onUserListChanged()" [moderator]="moderator"
+      <app-admin-moderator  [moderator]="moderator"
                  *ngFor="let moderator of moderators"></app-admin-moderator>
     </mat-list>
   </div>

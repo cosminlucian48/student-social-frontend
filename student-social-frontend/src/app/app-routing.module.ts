@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'student-social', component:StudentSocialComponent,canActivate: [AuthorizeGuard]},
   {path:'admin',component:AdminPageComponent, canActivate:[AdminGuard]},
-  {path:'user-settings',component:UserSettingsComponent, canActivate:[AdminGuard]},
+  {path:'user-settings',component:UserSettingsComponent, canActivate:[AuthorizeGuard]},
 ];
 
 @NgModule({

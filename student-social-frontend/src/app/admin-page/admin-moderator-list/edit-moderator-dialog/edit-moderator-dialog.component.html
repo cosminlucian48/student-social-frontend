@@ -1,0 +1,13 @@
+<!--<div fxLayout="column" fxLayoutAlign="center center" id="edit-moderator-div">-->
+<mat-card id="edit-moderator-mat-card">
+  <mat-card-title>Moderator Subjects</mat-card-title>
+  <mat-card-subtitle><span >{{data.user.email}}</span></mat-card-subtitle>
+  <mat-card-content>
+      <app-moderator-subject-checkbox [subjectsMap]="subjectsMap" ></app-moderator-subject-checkbox>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="saveSubjects()">Save</button>
+    <button mat-raised-button color="primary" (click)="close()">Cancel</button>
+  </mat-card-actions>
+</mat-card>

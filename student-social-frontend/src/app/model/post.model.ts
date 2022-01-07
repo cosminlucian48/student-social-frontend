@@ -7,6 +7,7 @@ export class Post {
   title: string = "";
   text: string = "";
   isSticky: boolean = false;
+  postType: string = "";
 
   constructor() {
   }

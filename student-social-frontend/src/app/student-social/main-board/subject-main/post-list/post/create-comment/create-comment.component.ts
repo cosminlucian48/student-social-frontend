@@ -32,7 +32,6 @@ export class CreateCommentComponent implements OnInit {
     this.requestService.getUserByEmail(this.authenticationService.getUserEmailFromToken()).subscribe(
       response=>{
         const newComment = new Comment(new Date(),ngForm.value.commentText,this.postId,response.id);
-
         this.requestService.postComment(newComment).subscribe(
           response=>{
             this.refreshComments.emit();

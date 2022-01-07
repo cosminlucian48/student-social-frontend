@@ -1,0 +1,5 @@
+<!--<p><mat-checkbox [checked]="subject.value" [(ngModel)]="subject.value" (change)="toggle(subject.key)">{{subject.key.name}}</mat-checkbox></p>-->
+<!--<p><mat-checkbox [checked]="checkedSubject" >{{subject.name}}</mat-checkbox></p>-->
+<div *ngFor="let subject of subjectsMap | keyvalue">
+  <p><mat-checkbox [checked]="subject.value" [(ngModel)]="subject.value" (change)="toggle(subject.key)">{{subject.key.name}}</mat-checkbox></p>
+</div>

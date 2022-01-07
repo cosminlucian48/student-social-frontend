@@ -4,6 +4,7 @@ import {RequestService} from "../../../services/request.service";
 import {MatDialog} from "@angular/material/dialog";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {EditUserRoleComponent} from "../../admin-user-list/edit-user-role/edit-user-role.component";
+import {EditModeratorDialogComponent} from "../edit-moderator-dialog/edit-moderator-dialog.component";
 
 @Component({
   selector: 'app-admin-moderator',
@@ -13,7 +14,7 @@ import {EditUserRoleComponent} from "../../admin-user-list/edit-user-role/edit-u
 export class AdminModeratorComponent implements OnInit {
 
   @Input() moderator:User = new User("","","","","","","");
-  @Output() userListChanged = new EventEmitter();
+
   isTheLoggedInUser: boolean = false;
 
   constructor(public requestService: RequestService, public dialog: MatDialog, public authenticationService: AuthenticationService) { }
@@ -24,10 +25,10 @@ export class AdminModeratorComponent implements OnInit {
     }
   }
 
-  editUserAuthorities() {
-    const dialogRef = this.dialog.open(EditUserRoleComponent, {
+  editModeratorSubjects() {
+    const dialogRef = this.dialog.open(EditModeratorDialogComponent, {
       data: {user: this.moderator}
-    });
+    })
   }
 
 }

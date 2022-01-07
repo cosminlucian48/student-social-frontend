@@ -7,6 +7,7 @@ import {readSpanComment} from "@angular/compiler-cli/src/ngtsc/typecheck/src/com
 import {SubjectService} from "../../../../../services/subject.service";
 import {NotifierService} from "angular-notifier";
 import {BlockRefreshService} from "../../../../../services/block.refresh.service";
+import {RoleType} from "../../../../../enums/role.type";
 
 @Component({
   selector: 'app-post',
@@ -18,7 +19,9 @@ export class PostComponent implements OnInit {
   @Input() post: Post = new Post();
   public datePost: string | null = "";
   public comments: Comment[] = [];
-
+  public userType: string = RoleType[RoleType.USER];
+  public moderatorType: string = RoleType[RoleType.MODERATOR];
+  public adminType: string = RoleType[RoleType.ADMIN];
   canRefresh:boolean = true;
   openCreateComment: boolean = false;
 
@@ -27,6 +30,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.datePost = this.datepipe.transform(this.post.postDate, 'yyyy-MM-dd');
     this.getComments();
   }
@@ -52,6 +56,7 @@ export class PostComponent implements OnInit {
   }
 
   blockRefreshChangeValue(){
+    this.notifier.notify("success","acordeonul se misca");
     this.blockRefreshService.setBlockRefresh(!this.blockRefreshService.getBlockRefresh());
   }
 

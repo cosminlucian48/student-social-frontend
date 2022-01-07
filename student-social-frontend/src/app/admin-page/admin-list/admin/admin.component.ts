@@ -25,10 +25,5 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  editUserAuthorities() {
-    const dialogRef = this.dialog.open(EditUserRoleComponent, {
-      data: {user: this.admin}
-    });
-  }
 
 }
