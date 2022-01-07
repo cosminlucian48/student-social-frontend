@@ -16,7 +16,6 @@ export class SubjectComponent implements OnInit {
 
 
   @Input() subject: Subject = new Subject();
-  localTimerSubscription: Subscription | undefined;
 
   constructor(public subjectService: SubjectService, public refreshService: RefreshService,
               public notifier: NotifierService, public blockRefreshService: BlockRefreshService) {
@@ -27,23 +26,6 @@ export class SubjectComponent implements OnInit {
 
   onSubjectClick() {
     this.subjectService.emitSubjectWasChanged(this.subject.id);
-    if (this.localTimerSubscription != undefined) {
-      this.localTimerSubscription.unsubscribe();
-      this.localTimerSubscription = undefined;
-    }
-    this.localTimerSubscription = this.refreshService.observeTimer().subscribe(response => {
-        if (!this.blockRefreshService.getBlockRefresh()) {
-          this.notifier.notify("success", "Refresh pe postari");
-          // this.subjectService.emitSubjectWasChanged(this.subject.id);
-          this.subjectService.emitRefreshSubjectObservable();
-        } else {
-          this.notifier.notify("error", "cant't refresh");
-        }
-      },
-      error => {
-        alert("Eroare care nu ar trebui sa apara.")
-      });
-
   }
 
 }

@@ -3,7 +3,7 @@ import {Observable,timer} from "rxjs";
 
 @Injectable()
 export class RefreshService{
-  timer: Observable<number> = timer(30000,30000);
+  timer: Observable<number> = timer(0,3000);
 
   constructor() {
   }
@@ -13,3 +13,4 @@ export class RefreshService{
   }
 
 }
+

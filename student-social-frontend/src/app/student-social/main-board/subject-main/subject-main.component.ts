@@ -4,6 +4,10 @@ import {MatDialog} from "@angular/material/dialog";
 import {SubjectService} from "../../../services/subject.service";
 import {RequestService} from "../../../services/request.service";
 import {Post} from "../../../model/post.model";
+import {Subscription} from "rxjs";
+import {RefreshService} from "../../../services/refresh.service";
+import {NotifierService} from "angular-notifier";
+import {BlockRefreshService} from "../../../services/block.refresh.service";
 
 @Component({
   selector: 'app-subject-main',
@@ -16,25 +20,44 @@ export class SubjectMainComponent implements OnInit {
   inPostSubject: boolean = false;
   postList: Post[] = [];
   subjectIdForCreatePostComponent: number = 0;
+  localTimerSubscription: Subscription | undefined;
 
   @Output() navBarToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(public subjectService: SubjectService, public requestService: RequestService) {
+  constructor(public subjectService: SubjectService, public requestService: RequestService, public refreshService: RefreshService,
+              public notifier: NotifierService, public blockRefreshService: BlockRefreshService) {
   }
 
   ngOnInit(): void {
     this.subjectService.observeSubjectWasChanged().subscribe((subjectId: number) => {
       this.currentSubjectId = subjectId;
-      //apelez din request service metoda care returneaza toate post urile cu subjectId respectiv
-      this.getPosts(subjectId);
+      this.blockRefreshService.setBlockRefresh(false);
+      this.localTimerSubscriptionStart();
+
     });
 
-    this.subjectService.observeRefreshSubjectObservable().subscribe(response =>{
-      this.getPosts(this.currentSubjectId);
-    },
+  }
+
+  localTimerSubscriptionStart() {
+
+    if (this.localTimerSubscription != undefined) {
+      this.localTimerSubscription.unsubscribe();
+      this.localTimerSubscription = undefined;
+    }
+    this.localTimerSubscription = this.refreshService.observeTimer().subscribe(response => {
+        if (!this.blockRefreshService.getBlockRefresh()) {
+
+          // this.notifier.notify("success", "Refresh pe postari");
+          // this.subjectService.emitSubjectWasChanged(this.subject.id);
+          this.getPosts(this.currentSubjectId);
+        } else {
+          // this.notifier.notify("error", "cant't refresh");
+        }
+      },
       error => {
-      alert("Error")
+        alert("Eroare care nu ar trebui sa apara.")
       });
+
   }
 
   private getPosts(subjectId: number) {
@@ -52,10 +75,6 @@ export class SubjectMainComponent implements OnInit {
   emitDrawerToggle() {
     this.navBarToggle.emit();
   }
-
-  // createPost(){
-  //   const dialogref = this.dialog.open(CreatePostComponent);
-  // }
 
   refreshPosts() {
     this.requestService.getPosts(this.currentSubjectId).subscribe(responseData => {

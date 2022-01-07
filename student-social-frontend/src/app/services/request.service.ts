@@ -79,4 +79,7 @@ export class RequestService {
   postComment(comment: Comment):Observable<Comment>{
     return this.httpClient.post<Comment>(this.urlService.getCommentsUrl(),comment, this.urlService.getRequestOptions());
   }
+  updateUserPassword(user:User):Observable<User>{
+    return this.httpClient.put<User>(this.urlService.getUserUrl()+'/new-password', user, this.urlService.getRequestOptions());
+  }
 }
