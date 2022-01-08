@@ -55,25 +55,33 @@
           <mat-label>
             First Name
           </mat-label>
-          <input matInput #firstName="ngModel" name="firstName" [ngModel]="user.firstName" required/>
+          <input matInput #firstName="ngModel" name="firstName" [ngModel]="user.firstName" required minlength="2" maxlength="15"/>
+          <mat-error *ngIf="firstName.errors?.minlength"> First name must be at least 2 characters long.</mat-error>
+          <mat-error *ngIf="firstName.errors?.maxLength"> First name must be at most 15 characters long.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>
             Last Name
           </mat-label>
-          <input matInput #lastName="ngModel" name="lastName" [ngModel]="user.lastName" required/>
+          <input matInput #lastName="ngModel" name="lastName" [ngModel]="user.lastName" required minlength="2" maxlength="20"/>
+          <mat-error *ngIf="lastName.errors?.minlength"> Last name must be at least 2 characters long.</mat-error>
+          <mat-error *ngIf="lastName.errors?.maxLength"> Last name must be at most 20 characters long.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>
             University
           </mat-label>
-          <input matInput #university="ngModel" name="university" [ngModel]="user.university" required/>
+          <input matInput #university="ngModel" name="university" [ngModel]="user.university" required minLength ="5" maxlength="50"/>
+          <mat-error *ngIf="university.errors?.minlength"> University's name must be at least 5 characters long.</mat-error>
+          <mat-error *ngIf="university.errors?.maxLength"> University's name must be at most 50 characters long.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>
             Faculty
           </mat-label>
-          <input matInput #faculty="ngModel" name="faculty" [ngModel]="user.faculty" required/>
+          <input matInput #faculty="ngModel" name="faculty" [ngModel]="user.faculty" required minlength="5" maxlength="50"/>
+          <mat-error *ngIf="faculty.errors?.minlength"> Faculty's name must be at least 5 characters long.</mat-error>
+          <mat-error *ngIf="faculty.errors?.maxLength"> Faculty's name must be at most 50 characters long.</mat-error>
         </mat-form-field>
 
       </mat-card-content>

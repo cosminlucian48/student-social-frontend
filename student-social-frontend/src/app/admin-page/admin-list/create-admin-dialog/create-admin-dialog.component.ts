@@ -15,6 +15,7 @@ import {User} from "../../../model/user";
 })
 export class CreateAdminDialogComponent implements OnInit {
 
+  hide = true;
   private notifier: NotifierService;
 
   constructor(public authenticationService: AuthenticationService, public requestService: RequestService,

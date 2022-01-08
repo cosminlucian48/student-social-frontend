@@ -13,6 +13,8 @@ import {User} from "../../../../model/user";
   styleUrls: ['./reset-user-password.component.scss']
 })
 export class ResetUserPasswordComponent implements OnInit {
+  hide = true;
+  hideNew = true;
 
   constructor(public authenticationService: AuthenticationService, public requestService: RequestService,
               public router: Router, public dialogRef: MatDialogRef<ResetUserPasswordComponent>, public notifier: NotifierService) {
@@ -42,5 +44,6 @@ export class ResetUserPasswordComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+
 
 }

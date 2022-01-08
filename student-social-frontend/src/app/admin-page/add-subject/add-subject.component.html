@@ -10,14 +10,18 @@
             Name
           </mat-label>
           <!--          <input #email="ngModel" name="email"  type="email" [ngModel]="email.name" matInput/>-->
-          <input matInput #subjectName="ngModel" name="subjectName" ngModel required/>
+          <input matInput #subjectName="ngModel" name="subjectName" ngModel required minlength="4" maxlength="30"/>
+          <mat-error *ngIf="subjectName.errors?.minlength"> Subject name must be at least 4 characters long.</mat-error>
+          <mat-error *ngIf="subjectName.errors?.maxLength"> Subject name must be at most 30 characters long.</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label>
             Description
           </mat-label>
-          <input matInput #subjectDescription="ngModel" name="subjectDescription" ngModel required/>
+          <input matInput #subjectDescription="ngModel" name="subjectDescription" ngModel required minlength="8" maxlength="300"/>
+          <mat-error *ngIf="subjectDescription.errors?.minlength"> Description must be at least 8 characters long.</mat-error>
+          <mat-error *ngIf="subjectDescription.errors?.maxLength"> Description must be at most 300 characters long.</mat-error>
         </mat-form-field>
 
       </mat-card-content>
