@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
         this.close();
       },
       error => {
-        alert("Something went wrong!")
+        this.notifier.notify("error","Email already used!")
       }
     );
 

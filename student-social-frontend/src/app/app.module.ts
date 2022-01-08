@@ -61,6 +61,7 @@ import { CreateModeratorDialogComponent } from './admin-page/admin-moderator-lis
 import { CreateAdminDialogComponent } from './admin-page/admin-list/create-admin-dialog/create-admin-dialog.component';
 import { EditModeratorDialogComponent } from './admin-page/admin-moderator-list/edit-moderator-dialog/edit-moderator-dialog.component';
 import { ModeratorSubjectCheckboxComponent } from './admin-page/admin-moderator-list/edit-moderator-dialog/moderator-subject-checkbox/moderator-subject-checkbox.component';
+import { UserEmailComponent } from './user-settings/user-board/user-email/user-email.component';
 
 
 
@@ -145,6 +146,7 @@ const customNotifierOptions: NotifierOptions = {
     CreateAdminDialogComponent,
     EditModeratorDialogComponent,
     ModeratorSubjectCheckboxComponent,
+    UserEmailComponent,
 
   ],
   imports: [

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Post} from "../../../../../model/post.model";
 import {Comment} from "../../../../../model/comment.model";
 import {DatePipe} from "@angular/common";
@@ -8,7 +8,9 @@ import {SubjectService} from "../../../../../services/subject.service";
 import {NotifierService} from "angular-notifier";
 import {BlockRefreshService} from "../../../../../services/block.refresh.service";
 import {RoleType} from "../../../../../enums/role.type";
+import {MatAccordion} from "@angular/material/expansion";
 
+// import { MatAccordion } from '@angular/material';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -22,11 +24,14 @@ export class PostComponent implements OnInit {
   public userType: string = RoleType[RoleType.USER];
   public moderatorType: string = RoleType[RoleType.MODERATOR];
   public adminType: string = RoleType[RoleType.ADMIN];
-  canRefresh:boolean = true;
+  canRefresh: boolean = true;
+  showCreateComment: boolean = false;
+  showCommentList: boolean = false;
   openCreateComment: boolean = false;
+  @ViewChild('accordion', {static: true}) Accordion: MatAccordion | undefined;
 
   constructor(public datepipe: DatePipe, public requestService: RequestService,
-              public notifier: NotifierService, public blockRefreshService:BlockRefreshService) {
+              public notifier: NotifierService, public blockRefreshService: BlockRefreshService) {
   }
 
   ngOnInit(): void {
@@ -36,7 +41,18 @@ export class PostComponent implements OnInit {
   }
 
   refreshComments() {
+
+    this.showCommentList = true;
+    this.Accordion?.openAll();
     this.getComments();
+  }
+
+  addCommentClick() {
+    this.showCreateComment = !this.showCreateComment;
+  }
+
+  showCommentsClick() {
+    this.showCommentList = !this.showCommentList;
   }
 
   getComments() {
@@ -45,18 +61,18 @@ export class PostComponent implements OnInit {
         this.comments = response;
       },
       error => {
-        this.notifier.notify("error","Could not retrieve the comment list!")
+        this.notifier.notify("error", "Could not retrieve the comment list!")
       }
     );
 
   }
 
-  openCreateCommentComponent(){
+  openCreateCommentComponent() {
     this.openCreateComment = !this.openCreateComment;
   }
 
-  blockRefreshChangeValue(){
-    this.notifier.notify("success","acordeonul se misca");
+  blockRefreshChangeValue() {
+    this.notifier.notify("success", "acordeonul se misca");
     this.blockRefreshService.setBlockRefresh(!this.blockRefreshService.getBlockRefresh());
   }
 

@@ -18,3 +18,30 @@
   background: purple !important;
 }
 
+.add-comment{
+
+  font-size:14px;
+  width: 150px;
+  background: white;
+  color: black;
+  border: 0;
+  position:absolute;
+  left: 300px;
+  z-index: 1;
+  height: 48px;
+
+}
+
+.add-comment:hover{
+  background: whitesmoke;
+}
+.add-comment-expanded{
+  margin-top:8px;
+  transition: margin-top 225ms;
+  background: white;
+}
+.add-comment-expanded:hover{
+  background: white !important;
+}
+
+

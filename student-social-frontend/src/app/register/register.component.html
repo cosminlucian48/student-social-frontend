@@ -1,49 +1,3 @@
-<!--<div class="register-form">-->
-<!--  <div class="card">-->
-<!--    <h2 class="head py-2">Register</h2>-->
-<!--    <form class="user-register">-->
-<!--      <div class="row">-->
-<!--        <div class="col-md-12 roundedTextBox mb-3">-->
-<!--          <label>Email</label>-->
-<!--          <input type="email" class="form-control mb-2" id="inputEmail"-->
-<!--                 placeholder="Enter Email"/>-->
-<!--        </div>-->
-<!--        <div class="col-md-12 roundedTextBox mb-3">-->
-<!--          <label>Password</label>-->
-<!--          <input type="password" class="form-control mb-2" id="inputPassword"-->
-<!--                 placeholder="password"/>-->
-<!--        </div>-->
-<!--        <div class="col-md-12 roundedTextBox mb-3">-->
-<!--          <label>University</label>-->
-<!--          <input type="text" class="form-control mb-2" id="inputUniversity"-->
-<!--                 placeholder="University"/>-->
-<!--        </div>-->
-<!--        <div class="col-md-12 roundedTextBox mb-3">-->
-<!--          <label>Faculty</label>-->
-<!--          <input type="text" class="form-control mb-2" id="inputFaculty"-->
-<!--                 placeholder="University"/>-->
-<!--        </div>-->
-<!--        <div class="col-md-12 roundedTextBox mb-3">-->
-<!--          <label>First Name</label>-->
-<!--          <input type="text" class="form-control mb-2" id="inputFirstName"-->
-<!--                 placeholder="FirstName"/>-->
-<!--        </div>-->
-<!--        <div class="col-md-12 roundedTextBox mb-3">-->
-<!--          <label>Last Name</label>-->
-<!--          <input type="text" class="form-control mb-2" id="inputLastName"-->
-<!--                 placeholder="LastName"/>-->
-<!--        </div>-->
-
-<!--      </div>-->
-<!--      <br>-->
-<!--      <div class="buttons text-center">-->
-<!--        <button class="btn-customBlue mr-2" type="submit">Register</button>-->
-<!--        <button class="btn-customBlue mr-2" type="button" routerLink="/login">Cancel</button>-->
-<!--      </div>-->
-<!--    </form>-->
-<!--  </div>-->
-
-<!--</div>-->
 
 <div fxLayout="column" fxLayoutAlign="center center" id="register-form">
   <mat-card id="register-mat-card">
@@ -93,7 +47,7 @@
       <mat-card-actions>
         <!--      butoane-->
         <button mat-raised-button color="primary" type="submit" > Register</button>
-        <button mat-raised-button color="primary" (click)="close()"> Cancel</button>
+        <button mat-raised-button color="primary" (click)="close()" type="button"> Cancel</button>
       </mat-card-actions>
     </form>
   </mat-card>

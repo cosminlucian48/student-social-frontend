@@ -35,7 +35,7 @@ export class CreateCommentComponent implements OnInit {
         this.requestService.postComment(newComment).subscribe(
           response=>{
             this.refreshComments.emit();
-            this.notifier.notify("succes","Comment added!");
+            this.notifier.notify("success","Comment added!");
           },
           error =>{
             this.notifier.notify("error","Error when creating comment!");

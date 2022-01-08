@@ -57,11 +57,6 @@ export class LoginComponent implements OnInit {
   registerClick() {
     const dialogRef = this.dialog.open(RegisterComponent);
 
-    dialogRef.afterClosed().subscribe(() => {
-    },
-      error => {
-      alert("Error at user register!")
-      });
   }
 
 
