@@ -1,4 +1,3 @@
-
 <div fxLayout="column" fxLayoutAlign="center center" id="register-form">
   <mat-card id="register-mat-card">
 
@@ -9,7 +8,7 @@
           <mat-label>
             Email
           </mat-label>
-<!--          <input #email="ngModel" name="email"  type="email" [ngModel]="email.name" matInput/>-->
+          <!--          <input #email="ngModel" name="email"  type="email" [ngModel]="email.name" matInput/>-->
           <input matInput #email="ngModel" name="email" ngModel required/>
         </mat-form-field>
         <br>
@@ -43,10 +42,25 @@
           </mat-label>
           <input matInput #lastName="ngModel" name="lastName" ngModel required/>
         </mat-form-field>
+        <div style="width: 100%">
+          <input type="file" class="file-input"
+                 (change)="onFileSelected($event)" #fileUpload/>
+
+          <div class="file-upload">
+
+            {{fileName || "No file uploaded yet."}}
+
+            <button mat-mini-fab color="primary" class="upload-btn" type="button"
+                    (click)="fileUpload.click()">
+              <mat-icon>attach_file</mat-icon>
+            </button>
+          </div>
+
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <!--      butoane-->
-        <button mat-raised-button color="primary" type="submit" > Register</button>
+        <button mat-raised-button color="primary" type="submit"> Register</button>
         <button mat-raised-button color="primary" (click)="close()" type="button"> Cancel</button>
       </mat-card-actions>
     </form>

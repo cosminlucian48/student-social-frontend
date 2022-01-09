@@ -1,5 +1,6 @@
 
   <div fxLayout="column" fxLayoutAlign="center center" >
+    <img [src]="userSettings.user.profileImage" width="400px" height="400px"/>
     <app-user-info [userSettings]="userSettings"></app-user-info>
     <mat-card *ngIf="checkUserRole" fxLayout="column" fxLayoutAlign="center center">
       <mat-card-title>User Courses</mat-card-title>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 import {Comment} from "../../../../../../model/comment.model";
 import {Post} from "../../../../../../model/post.model";
@@ -11,10 +11,15 @@ import {RequestService} from "../../../../../../services/request.service";
 export class CommentListComponent implements OnInit {
 
   @Input()commentsTest: Comment[]=[] ;
+  @Output() refreshComments2:EventEmitter<any> = new EventEmitter();
   constructor(public requestService: RequestService) { }
 
   ngOnInit(): void {
     console.log(this.commentsTest)
+  }
+
+  refreshComments(){
+    this.refreshComments2.emit();
   }
 
 }

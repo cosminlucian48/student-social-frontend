@@ -1,12 +1,13 @@
 <mat-card class="post-card" [ngClass]="{'userClass': (post.postType==userType),
             'moderatorClass': (post.postType==moderatorType),
             'adminClass':(post.postType==adminType)}">
+  <mat-icon *ngIf="loggedInUserHasAuthority()" matTooltip="Delete post" (click)="deletePost()" class="delete-post-icon">cancel</mat-icon>
   <mat-card-title >{{post.title}}</mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-subtitle style="display:inline">
     <div>
       <span style="float: left;">Author: {{post.email}}</span>
-      <span style="float: right;margin-top:-60px;">Date: {{datePost}}</span>
+      <span style="float: right;margin-top:-40px;">Date: {{datePost}}</span>
     </div>
     <br>
   </mat-card-subtitle>
@@ -38,7 +39,7 @@
         </mat-expansion-panel-header>
 
         <!--        *ngIf="openCreateComment"-->
-        <app-comment-list [commentsTest]="comments" *ngIf="showCommentList"></app-comment-list>
+        <app-comment-list [commentsTest]="comments" *ngIf="showCommentList" (refreshComments2)="refreshComments()"></app-comment-list>
       </mat-expansion-panel>
       <app-create-comment (refreshComments)="refreshComments()" [postId]="post.id" *ngIf="showCreateComment"></app-create-comment>
 

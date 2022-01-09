@@ -61,6 +61,12 @@ export class RequestService {
   deleteSubject(subject: Subject): Observable<Subject>{
     return this.httpClient.delete<Subject>(this.urlService.getSubjectUrl()+'/'+subject.id);
   }
+  deleteComment(commentId: number): Observable<Comment>{
+    return this.httpClient.delete<Comment>(this.urlService.getCommentsUrl()+'/'+commentId, this.urlService.getRequestOptions());
+  }
+  deletePost(postId: number): Observable<Post>{
+    return this.httpClient.delete<Post>(this.urlService.getPostUrl()+'/'+postId, this.urlService.getRequestOptions());
+  }
   postSubject(subject: Subject):Observable<Subject>{
     // return this.httpClient.post<User>(this.urlService.getRegisterUrl(), user, this.urlService.getRequestOptions());
     return this.httpClient.post<Subject>(this.urlService.getSubjectUrl(),subject,this.urlService.getRequestOptions());

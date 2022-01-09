@@ -10,7 +10,7 @@
     <div class="div-post">
       <app-create-post *ngIf="inPostSubject" [subjectId]="subjectIdForCreatePostComponent"
                        (refreshPosts)="refreshPosts()"></app-create-post>
-      <app-post-list [postList]="postList"></app-post-list>
+      <app-post-list [postList]="postList" (refreshPostList)="refreshPosts()"></app-post-list>
     </div>
   </div>
 </div>

@@ -7,6 +7,7 @@ export class User {
   firstName: string;
   lastName: string;
   authorities: string;
+  profileImage: string = "";
   registrationDate: Date = new Date();
 
 

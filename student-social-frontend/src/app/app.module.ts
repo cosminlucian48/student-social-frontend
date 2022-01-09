@@ -62,6 +62,7 @@ import { CreateAdminDialogComponent } from './admin-page/admin-list/create-admin
 import { EditModeratorDialogComponent } from './admin-page/admin-moderator-list/edit-moderator-dialog/edit-moderator-dialog.component';
 import { ModeratorSubjectCheckboxComponent } from './admin-page/admin-moderator-list/edit-moderator-dialog/moderator-subject-checkbox/moderator-subject-checkbox.component';
 import { UserEmailComponent } from './user-settings/user-board/user-email/user-email.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 
@@ -159,7 +160,8 @@ const customNotifierOptions: NotifierOptions = {
     MaterialModule,
     MatDialogModule,
     NotifierModule.withConfig(customNotifierOptions),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressBarModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: SecurityRequestInterceptor, multi: true},

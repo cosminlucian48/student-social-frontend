@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Post} from "../../../../../model/post.model";
 import {Comment} from "../../../../../model/comment.model";
 import {DatePipe} from "@angular/common";
@@ -9,6 +9,7 @@ import {NotifierService} from "angular-notifier";
 import {BlockRefreshService} from "../../../../../services/block.refresh.service";
 import {RoleType} from "../../../../../enums/role.type";
 import {MatAccordion} from "@angular/material/expansion";
+import {AuthenticationService} from "../../../../../services/authentication.service";
 
 // import { MatAccordion } from '@angular/material';
 @Component({
@@ -19,6 +20,7 @@ import {MatAccordion} from "@angular/material/expansion";
 export class PostComponent implements OnInit {
 
   @Input() post: Post = new Post();
+  @Output() refreshPosts:EventEmitter<any> = new EventEmitter();
   public datePost: string | null = "";
   public comments: Comment[] = [];
   public userType: string = RoleType[RoleType.USER];
@@ -31,7 +33,8 @@ export class PostComponent implements OnInit {
   @ViewChild('accordion', {static: true}) Accordion: MatAccordion | undefined;
 
   constructor(public datepipe: DatePipe, public requestService: RequestService,
-              public notifier: NotifierService, public blockRefreshService: BlockRefreshService) {
+              public notifier: NotifierService, public blockRefreshService: BlockRefreshService,
+              public authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -75,5 +78,18 @@ export class PostComponent implements OnInit {
     this.notifier.notify("success", "acordeonul se misca");
     this.blockRefreshService.setBlockRefresh(!this.blockRefreshService.getBlockRefresh());
   }
+  deletePost(){
+    this.requestService.deletePost(this.post.id).subscribe(()=>{
+      this.notifier.notify("success","Post deleted!");
+      this.refreshPosts.emit();
+    },
+    error =>{
+      this.notifier.notify("error","Can't delete Post!");
 
+    })
+  }
+
+  loggedInUserHasAuthority(){
+    return !this.authenticationService.userHasAuthority(this.userType);
+  }
 }

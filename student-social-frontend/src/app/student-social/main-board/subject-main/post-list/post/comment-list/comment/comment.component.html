@@ -1,6 +1,7 @@
 <mat-card style="background-color: #2B90D9" [ngClass]="{'userClass': (comment.commentType==userType),
             'moderatorClass': (comment.commentType==moderatorType),
             'adminClass':(comment.commentType==adminType)}">
+  <mat-icon *ngIf="loggedInUserHasAuthority()" matTooltip="Delete post" (click)="deleteComment()" class="delete-comment-icon">cancel</mat-icon>
   <mat-card-subtitle>
     <p style="margin-left: 500px">{{comment.email}}</p>
   </mat-card-subtitle>
