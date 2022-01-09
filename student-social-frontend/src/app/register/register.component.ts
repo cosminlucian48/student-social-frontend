@@ -18,6 +18,7 @@ import {getImportSpecifier} from "@angular/core/schematics/utils/typescript/impo
 })
 export class RegisterComponent implements OnInit {
 
+  hide = true;
   private notifier: NotifierService;
   @Input()
   requiredFileType:string = "";

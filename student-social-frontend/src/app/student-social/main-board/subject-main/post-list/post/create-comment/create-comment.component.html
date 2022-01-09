@@ -6,7 +6,9 @@
         <mat-label>
           Comment text
         </mat-label>
-        <textarea matInput #commentText="ngModel" name="commentText" rows ="5"  ngModel required ></textarea>
+        <textarea matInput #commentText="ngModel" name="commentText" rows ="5"  ngModel required minlength="5" maxlength="300"></textarea>
+        <mat-error *ngIf="commentText.errors?.minlength"> Comment must be at least 5 characters long.</mat-error>
+        <mat-error *ngIf="commentText.errors?.maxLength"> Comment must be at most 300 characters long.</mat-error>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>

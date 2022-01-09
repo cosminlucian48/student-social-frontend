@@ -15,6 +15,7 @@ import {RoleType} from "../../../enums/role.type";
 })
 export class CreateModeratorDialogComponent implements OnInit {
 
+  hide = true;
   private notifier: NotifierService;
 
   constructor(public authenticationService: AuthenticationService, public requestService: RequestService,
