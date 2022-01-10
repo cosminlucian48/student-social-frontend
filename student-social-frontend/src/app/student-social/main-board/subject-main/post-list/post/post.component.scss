@@ -9,13 +9,13 @@
 }
 
 .moderatorClass{
-  background: #a40000!important;
+  background: var(--orange-primary-very-light) !important;
 }
 .userClass{
-  background-color: bisque;
+  background-color: var(--grey);
 }
 .adminClass{
-  background: purple !important;
+  background: var(--orange-primary-light) !important;
 }
 
 .add-comment{

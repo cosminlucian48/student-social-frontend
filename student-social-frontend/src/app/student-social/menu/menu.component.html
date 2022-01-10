@@ -1,13 +1,13 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="mat-toolbar--primary">
   <span class="title" (click)="home()">Student social</span>
 
   <div class="buttons">
-    <button *ngIf="authenticationService.isUserLoggedIn() && authenticationService.userIsAdmin()" mat-button (click)="admin()">Admin</button>
-    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button (click)="home()">Home</button>
-    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button (click)="userSettings()">Account</button>
+    <button *ngIf="authenticationService.isUserLoggedIn() && authenticationService.userIsAdmin()" mat-button class="button--primary" (click)="admin()">Admin</button>
+    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button class="button--primary" (click)="home()">Home</button>
+    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button class="button--primary" (click)="userSettings()">Account</button>
 <!--    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button>Settings</button>-->
-    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button (click)="logout()">Logout</button>
-    <button *ngIf="!authenticationService.isUserLoggedIn()" mat-button (click)="login()">Login</button>
-    <button *ngIf="!authenticationService.isUserLoggedIn()" mat-button (click)="register()">Register</button>
+    <button *ngIf="authenticationService.isUserLoggedIn()" mat-button class="button--primary" (click)="logout()">Logout</button>
+    <button *ngIf="!authenticationService.isUserLoggedIn()" mat-button class="button--primary" (click)="login()">Login</button>
+    <button *ngIf="!authenticationService.isUserLoggedIn()" mat-button class="button--primary" (click)="register()">Register</button>
   </div>
 </mat-toolbar>

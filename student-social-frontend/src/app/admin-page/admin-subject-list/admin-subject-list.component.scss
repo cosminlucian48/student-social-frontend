@@ -18,8 +18,8 @@ mat-list {
   width: 600px;
 }
 mat-list-item{
-  background: lightseagreen;
-  //color:white !important;
+  background: var(--orange-dark);
+  color:var(--white) !important;
 }
 
 .admin-subjects-container{

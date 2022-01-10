@@ -1,11 +1,11 @@
 .moderatorClass{
-  background: pink !important;
+  background: var(--orange-primary-very-light) !important;
 }
 .userClass{
-  background: cyan !important;
+  background: var(--grey) !important;
 }
 .adminClass{
-  background: orange !important;
+  background: var(--orange-primary-light) !important;
 }
 
 .delete-comment-icon{

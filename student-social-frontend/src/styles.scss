@@ -8,6 +8,8 @@
   --grey: #E9E8E6;
   --orange-primary: #de411b;
   --orange-dark: #a40000;
+  --orange-primary-very-light:  #f7c7bb;
+  --orange-primary-light: #f2a18d;
 }
 
 html {
@@ -63,8 +65,13 @@ h2 {
 }
 
 .button--primary {
-  background-color: #2B90D9;
-  color: #FFF;
+  background-color: var(--orange-primary);
+  color: var(--white);
+}
+
+.mat-toolbar--primary {
+  background-color: var(--orange-primary);
+  color: var(--white);
 }
 
 .button--white {
@@ -75,7 +82,7 @@ h2 {
 .button--primary:hover,
 .button--primary:focus,
 .button--primary:active {
-  background-color: #2273AD;
+  background-color: var(--orange-primary);
 }
 
 .button--secondary {
