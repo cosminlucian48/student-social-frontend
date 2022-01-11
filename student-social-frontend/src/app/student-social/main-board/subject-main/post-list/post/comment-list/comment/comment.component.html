@@ -1,14 +1,17 @@
-<mat-card style="background-color: #2B90D9" [ngClass]="{'userClass': (comment.commentType==userType),
+<mat-card [ngClass]="{'userClass': (comment.commentType==userType),
             'moderatorClass': (comment.commentType==moderatorType),
             'adminClass':(comment.commentType==adminType)}">
   <mat-icon *ngIf="loggedInUserHasAuthority()" matTooltip="Delete post" (click)="deleteComment()" class="delete-comment-icon">cancel</mat-icon>
   <mat-card-subtitle>
-    <p style="margin-left: 500px">{{comment.email}}</p>
+    <div style="display: flex; justify-content: space-between;">
+      <div style="display: flex;">
+        <img [src]="comment.profileImage" class="profile-picture">
+        <p style="margin-left: 10px; margin-top: 10px">{{comment.email}}</p>
+      </div>
+      <p style="margin-right: 20px; margin-top: 10px">{{dateComment}}</p>
+    </div>
   </mat-card-subtitle>
   <mat-card-content>
-    <p style="margin-left: 80px; margin-right: 80px; justify-content: center" >{{comment.text}}</p>
+    <p style="margin-left: 80px; margin-right: 80px; margin-bottom: 25px; justify-content: center" >{{comment.text}}</p>
   </mat-card-content>
-  <mat-card-footer>
-    <p style="margin-left: 600px">{{dateComment}}</p>
-  </mat-card-footer>
 </mat-card>

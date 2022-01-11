@@ -8,6 +8,7 @@ export class Post {
   text: string = "";
   isSticky: boolean = false;
   postType: string = "";
+  profileImage: string = "";
 
   constructor() {
   }

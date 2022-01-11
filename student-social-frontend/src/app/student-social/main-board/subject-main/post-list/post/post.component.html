@@ -5,9 +5,12 @@
   <mat-card-title >{{post.title}}</mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-subtitle style="display:inline">
-    <div>
-      <span style="float: left;">Author: {{post.email}}</span>
-      <span style="float: right;margin-top:-40px;">Date: {{datePost}}</span>
+    <div style="display: flex; justify-content: space-between;">
+      <div style="display: flex">
+        <img [src]="post.profileImage" class="profile-picture">
+        <span style="float: left; margin-left: 10px; margin-top: 10px">Author: {{post.email}}</span>
+      </div>
+      <span style="float: right; margin-top: 10px">Date: {{datePost}}</span>
     </div>
     <br>
   </mat-card-subtitle>

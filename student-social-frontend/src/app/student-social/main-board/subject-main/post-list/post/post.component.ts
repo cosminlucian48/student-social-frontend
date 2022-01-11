@@ -41,6 +41,7 @@ export class PostComponent implements OnInit {
 
     this.datePost = this.datepipe.transform(this.post.postDate, 'yyyy-MM-dd');
     this.getComments();
+    console.log(this.post.profileImage);
   }
 
   refreshComments() {
