@@ -17,8 +17,9 @@
           <mat-label>
             Text
           </mat-label>
-          <input matInput #postText="ngModel" name="postText" ngModel required minlength="10"/>
-          <textarea matInput #postText="ngModel" name="postText" rows ="15" cols="10" ngModel required style="width: 500px!important; border:1px solid black"></textarea>
+<!--          <input matInput #postText="ngModel" name="postText" ngModel required minlength="10"/>-->
+          <textarea matInput #postText="ngModel" name="postText" rows ="15" cols="10" ngModel required style="width: 500px!important; border:1px solid black"
+          required minlength="10"></textarea>
           <mat-error *ngIf="postText.errors?.minlength"> Text must be at least 10 characters long.</mat-error>
         </mat-form-field>
       </mat-card-content>
