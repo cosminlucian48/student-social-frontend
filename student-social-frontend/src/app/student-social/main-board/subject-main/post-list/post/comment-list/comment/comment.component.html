@@ -5,7 +5,7 @@
   <mat-card-subtitle>
     <div style="display: flex; justify-content: space-between;">
       <div style="display: flex;">
-        <img [src]="comment.profileImage" class="profile-picture">
+        <img mat-card-avatar [src]="comment.profileImage">
         <p style="margin-left: 10px; margin-top: 10px">{{comment.email}}</p>
       </div>
       <p style="margin-right: 20px; margin-top: 10px">{{dateComment}}</p>

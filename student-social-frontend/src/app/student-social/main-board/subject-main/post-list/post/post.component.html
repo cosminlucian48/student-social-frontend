@@ -2,18 +2,16 @@
             'moderatorClass': (post.postType==moderatorType),
             'adminClass':(post.postType==adminType)}">
   <mat-icon *ngIf="loggedInUserHasAuthority()" matTooltip="Delete post" (click)="deletePost()" class="delete-post-icon">cancel</mat-icon>
-  <mat-card-title >{{post.title}}</mat-card-title>
-  <mat-divider></mat-divider>
-  <mat-card-subtitle style="display:inline">
-    <div style="display: flex; justify-content: space-between;">
-      <div style="display: flex">
-        <img [src]="post.profileImage" class="profile-picture">
-        <span style="float: left; margin-left: 10px; margin-top: 10px">Author: {{post.email}}</span>
-      </div>
-      <span style="float: right; margin-top: 10px">Date: {{datePost}}</span>
-    </div>
-    <br>
+<!--  <div mat-card-avatar style="background-image: url("")" class="profile-picture-posts"></div>-->
+  <mat-card-header style="margin-top: -20px;">
+  <img mat-card-avatar [src]="post.profileImage" class="profile-picture-posts">
+    <mat-card-title>{{post.title}}</mat-card-title>
+    <mat-card-subtitle style="margin-top: -18px !important;">
+      <span>{{post.email}}</span>
+      <span style="position: absolute; left: 700px">{{datePost}}</span>
+      <br>
   </mat-card-subtitle>
+  </mat-card-header>
   <mat-card-content style="margin-left: 20px; margin-right: 80px; ">
     <br>
     {{post.text}}
