@@ -5,3 +5,20 @@
 .buttons {
   padding-left: 55%;
 }
+
+.userName-button{
+  margin-left: 62%;
+  padding-right: 15%;
+}
+
+.logged-in-buttons {
+  background-color: lightgray;
+  margin-bottom: 3px;
+  padding-right: 30px;
+  text-align: center;
+  width: 200px;
+}
+
+.logged-in-buttons:hover{
+  background-color: var(--orange-primary);
+}
