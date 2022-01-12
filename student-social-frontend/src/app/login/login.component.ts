@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.showNotification( 'success', 'User logged in' );
         },
         error => {
-          alert("not ok");
+          this.showNotification( 'error', 'Wrong credentials!' );
         })
 
   }

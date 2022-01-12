@@ -41,7 +41,7 @@ export class PostComponent implements OnInit {
 
     this.datePost = this.datepipe.transform(this.post.postDate, 'yyyy-MM-dd');
     this.getComments();
-    console.log(this.post.profileImage);
+    // console.log(this.post.profileImage);
   }
 
   refreshComments() {
@@ -76,7 +76,7 @@ export class PostComponent implements OnInit {
   }
 
   blockRefreshChangeValue() {
-    this.notifier.notify("success", "acordeonul se misca");
+    // this.notifier.notify("success", "acordeonul se misca");
     this.blockRefreshService.setBlockRefresh(!this.blockRefreshService.getBlockRefresh());
   }
   deletePost(){
