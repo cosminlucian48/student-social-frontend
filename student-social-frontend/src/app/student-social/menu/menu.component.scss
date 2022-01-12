@@ -1,3 +1,5 @@
+
+
 .title {
   padding-left: 6%;
 }
@@ -12,7 +14,7 @@
 }
 
 .logged-in-buttons {
-  background-color: lightgray;
+  background-color: white;
   margin-bottom: 3px;
   padding-right: 30px;
   text-align: center;
@@ -21,4 +23,5 @@
 
 .logged-in-buttons:hover{
   background-color: var(--orange-primary);
+  color: var(--white);
 }
