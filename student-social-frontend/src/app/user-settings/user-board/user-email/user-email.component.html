@@ -1,9 +1,9 @@
 <mat-card  fxLayout="column" fxLayoutAlign="center center">
   <mat-card-title>User Email Prefferences</mat-card-title>
   <mat-card-content>
-    <p><mat-checkbox>Send emails on new posts.</mat-checkbox></p>
-    <p><mat-checkbox>Send emails on new comments.</mat-checkbox></p>
-    <p><mat-checkbox>Send emails on idk.</mat-checkbox></p>
+    <p><mat-checkbox #test [checked]="userSettings.user.postEmail" (change)="toggle('post')">Send emails on new posts.</mat-checkbox></p>
+    <p><mat-checkbox [checked]="userSettings.user.commentEmail" (change)="toggle('comment')">Send emails on new comments.</mat-checkbox></p>
+    <p><mat-checkbox [checked]="userSettings.user.tagEmail" (change)="toggle('tag')">Send emails on tags.</mat-checkbox></p>
   </mat-card-content>
   <mat-card-footer>
     <button mat-raised-button class="button--primary" (click)="save()" style="margin:10px">Save</button>

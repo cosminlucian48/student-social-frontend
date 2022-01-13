@@ -1,3 +1,5 @@
+import {File} from "@angular/compiler-cli/src/ngtsc/file_system/testing/src/mock_file_system";
+
 export class Post {
   id: number = 0;
   userId: number = 0;
@@ -9,6 +11,7 @@ export class Post {
   isSticky: boolean = false;
   postType: string = "";
   profileImage: string = "";
+  fileName:string="";
 
   constructor() {
   }

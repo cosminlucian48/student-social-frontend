@@ -1,5 +1,5 @@
 <!--// componenta de meniu -->
-<app-menu></app-menu>
-<router-outlet></router-outlet>
+<app-menu [loggedInUser]="loggedInUser"></app-menu>
+<router-outlet (activate)="test()"></router-outlet>
 
 <notifier-container></notifier-container>

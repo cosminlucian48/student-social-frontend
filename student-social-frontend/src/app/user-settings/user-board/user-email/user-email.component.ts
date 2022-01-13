@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {UserSettings} from "../../../model/user.settings";
+import {User} from "../../../model/user";
+import {RequestService} from "../../../services/request.service";
+import {NotifierService} from "angular-notifier";
 
 @Component({
   selector: 'app-user-email',
@@ -7,12 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserEmailComponent implements OnInit {
 
-  constructor() { }
+  @Input() userSettings: UserSettings = new UserSettings();
 
-  ngOnInit(): void {
+  constructor(public requestService: RequestService, public notifier: NotifierService) {
   }
 
-  save(){
+  ngOnInit(): void {
+    console.log("test:", this.userSettings.user)
+  }
 
+  save() {
+    console.log("psot", this.userSettings.user.postEmail);
+    console.log("comment", this.userSettings.user.commentEmail);
+    console.log("tag", this.userSettings.user.tagEmail);
+    this.requestService.updateUser(this.userSettings.user).subscribe(()=>{
+      this.notifier.notify("success","User email preferences saved!")
+    }, error => {
+      this.notifier.notify("error","Error when changin user email prefenreces!")
+    })
+  }
+
+  toggle(type: string) {
+    if (type === "post") {
+      this.userSettings.user.postEmail = !this.userSettings.user.postEmail
+    } else if (type === "comment") {
+      this.userSettings.user.commentEmail = !this.userSettings.user.commentEmail
+    } else if (type === "tag") {
+      this.userSettings.user.tagEmail = !this.userSettings.user.tagEmail
+    }
   }
 }

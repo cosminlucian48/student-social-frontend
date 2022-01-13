@@ -10,7 +10,7 @@ import {UserSettingsComponent} from "./user-settings/user-settings.component";
 
 const routes: Routes = [
   // {path:'', redirectTo:'login', pathMatch:'full'},
-  {path:'', component:StudentSocialComponent,canActivate: [AuthorizeGuard]},
+  {path:'', component:StudentSocialComponent,canActivate: [AuthorizeGuard],},
   {path:'login', component:LoginComponent},
   {path:'student-social', component:StudentSocialComponent,canActivate: [AuthorizeGuard]},
   {path:'admin',component:AdminPageComponent, canActivate:[AdminGuard]},

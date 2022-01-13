@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {HttpClientModule} from '@angular/common/http';
@@ -8,6 +8,7 @@ import {RequestService} from "../services/request.service";
 import {MatDialog} from "@angular/material/dialog";
 import {RegisterComponent} from "../register/register.component";
 import {NotifierService} from "angular-notifier";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,6 @@ export class LoginComponent implements OnInit {
 
   hide = true;
   private notifier: NotifierService;
-
   constructor(public authenticationService: AuthenticationService,public requestService: RequestService,
               public router: Router,public dialog:MatDialog, notifier: NotifierService) {
 
@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
-
   }
 
 

@@ -9,6 +9,9 @@ export class User {
   authorities: string;
   profileImage: string = "";
   registrationDate: Date = new Date();
+  tagEmail: boolean = false;
+  commentEmail: boolean = false;
+  postEmail: boolean = false;
 
 
 

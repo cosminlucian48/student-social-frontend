@@ -63,6 +63,8 @@ import { EditModeratorDialogComponent } from './admin-page/admin-moderator-list/
 import { ModeratorSubjectCheckboxComponent } from './admin-page/admin-moderator-list/edit-moderator-dialog/moderator-subject-checkbox/moderator-subject-checkbox.component';
 import { UserEmailComponent } from './user-settings/user-board/user-email/user-email.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import { UserListComponent } from './student-social/main-board/subject-main/user-list/user-list.component';
 
 
 
@@ -148,6 +150,7 @@ const customNotifierOptions: NotifierOptions = {
     EditModeratorDialogComponent,
     ModeratorSubjectCheckboxComponent,
     UserEmailComponent,
+    UserListComponent,
 
   ],
   imports: [
@@ -161,7 +164,8 @@ const customNotifierOptions: NotifierOptions = {
     MatDialogModule,
     NotifierModule.withConfig(customNotifierOptions),
     ReactiveFormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    FlexLayoutModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: SecurityRequestInterceptor, multi: true},

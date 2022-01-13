@@ -39,6 +39,7 @@ export class UserBoardComponent implements OnInit {
     this.requestService.getUserByEmail(this.authenticationService.getUserEmailFromToken()).subscribe(
       response=>{
         this.loggedInUser = response;
+        console.log("logged in user -> ",this.loggedInUser);
         const auxUserSettings = new UserSettings();
         auxUserSettings.user = response;
         this.userSettings = auxUserSettings;
@@ -49,6 +50,7 @@ export class UserBoardComponent implements OnInit {
     this.requestService.getUserSettingsByEmail(this.authenticationService.getUserEmailFromToken()).subscribe(
       response=>{
         this.loggedInUser = response.user;
+
         this.userSettings = response;
         this.checkedSubjects = this.userSettings.subjects;
 

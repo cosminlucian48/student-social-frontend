@@ -77,6 +77,9 @@ export class RegisterComponent implements OnInit {
     const user = new User(ngForm.value.email,ngForm.value.password,ngForm.value.university, ngForm.value.firstName, ngForm.value.lastName,RoleType[RoleType.USER],ngForm.value.faculty);
     // this.authenticationService.register(user);
     user.registrationDate = new Date();
+    user.tagEmail = true;
+    user.commentEmail = false;
+    user.postEmail = false;
     if(typeof this.imageBase64 == "string"){
       if(this.imageBase64.length >0){
         user.profileImage = this.imageBase64;

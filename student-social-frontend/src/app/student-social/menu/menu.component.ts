@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
 import {RequestService} from "../../services/request.service";
@@ -12,6 +12,7 @@ import {BlockRefreshService} from "../../services/block.refresh.service";
 })
 export class MenuComponent implements OnInit {
 
+  @Input()  loggedInUser:String|undefined|null = "";
   private notifier: NotifierService;
 
   constructor(public authenticationService: AuthenticationService, public requestService: RequestService,
@@ -26,6 +27,7 @@ export class MenuComponent implements OnInit {
 
 
   ngOnInit(): void {
+
   }
 
   logout() {
