@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
     console.log("user:",this.authenticationService.getUserEmailFromToken())
   }
 
-  test(){
+  sendLoggedInUserEmail(){
     this.loggedInUser = this.authenticationService.getUserEmailFromToken();
   }
 }

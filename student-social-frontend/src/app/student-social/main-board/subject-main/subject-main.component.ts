@@ -21,7 +21,6 @@ export class SubjectMainComponent implements OnInit {
   currentSubjectId: number = 0;
   inPostSubject: boolean = false;
   postList: Post[] = [];
-  subjectIdForCreatePostComponent: number = 0;
   localTimerSubscription: Subscription | undefined;
 
   @Output() navBarToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -65,7 +64,6 @@ export class SubjectMainComponent implements OnInit {
 
   private getPosts(subjectId: number) {
     this.requestService.getPosts(subjectId).subscribe(resposeData => {
-        this.subjectIdForCreatePostComponent = subjectId;
         this.inPostSubject = true;
         this.postList = resposeData;
         // console.log("toate postarile", this.postList);
@@ -84,7 +82,6 @@ export class SubjectMainComponent implements OnInit {
 
   refreshPosts() {
     this.requestService.getPosts(this.currentSubjectId).subscribe(responseData => {
-        this.subjectIdForCreatePostComponent = this.currentSubjectId;
         // this.inPostSubject = true;
         this.postList = responseData;
       },

@@ -1,9 +1,9 @@
-<mat-drawer-container class="example-container" autosize style="width:1300px; background: transparent">
+<mat-drawer-container class="example-container" autosize >
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <app-subject-list  fxLayout="column" fxLayoutAlign="start stretch" ></app-subject-list>
   </mat-drawer>
   <app-subject-main (navBarToggle)="drawer.toggle()"></app-subject-main>
-
+  <div style="height:2000px"></div>
 <!--  <app-create-post></app-create-post>-->
 </mat-drawer-container>
 

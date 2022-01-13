@@ -22,6 +22,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+
 
 @NgModule({
   imports: [
@@ -41,7 +43,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSelectModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatMenuModule
+    MatMenuModule,
+    MatBottomSheetModule
   ],
   exports: [
     MatCardModule,
@@ -60,7 +63,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSelectModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatMenuModule
+    MatMenuModule,
+    MatBottomSheetModule
   ]
 })
 export class MaterialModule {

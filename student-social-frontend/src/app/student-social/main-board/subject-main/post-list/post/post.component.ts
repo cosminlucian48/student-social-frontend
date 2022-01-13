@@ -10,6 +10,8 @@ import {BlockRefreshService} from "../../../../../services/block.refresh.service
 import {RoleType} from "../../../../../enums/role.type";
 import {MatAccordion} from "@angular/material/expansion";
 import {AuthenticationService} from "../../../../../services/authentication.service";
+import {MatBottomSheet,MatBottomSheetRef} from "@angular/material/bottom-sheet";
+import {DocumentsPageComponent} from "../../documents-page/documents-page.component";
 
 // import { MatAccordion } from '@angular/material';
 @Component({
@@ -35,7 +37,8 @@ export class PostComponent implements OnInit {
 
   constructor(public datepipe: DatePipe, public requestService: RequestService,
               public notifier: NotifierService, public blockRefreshService: BlockRefreshService,
-              public authenticationService: AuthenticationService) {
+              public authenticationService: AuthenticationService,public _bottomSheet: MatBottomSheet
+              ) {
   }
 
   ngOnInit(): void {
@@ -98,5 +101,9 @@ export class PostComponent implements OnInit {
 
   loggedInUserHasAuthority(){
     return (!this.authenticationService.userHasAuthority(this.userType) || (this.post.email==this.authenticationService.getUserEmailFromToken()));
+  }
+
+  openBottomSheet(){
+    this._bottomSheet.open(DocumentsPageComponent,{data:{fileNames:this.filesNames}});
   }
 }

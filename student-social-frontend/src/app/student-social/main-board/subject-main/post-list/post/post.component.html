@@ -17,11 +17,13 @@
     <br>
     {{post.text}}
     <br>
-    <div *ngIf="filesNames.length>0" style="height:100px; background: red;">
-      <div  *ngFor="let fileName of filesNames">
-        <span>{{fileName}}</span>
-      </div>
-    </div>
+<!--    (fileNames)="filesNames"-->
+    <button *ngIf="filesNames.length>0" mat-raised-button (click)="openBottomSheet()" >Open file</button>
+<!--    <div *ngIf="filesNames.length>0" style="height:100px; background: red;">-->
+<!--      <div  *ngFor="let fileName of filesNames">-->
+<!--        <span>{{fileName}}</span>-->
+<!--      </div>-->
+<!--    </div>-->
   </mat-card-content>
   <br>
   <mat-card-footer>

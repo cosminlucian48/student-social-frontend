@@ -1,16 +1,15 @@
 <div fxLayout="row" fxLayoutAlign="start start">
   <div fxFlex="10">
-    <button type="button" mat-raised-button (click)="emitDrawerToggle()" class="subjects-button"
-    >
+    <button type="button" mat-raised-button (click)="emitDrawerToggle()" class="subjects-button">
       Subjects
     </button>
 
   </div>
-  <div fxFlex="90">
+  <div fxFlex="80">
 
     <div class="div-post">
 
-      <app-create-post *ngIf="inPostSubject" [subjectId]="subjectIdForCreatePostComponent"
+      <app-create-post *ngIf="inPostSubject" [subjectId]="currentSubjectId"
                        (refreshPosts)="refreshPosts()"></app-create-post>
       <button type="button" mat-raised-button (click)="usersList()" class="users-button"
               *ngIf="inPostSubject">
