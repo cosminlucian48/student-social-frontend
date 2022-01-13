@@ -12,10 +12,11 @@ mat-list {
 
 .subject-name {
   margin-left:60px;
-  width: 150px;
+  width: 300px;
 }
 .subject-description{
   width: 600px;
+  margin-left: 20px;
 }
 mat-list-item{
   background: var(--orange-dark);
@@ -23,7 +24,8 @@ mat-list-item{
 }
 
 .admin-subjects-container{
-  margin:0px 50px ;
+  margin:0px 50px;
+  width: 1400px;
 }
 
 .add-subject-button {
@@ -36,4 +38,8 @@ mat-list-item{
 
 .add-moderator-button {
   margin-right: 10px;
+}
+
+.subject-user{
+  margin-left: 20px;
 }
