@@ -8,6 +8,8 @@ import {Subscription} from "rxjs";
 import {RefreshService} from "../../../services/refresh.service";
 import {NotifierService} from "angular-notifier";
 import {BlockRefreshService} from "../../../services/block.refresh.service";
+import {EditUserInfoComponent} from "../../../user-settings/user-board/user-info/edit-user-info/edit-user-info.component";
+import {UserListComponent} from "./user-list/user-list.component";
 
 @Component({
   selector: 'app-subject-main',
@@ -25,7 +27,8 @@ export class SubjectMainComponent implements OnInit {
   @Output() navBarToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(public subjectService: SubjectService, public requestService: RequestService, public refreshService: RefreshService,
-              public notifier: NotifierService, public blockRefreshService: BlockRefreshService) {
+              public notifier: NotifierService, public blockRefreshService: BlockRefreshService,
+              public dialog:MatDialog) {
   }
 
   ngOnInit(): void {
@@ -74,6 +77,9 @@ export class SubjectMainComponent implements OnInit {
 
   emitDrawerToggle() {
     this.navBarToggle.emit();
+  }
+  usersList(){
+    const dialogRef = this.dialog.open(UserListComponent, {data: {subjectId: this.currentSubjectId}});
   }
 
   refreshPosts() {

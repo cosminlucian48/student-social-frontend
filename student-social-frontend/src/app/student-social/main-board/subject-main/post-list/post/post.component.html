@@ -12,9 +12,16 @@
       <br>
   </mat-card-subtitle>
   </mat-card-header>
+  <mat-divider></mat-divider>
   <mat-card-content style="margin-left: 20px; margin-right: 80px; ">
     <br>
     {{post.text}}
+    <br>
+    <div *ngIf="filesNames.length>0" style="height:100px; background: red;">
+      <div  *ngFor="let fileName of filesNames">
+        <span>{{fileName}}</span>
+      </div>
+    </div>
   </mat-card-content>
   <br>
   <mat-card-footer>

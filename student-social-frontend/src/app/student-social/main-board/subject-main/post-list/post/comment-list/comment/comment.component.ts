@@ -38,7 +38,8 @@ export class CommentComponent implements OnInit {
       })
   }
   loggedInUserHasAuthority(){
-    return !this.authenticationService.userHasAuthority(this.userType);
+    return (!this.authenticationService.userHasAuthority(this.userType) || (this.comment.email==this.authenticationService.getUserEmailFromToken()));
+
   }
 }
 

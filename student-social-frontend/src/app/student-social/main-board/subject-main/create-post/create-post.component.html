@@ -1,4 +1,4 @@
-<mat-card id="create-post-mat-card">
+<mat-card id="create-post-mat-card" >
   <mat-card-title >Create Post</mat-card-title>
   <form #createPostForm="ngForm" (ngSubmit)="createPost(createPostForm)">
 
@@ -32,7 +32,7 @@
         <div *ngFor="let fName of fileNames">
           {{fName || "No file uploaded yet."}}
         </div>
-        <button mat-mini-fab color="primary" class="upload-btn"
+        <button mat-mini-fab color="primary" class="upload-btn" type="button"
                 (click)="fileUpload.click()">
           <mat-icon>attach_file</mat-icon>
         </button>

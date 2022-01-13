@@ -18,6 +18,7 @@ export class CreatePostComponent implements OnInit {
   @Output() refreshPosts: EventEmitter<any> = new EventEmitter();
   fileNames:String[] = [];
   fileName = '';
+  file: File | undefined;
   private notifier: NotifierService;
 
   constructor(public requestService: RequestService, public authenticationService: AuthenticationService, notifier: NotifierService) {
@@ -25,19 +26,21 @@ export class CreatePostComponent implements OnInit {
   }
 
   fileCounter: number = 0;
-
+  formData = new FormData();
   onFileSelected(event: any) {
-    const formData = new FormData();
     let file: File;
     console.log("Test")
     for (let i = 0; i < event.target.files.length; i++) {
+      if(i==0){
+        this.file=event.target.files[0];
+      }
       file = event.target.files[i];
       this.fileNames.push(file.name);
-      formData.append("file[]",file);
+      this.formData.append('file',file);
       // console.log(file);
     }
 
-    console.log(formData.getAll('file[]'));
+    // console.log(this.formData.getAll('file'));
 
     // if (file) {
     //
@@ -76,8 +79,11 @@ export class CreatePostComponent implements OnInit {
     post.email = this.authenticationService.getUserEmailFromToken();
     post.isSticky = false;
     post.postDate = new Date();
-    console.log(post)
-    this.requestService.postPost(post).subscribe(responseData => {
+
+    this.formData.append('post',JSON.stringify(post));
+    console.log(this.formData.getAll('post'))
+    console.log(this.formData.getAll('file'))
+    this.requestService.postPost(this.formData).subscribe(responseData => {
         this.showNotification('success', 'Post created!');
         this.refreshPosts.emit();
       },

@@ -30,6 +30,7 @@ export class PostComponent implements OnInit {
   showCreateComment: boolean = false;
   showCommentList: boolean = false;
   openCreateComment: boolean = false;
+  filesNames:string[] = [];
   @ViewChild('accordion', {static: true}) Accordion: MatAccordion | undefined;
 
   constructor(public datepipe: DatePipe, public requestService: RequestService,
@@ -40,6 +41,11 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
 
     this.datePost = this.datepipe.transform(this.post.postDate, 'yyyy-MM-dd');
+    console.log("FISIERE?? -> :",this.post.fileName);
+    console.log("POST?? -> :",this.post);
+    if(this.post.fileName!=null){
+      this.filesNames = this.post.fileName.split(',');
+    }
     this.getComments();
     // console.log(this.post.profileImage);
   }
@@ -91,6 +97,6 @@ export class PostComponent implements OnInit {
   }
 
   loggedInUserHasAuthority(){
-    return !this.authenticationService.userHasAuthority(this.userType);
+    return (!this.authenticationService.userHasAuthority(this.userType) || (this.post.email==this.authenticationService.getUserEmailFromToken()));
   }
 }

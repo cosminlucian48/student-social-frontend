@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-title>
+    Users enrolled in this Subject:
+  </mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let user of users;let i = index">
+      <br>
+      <span style="padding:10px;">{{i + 1}}. {{user.email}}</span>
+      <span *ngIf="checkIfModerator(user)" style="color:grey;">(mod)</span>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="button" (click)="close()">Exit</button>
+  </mat-card-actions>
+</mat-card>
+
