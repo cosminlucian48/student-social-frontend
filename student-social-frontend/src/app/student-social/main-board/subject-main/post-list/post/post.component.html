@@ -1,16 +1,19 @@
 <mat-card class="post-card" [ngClass]="{'userClass': (post.postType==userType),
             'moderatorClass': (post.postType==moderatorType),
             'adminClass':(post.postType==adminType)}">
-  <mat-icon *ngIf="loggedInUserHasAuthority()" matTooltip="Delete post" (click)="deletePost()" class="delete-post-icon">cancel</mat-icon>
-<!--  <div mat-card-avatar style="background-image: url("")" class="profile-picture-posts"></div>-->
+  <mat-icon *ngIf="loggedInUserHasAuthority()" matTooltip="Delete post" (click)="deletePost()" class="delete-post-icon">
+    cancel
+  </mat-icon>
+  <!--  <div mat-card-avatar style="background-image: url("")" class="profile-picture-posts"></div>-->
   <mat-card-header style="margin-top: -20px;">
-  <img mat-card-avatar [src]="post.profileImage" class="profile-picture-posts">
+    <img mat-card-avatar [src]="post.profileImage" class="profile-picture-posts">
     <mat-card-title>{{post.title}}</mat-card-title>
     <mat-card-subtitle style="margin-top: -18px !important;">
       <span>{{post.email}}</span>
       <span style="position: absolute; left: 700px">{{datePost}}</span>
+      <span style="font-weight: bold" *ngIf="post.postType!=userType"> - {{post.postType}}</span>
       <br>
-  </mat-card-subtitle>
+    </mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content style="margin-left: 20px; margin-right: 80px;-ms-word-break: break-all;
@@ -18,15 +21,18 @@
     <br>
     {{post.text}}
     <br>
-<!--    (fileNames)="filesNames"-->
-    <mat-divider *ngIf="showFilesButton" style="margin-top: 25px;"></mat-divider>
-    <button *ngIf="showFilesButton" mat-raised-button (click)="openBottomSheet()" class="filesButton">
-      {{filesNames.length}} files attached</button>
-<!--    <div *ngIf="filesNames.length>0" style="height:100px; background: red;">-->
-<!--      <div  *ngFor="let fileName of filesNames">-->
-<!--        <span>{{fileName}}</span>-->
-<!--      </div>-->
-<!--    </div>-->
+    <!--    (fileNames)="filesNames"-->
+    <!--    <mat-divider *ngIf="showFilesButton" style="margin-top: 25px;"></mat-divider>-->
+    <span *ngIf="showFilesButton" fxLayout="row" fxLayoutAlign="start center" style="cursor: pointer;margin-top:20px;" class="filesButton">
+    <span  (click)="openBottomSheet()"  style="margin-top: 10px;">
+      {{filesNames.length}} files attached - click to view files</span>
+    <mat-icon style="margin-left:15px;padding-top:5px; ">assignment</mat-icon>
+    </span>
+    <!--    <div *ngIf="filesNames.length>0" style="height:100px; background: red;">-->
+    <!--      <div  *ngFor="let fileName of filesNames">-->
+    <!--        <span>{{fileName}}</span>-->
+    <!--      </div>-->
+    <!--    </div>-->
   </mat-card-content>
   <br>
   <mat-card-footer>
@@ -34,12 +40,13 @@
     <mat-accordion #accordion="matAccordion" multi="true">
       <!--      [expanded]="this.blockRefreshService.getBlockRefresh()"   si era cu click in loc de expandedChange-->
 
-      <button  class="add-comment" color="white" (click)="addCommentClick()"
-               [ngClass]="{'add-comment-expanded': (this.showCommentList)}">Add Comment</button>
-      <mat-expansion-panel (expandedChange)="blockRefreshChangeValue()" >
+      <button class="add-comment" color="white" (click)="addCommentClick()"
+              [ngClass]="{'add-comment-expanded': (this.showCommentList)}">Add Comment
+      </button>
+      <mat-expansion-panel (expandedChange)="blockRefreshChangeValue()">
 
-        <mat-expansion-panel-header style="width:300px" (click)="showCommentsClick()" >
-          <mat-panel-title (click)="getComments()" >
+        <mat-expansion-panel-header style="width:300px" (click)="showCommentsClick()">
+          <mat-panel-title (click)="getComments()">
             Comments
           </mat-panel-title>
           <!--          <button (click)="openCreateCommentComponent()">-->
@@ -52,9 +59,11 @@
         </mat-expansion-panel-header>
 
         <!--        *ngIf="openCreateComment"-->
-        <app-comment-list [subjectId]="post.subjectId" [commentsTest]="comments" *ngIf="showCommentList" (refreshComments2)="refreshComments()"></app-comment-list>
+        <app-comment-list [subjectId]="post.subjectId" [commentsTest]="comments" *ngIf="showCommentList"
+                          (refreshComments2)="refreshComments()"></app-comment-list>
       </mat-expansion-panel>
-      <app-create-comment (refreshComments)="refreshComments()" [postId]="post.id" *ngIf="showCreateComment" ></app-create-comment>
+      <app-create-comment (refreshComments)="refreshComments()" [postId]="post.id"
+                          *ngIf="showCreateComment"></app-create-comment>
 
     </mat-accordion>
   </mat-card-footer>

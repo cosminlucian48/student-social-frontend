@@ -1,19 +1,30 @@
 <mat-card [ngClass]="{'userClass': (comment.commentType==userType),
             'moderatorClass': (comment.commentType==moderatorType),
             'adminClass':(comment.commentType==adminType)}">
-  <mat-icon *ngIf="loggedInUserHasAuthority()" matTooltip="Delete post" (click)="deleteComment()" class="delete-comment-icon">cancel</mat-icon>
+  <mat-icon *ngIf="loggedInUserHasAuthority()" matTooltip="Delete post" (click)="deleteComment()"
+            class="delete-comment-icon">cancel
+  </mat-icon>
   <mat-card-subtitle>
     <div style="display: flex; justify-content: space-between;">
       <div style="display: flex;">
         <img mat-card-avatar [src]="comment.profileImage">
-        <p style="margin-left: 10px; margin-top: 10px">{{comment.email}}</p>
+        <span style="margin-left: 10px; margin-top: 10px">{{comment.email}}</span>
+        <span style="font-weight: bold;margin-top: 10px;margin-left: 4px"
+              *ngIf="comment.commentType!=userType">  - {{comment.commentType}}</span>
       </div>
       <p style="margin-right: 20px; margin-top: 10px">{{dateComment}}</p>
     </div>
   </mat-card-subtitle>
   <mat-card-content>
-    <p style="margin-left: 80px; margin-right: 80px; margin-bottom: 25px; justify-content: center" >{{comment.text}}</p>
-    <mat-divider *ngIf="showFilesButton" style="margin-top: 20px;"></mat-divider>
-    <button *ngIf="showFilesButton" mat-raised-button (click)="openBottomSheet()" class="filesButton" style="margin-top: 40px;">{{filesNames.length}} files attached</button>
+    <p style="margin-bottom: 25px;">{{comment.text}}</p>
+
+    <span *ngIf="showFilesButton" fxLayout="row" fxLayoutAlign="start center" style="cursor: pointer;margin-top:20px; font-weight:bold;"
+          class="filesButton">
+    <span (click)="openBottomSheet()" style="margin-top: 10px;">
+      {{filesNames.length}} files attached - click to view files</span>
+    <mat-icon style="margin-left:15px;padding-top:5px; ">assignment</mat-icon>
+    </span>
+
+
   </mat-card-content>
 </mat-card>

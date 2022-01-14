@@ -29,11 +29,12 @@
              (change)="onFileSelected($event)" #fileUpload multiple>
 
       <div class="file-upload">
-        <div *ngFor="let fName of fileNames| keyvalue">
+        <div *ngFor="let fName of fileNames| keyvalue" fxLayout="row" fxLayoutAlign="start center" style="cursor: pointer;">
           <mat-icon *ngIf="fName"  (click)="deleteFileFromMap(fName.key)">delete</mat-icon>
           {{fName.key}}
 
         </div>
+
         <span mat-mini-fab style=" border-radius: 50%;padding: 10px"
                 (click)="fileUpload.click()">
           <mat-icon class="mat-icon-class">attach_file</mat-icon>

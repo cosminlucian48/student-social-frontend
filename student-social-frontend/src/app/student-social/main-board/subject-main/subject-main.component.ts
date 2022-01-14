@@ -11,6 +11,7 @@ import {BlockRefreshService} from "../../../services/block.refresh.service";
 import {EditUserInfoComponent} from "../../../user-settings/user-board/user-info/edit-user-info/edit-user-info.component";
 import {UserListComponent} from "./user-list/user-list.component";
 import {Subject} from "../../../model/subject.model";
+import {AuthenticationService} from "../../../services/authentication.service";
 
 @Component({
   selector: 'app-subject-main',
@@ -29,7 +30,7 @@ export class SubjectMainComponent implements OnInit {
 
   constructor(public subjectService: SubjectService, public requestService: RequestService, public refreshService: RefreshService,
               public notifier: NotifierService, public blockRefreshService: BlockRefreshService,
-              public dialog:MatDialog) {
+              public dialog:MatDialog, public authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {

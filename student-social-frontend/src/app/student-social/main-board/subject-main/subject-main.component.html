@@ -6,11 +6,13 @@
 
   </div>
   <div fxFlex="80">
-<!--    <div style="height:900px">-->
-<!--      <p>Check whats knew in your groups ar enroll if you are not in any group.</p>-->
-<!--    </div>-->
+    <div style="height:1300px;padding-top:200px;" *ngIf="!inPostSubject" fxLayout="column" fxLayoutAlign="start center">
+      <div class="paragraph-div"><h1>Hello {{this.authenticationService.getUserEmailFromToken()}} !!</h1></div>
+      <div class="paragraph-div"><h1>Check what's new in the subjects you have enrolled.</h1></div>
+      <div class="paragraph-div"><h1>If you want to sign up to extra courses, go to the Account page!</h1></div>
+    </div>
     <div class="div-post">
-      <h1 style="margin-left: 40px;margin-top: 50px;margin-bottom: 50px;font-size: 40px">{{subject.name}}</h1>
+      <h1 style="margin-left: 40px;margin-top: 50px;margin-bottom: 50px;font-size: 40px" *ngIf="inPostSubject">{{subject.name}}</h1>
 
       <app-create-post *ngIf="inPostSubject" [subjectId]="currentSubjectId"
                        (refreshPosts)="refreshPosts()"></app-create-post>
@@ -21,7 +23,7 @@
           Users
         </button>
       </div>
-      <app-post-list [postList]="postList" (refreshPostList)="refreshPosts()"></app-post-list>
+      <app-post-list [postList]="postList" (refreshPostList)="refreshPosts()" *ngIf="inPostSubject"></app-post-list>
     </div>
   </div>
 </div>

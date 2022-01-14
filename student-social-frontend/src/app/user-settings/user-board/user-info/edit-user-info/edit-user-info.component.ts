@@ -30,6 +30,7 @@ export class EditUserInfoComponent implements OnInit {
 
     const user = new User(this.data.user.email,this.data.user.password,ngForm.value.university, ngForm.value.firstName, ngForm.value.lastName,this.data.user.authorities,ngForm.value.faculty);
     user.id = this.data.user.id;
+    user.profileImage = this.data.user.profileImage;
     this.requestService.updateUser(user).subscribe(response =>{
       this.notifier.notify("success","User updated!");
       this.close();

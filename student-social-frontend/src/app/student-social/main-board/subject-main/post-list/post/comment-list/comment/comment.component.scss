@@ -8,7 +8,7 @@
 }
 
 .adminClass {
-  background: bisque !important;
+  background: var(--grey) !important;
 }
 .delete-comment-icon{
   position: absolute;
@@ -21,7 +21,5 @@ mat-card{
   box-shadow: 0px 3px 18px 3px rgba(0,0,0,0.38)!important;
   background-color: #2B90D9;
   width: 650px;
-  justify-content: center;
-  align-items: center;
 }
 
