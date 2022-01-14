@@ -10,6 +10,7 @@ import {NotifierService} from "angular-notifier";
 import {BlockRefreshService} from "../../../services/block.refresh.service";
 import {EditUserInfoComponent} from "../../../user-settings/user-board/user-info/edit-user-info/edit-user-info.component";
 import {UserListComponent} from "./user-list/user-list.component";
+import {Subject} from "../../../model/subject.model";
 
 @Component({
   selector: 'app-subject-main',
@@ -21,6 +22,7 @@ export class SubjectMainComponent implements OnInit {
   currentSubjectId: number = 0;
   inPostSubject: boolean = false;
   postList: Post[] = [];
+  subject:Subject = new Subject();
   localTimerSubscription: Subscription | undefined;
 
   @Output() navBarToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -32,8 +34,14 @@ export class SubjectMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.subjectService.observeSubjectWasChanged().subscribe((subjectId: number) => {
+
       this.currentSubjectId = subjectId;
       this.blockRefreshService.setBlockRefresh(false);
+      this.requestService.getSubjectById(subjectId).subscribe(resposeData => {
+        this.subject = resposeData;
+      },error=>{
+        this.notifier.notify("error","Error when retrieving subject!");
+      });
       this.localTimerSubscriptionStart();
 
     });
@@ -64,8 +72,10 @@ export class SubjectMainComponent implements OnInit {
 
   private getPosts(subjectId: number) {
     this.requestService.getPosts(subjectId).subscribe(resposeData => {
+
         this.inPostSubject = true;
         this.postList = resposeData;
+
         // console.log("toate postarile", this.postList);
       },
       error => {

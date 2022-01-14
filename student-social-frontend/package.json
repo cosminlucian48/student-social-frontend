@@ -29,6 +29,7 @@
     "file-saver": "~2.0.5",
     "json-server": "^0.17.0",
     "jwt-decode": "^3.1.2",
+    "ngx-autosize": "^1.8.7",
     "ngx-countdown": "^13.0.0",
     "rxjs": "~6.6.0",
     "ts-node": "^10.4.0",

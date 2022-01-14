@@ -4,7 +4,7 @@
 <!--<p>app post list works</p>-->
 
 
-<div fxLayout="column" fxLayoutAlign="space-between center" style="margin-bottom: 200px; min-height:400px">
+<div fxLayout="column" fxLayoutAlign="space-between center" style="margin-bottom: 100px; min-height:400px">
 
   <app-post *ngFor="let postItem of postList; let i = index" [post]="postItem" (refreshPosts)="refreshPosts()"></app-post>
 

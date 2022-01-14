@@ -9,7 +9,7 @@
           Title
         </mat-label>
         <input matInput id="postTitle" name="postTitle" formControlName="postTitle" minlength="4" maxlength="30"
-               style="margin-bottom: 10px"/>
+               style="padding-bottom:5px;padding-top:5px;background: whitesmoke"/>
         <!--        <mat-error *ngIf="postTitle.errors?.minlength"> Title must be at least 4 characters long.</mat-error>-->
         <!--        <mat-error *ngIf="postTitle.errors?.maxLength"> Title must be at most 30 characters long.</mat-error>-->
 
@@ -20,8 +20,8 @@
           Text
         </mat-label>
         <!--          <input matInput #postText="ngModel" name="postText" ngModel required minlength="10"/>-->
-        <textarea matInput id="postText" name="postText" rows="15" cols="10" formControlName="postText"
-                  style="width: 500px!important; border:1px solid black"
+        <textarea matInput id="postText" name="postText" autosize cols="10" formControlName="postText"
+                  style="width: 500px!important;background: whitesmoke"
                   minlength="10"></textarea>
         <!--        <mat-error *ngIf="postText.errors?.minlength"> Text must be at least 10 characters long.</mat-error>-->
       </mat-form-field>
@@ -29,13 +29,15 @@
              (change)="onFileSelected($event)" #fileUpload multiple>
 
       <div class="file-upload">
-        <div *ngFor="let fName of fileNames">
-          {{fName || "No file uploaded yet."}}
+        <div *ngFor="let fName of fileNames| keyvalue">
+          <mat-icon *ngIf="fName"  (click)="deleteFileFromMap(fName.key)">delete</mat-icon>
+          {{fName.key}}
+
         </div>
-        <button mat-mini-fab color="primary" class="upload-btn" type="button"
+        <span mat-mini-fab style=" border-radius: 50%;padding: 10px"
                 (click)="fileUpload.click()">
-          <mat-icon>attach_file</mat-icon>
-        </button>
+          <mat-icon class="mat-icon-class">attach_file</mat-icon>
+        </span>
       </div>
 
     </mat-card-content>
@@ -44,6 +46,8 @@
     <mat-card-actions>
       <!--      <button mat-raised-button class="button&#45;&#45;primary" type="submit"> Add Post</button>-->
       <button type="submit" mat-raised-button class="button--primary" [disabled]="!createPostForm.valid">Add post
+      </button>
+      <button type="button" mat-raised-button class="button--primary" (click)="clearCreatePostFields()">Clear fields
       </button>
     </mat-card-actions>
   </form>

@@ -1,12 +1,12 @@
 <div style="margin-left:auto;margin-right: auto;">
 
-<button mat-raised-button color="primary" (click)="downloadAll()" style="margin-left:auto;margin-right: auto; margin-top:30px;margin-bottom:30px;">Download All</button>
+<button mat-raised-button class="button--primary" (click)="downloadAll()" style="margin-left:auto;margin-right: auto; margin-top:30px;margin-bottom:30px;">Download All</button>
 <mat-divider></mat-divider>
 <mat-nav-list *ngFor="let fileName of this.data.fileNames" style="margin-left:auto;margin-right: auto; margin-top:30px;">
   <a mat-list-item (click)="download(fileName)">
-    <span mat-line>{{fileName}}</span><span class="material-icons">
+    <span mat-line>{{fileName}}</span><mat-icon class="mat-icon-class">
 arrow_downward
-</span>
+</mat-icon>
 
 
   </a>

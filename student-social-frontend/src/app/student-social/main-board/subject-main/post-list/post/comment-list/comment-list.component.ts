@@ -11,6 +11,7 @@ import {RequestService} from "../../../../../../services/request.service";
 export class CommentListComponent implements OnInit {
 
   @Input()commentsTest: Comment[]=[] ;
+  @Input()subjectId:number=0 ;
   @Output() refreshComments2:EventEmitter<any> = new EventEmitter();
   constructor(public requestService: RequestService) { }
 

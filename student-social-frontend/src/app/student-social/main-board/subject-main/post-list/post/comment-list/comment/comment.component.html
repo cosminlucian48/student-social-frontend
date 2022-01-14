@@ -13,5 +13,7 @@
   </mat-card-subtitle>
   <mat-card-content>
     <p style="margin-left: 80px; margin-right: 80px; margin-bottom: 25px; justify-content: center" >{{comment.text}}</p>
+    <mat-divider *ngIf="showFilesButton" style="margin-top: 20px;"></mat-divider>
+    <button *ngIf="showFilesButton" mat-raised-button (click)="openBottomSheet()" class="filesButton" style="margin-top: 40px;">{{filesNames.length}} files attached</button>
   </mat-card-content>
 </mat-card>

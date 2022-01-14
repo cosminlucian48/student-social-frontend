@@ -66,6 +66,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { UserListComponent } from './student-social/main-board/subject-main/user-list/user-list.component';
 import { DocumentsPageComponent } from './student-social/main-board/subject-main/documents-page/documents-page.component';
+import {AutosizeModule} from 'ngx-autosize';
 
 
 
@@ -152,7 +153,7 @@ const customNotifierOptions: NotifierOptions = {
     ModeratorSubjectCheckboxComponent,
     UserEmailComponent,
     UserListComponent,
-    DocumentsPageComponent,
+    DocumentsPageComponent
 
   ],
   imports: [
@@ -167,7 +168,8 @@ const customNotifierOptions: NotifierOptions = {
     NotifierModule.withConfig(customNotifierOptions),
     ReactiveFormsModule,
     MatProgressBarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AutosizeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: SecurityRequestInterceptor, multi: true},

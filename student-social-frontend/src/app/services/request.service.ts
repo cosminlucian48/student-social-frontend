@@ -40,6 +40,10 @@ export class RequestService {
     return this.httpClient.get<Subject[]>(this.urlService.getSubjectUrl(), this.urlService.getRequestOptions());
   }
 
+  getSubjectById(subjectId:number):Observable<Subject>{
+    return this.httpClient.get<Subject>(this.urlService.getSubjectUrl()+'/'+subjectId, this.urlService.getRequestOptions());
+  }
+
   getUsers(): Observable<User[]> {
     console.log(this.urlService.getUserUrl());
     return this.httpClient.get<User[]>(this.urlService.getUserUrl(), this.urlService.getRequestOptions());
@@ -99,9 +103,18 @@ export class RequestService {
     return this.httpClient.get<Comment[]>(this.urlService.getCommentsUrl() + "/post/" + postId, this.urlService.getRequestOptions());
   }
 
-  postComment(comment: Comment): Observable<Comment> {
-    return this.httpClient.post<Comment>(this.urlService.getCommentsUrl(), comment, this.urlService.getRequestOptions());
+  postComment(file: FormData | undefined): Observable<string> {
+    return this.httpClient.post<string>(this.urlService.getCommentsUrl(), file, this.urlService.getRequestOptions2());
   }
+
+  // postPost(file: FormData | undefined): Observable<string> {
+  //   // return this.httpClient.post<User>(this.urlService.getRegisterUrl(), user, this.urlService.getRequestOptions());
+  //   // if (file != null) {
+  //   //   return this.httpClient.post<Post>(this.urlService.getPostUrl(),{"post":post,"file":file},this.urlService.getRequestOptions());
+  //   // }else {
+  //   return this.httpClient.post<string>(this.urlService.getPostUrl(), file, this.urlService.getRequestOptions2());
+  //   // }
+  // }
 
   updateUserPassword(user: User): Observable<User> {
     return this.httpClient.put<User>(this.urlService.getUserUrl() + '/new-password', user, this.urlService.getRequestOptions());

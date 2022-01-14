@@ -18,10 +18,8 @@ export class CreatePostComponent implements OnInit {
   @Input() subjectId: number = 0;
   @Output() refreshPosts: EventEmitter<any> = new EventEmitter();
   post:Post = new Post();
-  fileNames:String[] = [];
-  fileName = '';
-  // postTitle:string = '';
-  // postText:string = '';
+  // fileNames:String[] = [];
+  fileNames:Map<string,File> = new Map<string, File>();
   private notifier: NotifierService;
   fileCounter: number = 0;
   formData = new FormData();
@@ -43,9 +41,13 @@ export class CreatePostComponent implements OnInit {
     let file: File;
     for (let i = 0; i < event.target.files.length; i++) {
       file = event.target.files[i];
-      this.fileNames.push(file.name);
-      this.formData.append('file',file);
+      this.fileNames.set(file.name, file);
+      // this.fileNames.push(file.name);
     }
+  }
+
+  deleteFileFromMap(fileName:string){
+    this.fileNames.delete(fileName);
   }
 
   public showNotification(type: string, message: string): void {
@@ -60,6 +62,12 @@ export class CreatePostComponent implements OnInit {
   }
 
   createPost() {
+    //
+
+    this.fileNames.forEach(((value, key) => {
+      this.formData.append('file',value);
+    }))
+    //
     this.post.text = this.createPostForm.controls.postText.value;
     this.post.title = this.createPostForm.controls.postTitle.value;
     console.log(this.post.title);
@@ -84,8 +92,7 @@ export class CreatePostComponent implements OnInit {
   }
 
   clearCreatePostFields(){
-    this.fileNames =[];
-    this.fileName = '';
+    this.fileNames =new Map<string, File>();
     // ngForm.value.postText = '';
     // ngForm.value.postTitle = '';
     // this.postText = '';
@@ -94,6 +101,7 @@ export class CreatePostComponent implements OnInit {
     this.post.title='';
     this.post.text='';
     this.formData = new FormData();
+    this.createPostForm.reset();
   }
 
 }

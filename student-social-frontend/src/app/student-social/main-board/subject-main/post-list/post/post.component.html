@@ -13,13 +13,15 @@
   </mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
-  <mat-card-content style="margin-left: 20px; margin-right: 80px; ">
+  <mat-card-content style="margin-left: 20px; margin-right: 80px;-ms-word-break: break-all;
+    word-break: break-all; ">
     <br>
     {{post.text}}
     <br>
 <!--    (fileNames)="filesNames"-->
     <mat-divider *ngIf="showFilesButton" style="margin-top: 25px;"></mat-divider>
-    <button *ngIf="showFilesButton" mat-raised-button (click)="openBottomSheet()" class="filesButton">Open file</button>
+    <button *ngIf="showFilesButton" mat-raised-button (click)="openBottomSheet()" class="filesButton">
+      {{filesNames.length}} files attached</button>
 <!--    <div *ngIf="filesNames.length>0" style="height:100px; background: red;">-->
 <!--      <div  *ngFor="let fileName of filesNames">-->
 <!--        <span>{{fileName}}</span>-->
@@ -50,9 +52,9 @@
         </mat-expansion-panel-header>
 
         <!--        *ngIf="openCreateComment"-->
-        <app-comment-list [commentsTest]="comments" *ngIf="showCommentList" (refreshComments2)="refreshComments()"></app-comment-list>
+        <app-comment-list [subjectId]="post.subjectId" [commentsTest]="comments" *ngIf="showCommentList" (refreshComments2)="refreshComments()"></app-comment-list>
       </mat-expansion-panel>
-      <app-create-comment (refreshComments)="refreshComments()" [postId]="post.id" *ngIf="showCreateComment"></app-create-comment>
+      <app-create-comment (refreshComments)="refreshComments()" [postId]="post.id" *ngIf="showCreateComment" ></app-create-comment>
 
     </mat-accordion>
   </mat-card-footer>

@@ -56,6 +56,7 @@ export class PostComponent implements OnInit {
       this.showFilesButton=true;
       console.log("problema:",this.showFilesButton)
       this.filesNames = this.post.fileName.split(',');
+
     }
     // this.filesNames.forEach(((value, index) => {
     //   if(value.length<2){

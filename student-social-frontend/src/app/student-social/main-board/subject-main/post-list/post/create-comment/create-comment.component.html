@@ -1,15 +1,29 @@
 <mat-card id="create-comment-mat-card">
   <mat-card-title style="margin-bottom: 20px">New comment</mat-card-title>
-  <form #createCommentForm="ngForm" (ngSubmit)="createComment(createCommentForm)">
+  <form [formGroup]="createCommentForm" (ngSubmit)="createComment()">
     <mat-card-content>
       <mat-form-field class="new-comment-text" appearance="fill">
         <mat-label>
           Comment text
         </mat-label>
-        <textarea matInput #commentText="ngModel" name="commentText" rows ="5"  ngModel required minlength="5" maxlength="300"></textarea>
-        <mat-error *ngIf="commentText.errors?.minlength"> Comment must be at least 5 characters long.</mat-error>
-        <mat-error *ngIf="commentText.errors?.maxLength"> Comment must be at most 300 characters long.</mat-error>
+        <textarea matInput id="commentText" name="commentText" rows ="5"  formControlName="commentText" minlength="5" maxlength="300"></textarea>
+<!--        <mat-error *ngIf="commentText.errors?.minlength"> Comment must be at least 5 characters long.</mat-error>-->
+<!--        <mat-error *ngIf="commentText.errors?.maxLength"> Comment must be at most 300 characters long.</mat-error>-->
       </mat-form-field>
+
+      <input type="file" class="file-input" style="display: none;"
+             (change)="onFileSelected($event)" #fileUpload multiple>
+
+      <div class="file-upload">
+        <div *ngFor="let fName of fileNames">
+          {{fName || "No file uploaded yet."}}
+        </div>
+        <span mat-mini-fab style=" border-radius: 50%;padding: 10px" class="upload-btn"
+                (click)="fileUpload.click()">
+          <mat-icon class="mat-icon-class">attach_file</mat-icon>
+        </span>
+      </div>
+
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button class="button--primary" type="submit" style="float:right;margin-left:10px;margin-bottom: 10px;">Add comment</button>

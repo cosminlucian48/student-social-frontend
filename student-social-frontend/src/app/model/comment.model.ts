@@ -6,6 +6,7 @@ export class Comment{
   public userId: number;
   public email:string | undefined | null = "";
   public commentType: string = "";
+  fileName:string="";
   profileImage: string = "";
 
 

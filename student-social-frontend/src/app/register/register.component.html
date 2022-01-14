@@ -62,12 +62,12 @@
 
           <div class="file-upload">
 
-            {{fileName || "No file uploaded yet."}}
+            {{fileName || "Upload a profile picture."}}
 
-            <button mat-mini-fab class="button--primary" class="upload-btn" type="button"
+            <span mat-mini-fab style=" border-radius: 50%;padding: 10px"
                     (click)="fileUpload.click()">
-              <mat-icon>attach_file</mat-icon>
-            </button>
+              <mat-icon class="mat-icon-class">attach_file</mat-icon>
+            </span>
           </div>
 
         </div>

@@ -6,15 +6,21 @@
 
   </div>
   <div fxFlex="80">
-
+<!--    <div style="height:900px">-->
+<!--      <p>Check whats knew in your groups ar enroll if you are not in any group.</p>-->
+<!--    </div>-->
     <div class="div-post">
+      <h1 style="margin-left: 40px;margin-top: 50px;margin-bottom: 50px;font-size: 40px">{{subject.name}}</h1>
 
       <app-create-post *ngIf="inPostSubject" [subjectId]="currentSubjectId"
                        (refreshPosts)="refreshPosts()"></app-create-post>
-      <button type="button" mat-raised-button (click)="usersList()" class="users-button"
-              *ngIf="inPostSubject">
-        Users
-      </button>
+      <div *ngIf="inPostSubject" style="margin-left: auto;margin-right:auto; " fxLayout="column" fxLayoutAlign="space-between center">
+        Check the users enrolled in this subject:
+        <button type="button" mat-raised-button (click)="usersList()" class="users-button"
+                >
+          Users
+        </button>
+      </div>
       <app-post-list [postList]="postList" (refreshPostList)="refreshPosts()"></app-post-list>
     </div>
   </div>

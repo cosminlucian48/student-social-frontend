@@ -1,13 +1,15 @@
-.moderatorClass{
-  background: var(--orange-primary-very-light) !important;
-}
-.userClass{
+.moderatorClass {
   background: var(--grey) !important;
-}
-.adminClass{
-  background: var(--orange-primary-light) !important;
+  //background: var(--orange-primary-very-light) !important;
 }
 
+.userClass {
+  background-color: white !important;
+}
+
+.adminClass {
+  background: bisque !important;
+}
 .delete-comment-icon{
   position: absolute;
   right:5px;
@@ -16,6 +18,7 @@
 }
 
 mat-card{
+  box-shadow: 0px 3px 18px 3px rgba(0,0,0,0.38)!important;
   background-color: #2B90D9;
   width: 650px;
   justify-content: center;
