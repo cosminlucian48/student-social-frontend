@@ -32,6 +32,7 @@ export class PostComponent implements OnInit {
   showCreateComment: boolean = false;
   showCommentList: boolean = false;
   openCreateComment: boolean = false;
+  showFilesButton: boolean = false;
   filesNames:string[] = [];
   @ViewChild('accordion', {static: true}) Accordion: MatAccordion | undefined;
 
@@ -44,13 +45,26 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
 
     this.datePost = this.datepipe.transform(this.post.postDate, 'yyyy-MM-dd');
-    console.log("FISIERE?? -> :",this.post.fileName);
-    console.log("POST?? -> :",this.post);
-    if(this.post.fileName!=null){
+    // console.log("FISIERE?? -> :",this.post.fileName);
+    // console.log("POST?? -> :",this.post);
+
+    // console.log("file names inainte:",this.filesNames.length!=0);
+    // console.log("file names inainte:",this.filesNames);
+
+    if(this.post.fileName!=null && this.post.fileName.length>1){
+      console.log(this.post.fileName);
+      this.showFilesButton=true;
+      console.log("problema:",this.showFilesButton)
       this.filesNames = this.post.fileName.split(',');
     }
+    // this.filesNames.forEach(((value, index) => {
+    //   if(value.length<2){
+    //     this.filesNames.p
+    //   }
+    // }))
+    // console.log("file names:",this.filesNames.length!=0);
+    // console.log("file names:",this.filesNames);
     this.getComments();
-    // console.log(this.post.profileImage);
   }
 
   refreshComments() {
@@ -104,6 +118,6 @@ export class PostComponent implements OnInit {
   }
 
   openBottomSheet(){
-    this._bottomSheet.open(DocumentsPageComponent,{data:{fileNames:this.filesNames}});
+    this._bottomSheet.open(DocumentsPageComponent,{data:{fileNames:this.filesNames, subjectId:this.post.subjectId}});
   }
 }

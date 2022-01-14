@@ -1,6 +1,6 @@
 <mat-card id="create-post-mat-card">
   <mat-card-title>Create Post</mat-card-title>
-  <form #createPostForm="ngForm" (ngSubmit)="createPost(createPostForm)">
+  <form (ngSubmit)="createPost()" [formGroup]="createPostForm">
 
     <mat-card-content>
 
@@ -8,10 +8,10 @@
         <mat-label>
           Title
         </mat-label>
-        <input matInput #postTitle="ngModel" name="postTitle" [ngModel]="post.title" required minlength="4" maxlength="30"
+        <input matInput id="postTitle" name="postTitle" formControlName="postTitle" minlength="4" maxlength="30"
                style="margin-bottom: 10px"/>
-        <mat-error *ngIf="postTitle.errors?.minlength"> Title must be at least 4 characters long.</mat-error>
-        <mat-error *ngIf="postTitle.errors?.maxLength"> Title must be at most 30 characters long.</mat-error>
+        <!--        <mat-error *ngIf="postTitle.errors?.minlength"> Title must be at least 4 characters long.</mat-error>-->
+        <!--        <mat-error *ngIf="postTitle.errors?.maxLength"> Title must be at most 30 characters long.</mat-error>-->
 
       </mat-form-field>
       <br>
@@ -20,10 +20,10 @@
           Text
         </mat-label>
         <!--          <input matInput #postText="ngModel" name="postText" ngModel required minlength="10"/>-->
-        <textarea matInput #postText="ngModel" name="postText" rows="15" cols="10" [ngModel]="post.text"
+        <textarea matInput id="postText" name="postText" rows="15" cols="10" formControlName="postText"
                   style="width: 500px!important; border:1px solid black"
-                  required minlength="10"></textarea>
-        <mat-error *ngIf="postText.errors?.minlength"> Text must be at least 10 characters long.</mat-error>
+                  minlength="10"></textarea>
+        <!--        <mat-error *ngIf="postText.errors?.minlength"> Text must be at least 10 characters long.</mat-error>-->
       </mat-form-field>
       <input type="file" class="file-input"
              (change)="onFileSelected($event)" #fileUpload multiple>
@@ -42,54 +42,56 @@
 
 
     <mat-card-actions>
-      <button mat-raised-button class="button--primary" type="submit"> Add Post</button>
+      <!--      <button mat-raised-button class="button&#45;&#45;primary" type="submit"> Add Post</button>-->
+      <button type="submit" mat-raised-button class="button--primary" [disabled]="!createPostForm.valid">Add post
+      </button>
     </mat-card-actions>
   </form>
 
 
-<!--  <form #createPostForm="ngForm" (ngSubmit)="createPost(createPostForm)">-->
+  <!--  <form #createPostForm="ngForm" (ngSubmit)="createPost(createPostForm)">-->
 
-<!--    <mat-card-content>-->
+  <!--    <mat-card-content>-->
 
-<!--      <mat-form-field style="margin-bottom: 10px">-->
-<!--        <mat-label>-->
-<!--          Title-->
-<!--        </mat-label>-->
-<!--        <input matInput #postTitle="ngModel" name="postTitle" [ngModel]="post.title" required minlength="4" maxlength="30"-->
-<!--               style="margin-bottom: 10px"/>-->
-<!--        <mat-error *ngIf="postTitle.errors?.minlength"> Title must be at least 4 characters long.</mat-error>-->
-<!--        <mat-error *ngIf="postTitle.errors?.maxLength"> Title must be at most 30 characters long.</mat-error>-->
+  <!--      <mat-form-field style="margin-bottom: 10px">-->
+  <!--        <mat-label>-->
+  <!--          Title-->
+  <!--        </mat-label>-->
+  <!--        <input matInput #postTitle="ngModel" name="postTitle" [ngModel]="post.title" required minlength="4" maxlength="30"-->
+  <!--               style="margin-bottom: 10px"/>-->
+  <!--        <mat-error *ngIf="postTitle.errors?.minlength"> Title must be at least 4 characters long.</mat-error>-->
+  <!--        <mat-error *ngIf="postTitle.errors?.maxLength"> Title must be at most 30 characters long.</mat-error>-->
 
-<!--      </mat-form-field>-->
-<!--      <br>-->
-<!--      <mat-form-field style="width: 500px">-->
-<!--        <mat-label>-->
-<!--          Text-->
-<!--        </mat-label>-->
-<!--        &lt;!&ndash;          <input matInput #postText="ngModel" name="postText" ngModel required minlength="10"/>&ndash;&gt;-->
-<!--        <textarea matInput #postText="ngModel" name="postText" rows="15" cols="10" [ngModel]="post.text"-->
-<!--                  style="width: 500px!important; border:1px solid black"-->
-<!--                  required minlength="10"></textarea>-->
-<!--        <mat-error *ngIf="postText.errors?.minlength"> Text must be at least 10 characters long.</mat-error>-->
-<!--      </mat-form-field>-->
-<!--      <input type="file" class="file-input"-->
-<!--             (change)="onFileSelected($event)" #fileUpload multiple>-->
+  <!--      </mat-form-field>-->
+  <!--      <br>-->
+  <!--      <mat-form-field style="width: 500px">-->
+  <!--        <mat-label>-->
+  <!--          Text-->
+  <!--        </mat-label>-->
+  <!--        &lt;!&ndash;          <input matInput #postText="ngModel" name="postText" ngModel required minlength="10"/>&ndash;&gt;-->
+  <!--        <textarea matInput #postText="ngModel" name="postText" rows="15" cols="10" [ngModel]="post.text"-->
+  <!--                  style="width: 500px!important; border:1px solid black"-->
+  <!--                  required minlength="10"></textarea>-->
+  <!--        <mat-error *ngIf="postText.errors?.minlength"> Text must be at least 10 characters long.</mat-error>-->
+  <!--      </mat-form-field>-->
+  <!--      <input type="file" class="file-input"-->
+  <!--             (change)="onFileSelected($event)" #fileUpload multiple>-->
 
-<!--      <div class="file-upload">-->
-<!--        <div *ngFor="let fName of fileNames">-->
-<!--          {{fName || "No file uploaded yet."}}-->
-<!--        </div>-->
-<!--        <button mat-mini-fab color="primary" class="upload-btn" type="button"-->
-<!--                (click)="fileUpload.click()">-->
-<!--          <mat-icon>attach_file</mat-icon>-->
-<!--        </button>-->
-<!--      </div>-->
+  <!--      <div class="file-upload">-->
+  <!--        <div *ngFor="let fName of fileNames">-->
+  <!--          {{fName || "No file uploaded yet."}}-->
+  <!--        </div>-->
+  <!--        <button mat-mini-fab color="primary" class="upload-btn" type="button"-->
+  <!--                (click)="fileUpload.click()">-->
+  <!--          <mat-icon>attach_file</mat-icon>-->
+  <!--        </button>-->
+  <!--      </div>-->
 
-<!--    </mat-card-content>-->
+  <!--    </mat-card-content>-->
 
 
-<!--    <mat-card-actions>-->
-<!--      <button mat-raised-button class="button&#45;&#45;primary" type="submit"> Add Post</button>-->
-<!--    </mat-card-actions>-->
-<!--  </form>-->
+  <!--    <mat-card-actions>-->
+  <!--      <button mat-raised-button class="button&#45;&#45;primary" type="submit"> Add Post</button>-->
+  <!--    </mat-card-actions>-->
+  <!--  </form>-->
 </mat-card>

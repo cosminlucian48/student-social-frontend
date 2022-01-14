@@ -18,7 +18,8 @@
     {{post.text}}
     <br>
 <!--    (fileNames)="filesNames"-->
-    <button *ngIf="filesNames.length>0" mat-raised-button (click)="openBottomSheet()" >Open file</button>
+    <mat-divider *ngIf="showFilesButton" style="margin-top: 25px;"></mat-divider>
+    <button *ngIf="showFilesButton" mat-raised-button (click)="openBottomSheet()" class="filesButton">Open file</button>
 <!--    <div *ngIf="filesNames.length>0" style="height:100px; background: red;">-->
 <!--      <div  *ngFor="let fileName of filesNames">-->
 <!--        <span>{{fileName}}</span>-->

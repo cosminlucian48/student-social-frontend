@@ -4,7 +4,7 @@ import {PostComponent} from "../post-list/post/post.component";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {User} from "../../../../model/user";
 import {RequestService} from "../../../../services/request.service";
-
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-documents-page',
   templateUrl: './documents-page.component.html',
@@ -18,15 +18,20 @@ export class DocumentsPageComponent implements OnInit {
   }
 
   constructor(private _bottomSheetRef: MatBottomSheetRef<PostComponent>,
-              @Inject(MAT_BOTTOM_SHEET_DATA) public data: {fileNames:string[]},
+              @Inject(MAT_BOTTOM_SHEET_DATA) public data: {fileNames:string[],subjectId:number},
               public requestService: RequestService) {}
 
   download(fileName:string): void {
+    console.log("CEVA: ",fileName,this.data.subjectId);
+    this.requestService.downloadFile(fileName,this.data.subjectId).subscribe(res=>saveAs(res,fileName));
     this._bottomSheetRef.dismiss();
     // event.preventDefault();
   }
 
   downloadAll(): void {
+    this.data.fileNames.forEach((fileName => {
+      this.requestService.downloadFile(fileName,this.data.subjectId).subscribe(res=>saveAs(res,fileName));
+    }));
     this._bottomSheetRef.dismiss();
     // event.preventDefault();
   }

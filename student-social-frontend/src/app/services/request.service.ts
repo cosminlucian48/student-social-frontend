@@ -65,7 +65,7 @@ export class RequestService {
     // if (file != null) {
     //   return this.httpClient.post<Post>(this.urlService.getPostUrl(),{"post":post,"file":file},this.urlService.getRequestOptions());
     // }else {
-      return this.httpClient.post<string>(this.urlService.getPostUrl(), file, this.urlService.getRequestOptions2());
+    return this.httpClient.post<string>(this.urlService.getPostUrl(), file, this.urlService.getRequestOptions2());
     // }
   }
 
@@ -105,5 +105,9 @@ export class RequestService {
 
   updateUserPassword(user: User): Observable<User> {
     return this.httpClient.put<User>(this.urlService.getUserUrl() + '/new-password', user, this.urlService.getRequestOptions());
+  }
+
+  downloadFile(fileName: string, subjectId: number): Observable<Blob> {
+    return this.httpClient.get(this.urlService.getPostUrl() + '/files/' + fileName + '/' + subjectId, { responseType: 'blob'});
   }
 }

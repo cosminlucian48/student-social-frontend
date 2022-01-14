@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
-import {NgForm} from "@angular/forms";
+import {FormControl, FormGroup, NgForm} from "@angular/forms";
 import {Post} from "../../../../model/post.model";
 import {RequestService} from "../../../../services/request.service";
 import {AuthenticationService} from "../../../../services/authentication.service";
@@ -25,6 +25,12 @@ export class CreatePostComponent implements OnInit {
   private notifier: NotifierService;
   fileCounter: number = 0;
   formData = new FormData();
+
+
+  createPostForm = new FormGroup({
+    postTitle: new FormControl(''),
+    postText: new FormControl('')
+  });
 
 
   constructor(public requestService: RequestService, public authenticationService: AuthenticationService, notifier: NotifierService,
@@ -53,19 +59,16 @@ export class CreatePostComponent implements OnInit {
 
   }
 
-  createPost(ngForm: NgForm) {
-    if (ngForm.invalid) {
-      return;
-    }
-    //
-    this.post.text = ngForm.value.postText;
-    this.post.title = ngForm.value.postTitle;
+  createPost() {
+    this.post.text = this.createPostForm.controls.postText.value;
+    this.post.title = this.createPostForm.controls.postTitle.value;
+    console.log(this.post.title);
+    console.log(this.post.text);
     this.post.subjectId = this.subjectId;
-    // post.userId = 0;
     this.post.email = this.authenticationService.getUserEmailFromToken();
     this.post.isSticky = false;
     this.post.postDate = new Date();
-    ngForm.reset();
+    this.createPostForm.reset();
     this.formData.append('post',JSON.stringify(this.post));
     console.log(this.formData.getAll('post'))
     console.log(this.formData.getAll('file'))
